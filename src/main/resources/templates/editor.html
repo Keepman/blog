@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>markdown编辑</title>
+    <link href="https://lib.baomitu.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/editormd.min.css"/>
+    <link href="https://lib.baomitu.com/font-awesome/5.8.0/css/fontawesome.min.css" rel="stylesheet">
+    <style>
+        /*隐藏markdown全窗口预览不会关闭的bug，会导致其他fa选择器同时隐藏*/
+        .fa {
+            display: none;
+        }
+    </style>
+    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/editormd.js"></script>
+</head>
+<body>
+<button id="fabiao">发表文章</button>
+<!--需要添加editor.md编辑器的地方输入以下div-->
+<div id="test-editormd">
+    <textarea style="display:none;" class="form-control" id="content-editormd-markdown-doc"
+              name="content-editormd-markdown-doc"></textarea>
+    <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code") -->
+    <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
+</div>
+
+
+<script type="text/javascript">
+    var editor;
+    $(function () {
+        <!--此处为上文的div的id-->
+            editor = editormd("test-editormd", {
+            width: "90%",
+            height: 720,
+            theme: "dark",
+            path: "lib/",
+            saveHTMLToTextarea: true, // 保存 HTML 到 Textarea 方便post提交
+            toolbarAutoFixed: true,//工具栏自动固定定位的开启与禁用
+            tex : true, // 开启科学公式TeX语言支持，默认关闭
+            flowChart : true, // 开启流程图支持，默认关闭
+            sequenceDiagram : true, // 开启时序/序列图支持，默认关闭,
+            toolbarIcons : function () {
+                return ["bold","del","italic","quote","|","h1","h2","h3","h4","h5","h6","|","list-ul","list-ol","hr","|","link","image","code","code-block","table","datetime","html-entities","emoji","|","watch","preview","fullscreen","clear","search","|","help","info"]
+            }
+        });
+    });
+
+    $(function () {
+        $("#fabiao").click(function () {
+            $.ajax({
+                url: "http://localhost:8888/Article/PublishArticle",
+                type: "post",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify({"articleContent" : editor.getHTML()}),
+                success:
+                    function (result) {
+                        alert("发布成功")
+                    }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

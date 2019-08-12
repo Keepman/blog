@@ -1,0 +1,46 @@
+/* 子元素在父元素中垂直居中 */
+
+html,body{
+    /* position: fixed; */
+  width: 100%;
+  height: 100%;
+  /* box-sizing: border-box; */
+  padding: 0;
+  margin: 0;
+  background-image: url("../../images/timg.jpg");
+  background-size: 100%;
+}
+section {
+ width: 50%;
+ /* height: 70vw; */
+ background-color: rgb(255, 255, 255,0.5);
+ margin: 0 auto;
+ position: relative;
+ top: 50%;
+ transform: translateY(100%);
+ overflow: hidden;
+padding: 3vw;
+} 
+label{
+  display: block;
+}
+ul{
+    padding:0;
+    margin: 0;
+    list-style-type: none;
+}
+li{
+    float: left;
+}
+input{
+    width: 100%;
+    border: solid 2px rgba(255, 255, 255, 0.25);
+    border-radius: 0.25rem;
+    background-color: rgb(255, 255, 255,0);
+    outline: 0;
+    height: 2.5rem;
+    display: block;
+    box-sizing: border-box;
+    padding: 0 0.75rem;
+    text-decoration: none;
+}

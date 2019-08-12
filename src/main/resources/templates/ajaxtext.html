@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+</head>
+<body>
+<!--<button id="ajax"> 生成验证码</button>-->
+<!--<a href="javascript:void(0);" title="点击更换验证码" onclick="change()">-->
+<img src="http://localhost:8888/yanzheng" id="yanzm" onclick="change()">
+<!--</a>-->
+<!--<button id="login"> 登录</button>-->
+
+
+<script>
+
+    $(function () {
+        $("#yanzm").onclick(function () {
+            var img = document.getElementById("yanzm");
+            img.src = "http://localhost:8888/yanzheng";
+        })
+    });
+
+    function change() {
+        var img = document.getElementById("yanzm");
+        <!--src中如果每次访问的地址一样的话就会发生不更新-->
+        img.src = "http://localhost:8888/yanzheng?flag="+Math.random();
+    }
+
+    $(function () {
+        $("#ajax").click(function () {
+            $.ajax({
+                url: "http://localhost:8888/yanzheng",
+                type: "post",
+                // contentType: "application/json;charset=utf-8",
+                // data: '[{"name": "ymt", "age": 18},{"name": "yyt", "age": 22}]',
+                success:
+                    function (result) {
+                        alert("传送成功")
+                    }
+            });
+            return false;
+        });
+    });
+
+    $(function () {
+        $("#login").click(function () {
+            $.ajax({
+                url: "http://localhost:8888/login",
+                type: "post",
+                contentType: "application/json;charset=utf-8",
+                data: '{"yzm":"3P63","roleAdmin":"ymt","rolePsw":"cd7869f8a83535e143e71662912d4a46"}',
+                success:
+                    function (result) {
+                        alert("登陆成功")
+                    }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

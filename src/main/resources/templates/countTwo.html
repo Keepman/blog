@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Grid Item Animation Layout - Demo 2</title>
+		<meta name="description" content="A responsive, magazine-like website layout with a grid item animation effect when opening the content" />
+		<meta name="keywords" content="grid, layout, effect, animated, responsive, magazine, template, web design" />
+		<link rel="stylesheet" type="text/css" href="../static/assets/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+		<link rel="stylesheet" type="text/css" href="../static/assets/css/style2.css" />
+		<script src="../static/assets/js/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<!-- 小屏幕时出现 menu-toggle按钮 -->
+			<button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
+			<div id="theSidebar" class="sidebar">
+				<button class="close-button fa fa-fw fa-close"></button>
+				<h1><span>Animated<span> Grid Layout</h1>
+				<nav class="codrops-demos">
+					<a href="login.html">Demo 1</a>
+					<a class="current-demo" href="index2.html">Demo 2</a>
+				</nav>
+			</div>
+			<div id="theGrid" class="main">
+				<section class="grid">
+					<header class="top-bar">
+						<h2 class="top-bar__headline">Latest articles</h2>
+						<div class="filter">
+							<span>Filter by:</span>
+							<span class="dropdown">Popular</span>
+						</div>
+					</header>
+					<a class="grid__item" href="#">
+						<h2 class="title title--preview">Hope for Amy Walters</h2>
+						<div class="loader"></div>
+						<span class="category">Life &amp; Death</span>
+						<div class="meta meta--preview">
+							<img class="meta__avatar" src="img/authors/4.png" alt="author04" /> 
+							<span class="meta__date"><i class="fa fa-calendar-o"></i> 6 Apr</span>
+							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 2 min read</span>
+						</div>
+					</a>
+					<footer class="page-meta">
+						<span>Load more...</span>
+					</footer>
+				</section>
+				<section class="content">
+					<div class="scroll-wrap">
+						<article class="content__item">
+							<span class="category category--full">Life &amp; Death</span>
+							<h2 class="title title--full">Hope for Amy Walters</h2>
+							<div class="meta meta--full">
+								<img class="meta__avatar" src="img/authors/4.png" alt="author04" />
+								<span class="meta__author">Sandra Paulson</span>
+								<span class="meta__date"><i class="fa fa-calendar-o"></i> 6 Apr</span>
+								<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 2 min read</span>
+								<span class="meta__misc meta__misc--seperator"><i class="fa fa-comments-o"></i> 7 comments</span>
+								<span class="meta__misc"><i class="fa fa-heart"></i> 12 favorites</span>
+								<nav class="article-nav">
+									<button><i class="fa fa-angle-left"></i> <span>Previous</span></button>
+									<button><span>Next</span> <i class="fa fa-angle-right"></i></button>
+								</nav>
+							</div>
+							
+							<p>Excerpts from <a href="http://www.jq22.com">Totem and Taboo</a> by Sigmund Freud.</p>
+						</article>
+					</div>
+					<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>
+				</section>
+			</div>
+		</div><!-- /container -->
+		<script src="../static/assets/js/classie.js"></script>
+		<script src="../static/assets/js/count.js"></script>
+	</body>
+</html>

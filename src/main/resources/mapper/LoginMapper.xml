@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.blog.dao.LoginMapper">
+
+    <insert id="register" parameterType="com.example.blog.entity.Account">
+        insert into t_role(role_admin,role_psw,role_name) values (#{roleAdmin},#{rolePsw},#{roleName})
+    </insert>
+
+    <select id="login" resultType="com.example.blog.entity.Account" parameterType="string">
+        select * from t_role  where  role_admin=#{username} and role_psw=#{password}
+    </select>
+
+    <select id="isRepeat" resultType="com.example.blog.entity.Account">
+        select t_role.role_id from t_role  where  role_admin=#{username}
+    </select>
+</mapper>
