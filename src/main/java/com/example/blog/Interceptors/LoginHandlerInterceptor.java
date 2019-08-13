@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author: zoulei
+ * 登录拦截器
+ * @Author: ymt
  * @Date: 2019/8/13 10:00
  * @Version 1.0
  */
