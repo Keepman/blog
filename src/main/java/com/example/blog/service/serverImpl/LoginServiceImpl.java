@@ -2,16 +2,12 @@ package com.example.blog.service.serverImpl;
 
 import com.example.blog.dao.LoginMapper;
 import com.example.blog.entity.Account;
-
 import com.example.blog.service.LoginService;
 import com.example.blog.utils.MD5Util;
-import com.example.blog.utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -45,7 +41,6 @@ public class LoginServiceImpl implements LoginService {
             log.info("登录成功");
             return account;
         } else {
-            log.error("账号或者密码错误");
             return null;
         }
     }

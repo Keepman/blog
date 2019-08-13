@@ -1,10 +1,8 @@
 package com.example.blog.dao;
 
 import com.example.blog.entity.Account;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @Author: zoulei

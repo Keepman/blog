@@ -30,13 +30,26 @@ spring:
         max-active: 2
         max-idle: 20
         min-idle: 1
+  # 热部署
+  #  devtools:
+  #    remote:
+  #      restart:
+  #        enabled: true
+  #    restart:
+  #      additional-paths: src/main/java
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 
-# 吐血 加了LEGACYHTML5mode之后静态资源一直获取不到
-#  thymeleaf:
-#    cache: false
-#    mode: LEGACYHTML5
-#  mvc:
-#    static-path-pattern: /static/**
+
+  # 吐血 加了LEGACYHTML5mode之后静态资源一直获取不到
+  #  thymeleaf:
+  #    cache: false
+  #    mode: LEGACYHTML5
+  #  mvc:
+  #    static-path-pattern: /static/**,/templates/**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/,classpath:/public/,classpath:/templates/
 
 
 mybatis:

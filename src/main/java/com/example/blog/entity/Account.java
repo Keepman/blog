@@ -2,8 +2,6 @@ package com.example.blog.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * @Author: zoulei
  * @Date: 2019/8/6 16:43

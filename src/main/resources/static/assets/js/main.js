@@ -761,13 +761,14 @@
 function change() {
     var img = document.getElementById("yanzm");
     // src中如果每次访问的地址一样的话就会发生不更新
-    img.src = "http://localhost:8888/yanzheng?flag=" + Math.random();
+    img.src = "http://localhost:8888/code?flag=" + Math.random();
 }
 
 // 登录
 $(function () {
     $("#login").click(function () {
         $.ajax({
+            // async: false,
             url: "http://localhost:8888/login",
             type: "post",
             contentType: "application/x-www-form-urlencoded;charset=utf-8",
@@ -780,8 +781,12 @@ $(function () {
                 "password": $("#password").val()
             },
             success:
-                function (result) {
-                    alert("登陆成功")
+                function (data) {
+                    if (data == "1") {
+                        window.location.href="/index.html"
+                    }else {
+                        window.location.href="/"
+                    }
                 }
         });
         return false;
