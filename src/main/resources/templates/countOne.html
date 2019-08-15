@@ -1,71 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Grid Item Animation Layout - Demo 1</title>
-		<meta name="description" content="A responsive, magazine-like website layout with a grid item animation effect when opening the content" />
-		<meta name="keywords" content="grid, layout, effect, animated, responsive, magazine, template, web design" />
-		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/style1.css" />
-		<script src="assets/js/modernizr.custom.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
-			<div id="theSidebar" class="sidebar">
-				<button class="close-button fa fa-fw fa-close"></button>
-				<h1><span>Animated<span> Grid Layout<h1>
-				<nav class="codrops-demos">
-					<a class="current-demo" href="login.html">Demo 1</a>
-					<a href="index2.html">Demo 2</a>
-				</nav>
-			</div>
-			<div id="theGrid" class="main">
-				<section class="grid">
-					<header class="top-bar">
-						<h2 class="top-bar__headline">Latest articles</h2>
-						<div class="filter">
-							<span>Filter by:</span>
-							<span class="dropdown">Popular</span>
-						</div>
-					</header>
-					<a class="grid__item" href="#">
-						<h2 class="title title--preview">On Humans &amp; other Beings</h2>
-						<div class="loader"></div>
-						<span class="category">Stories for humans</span>
-						<div class="meta meta--preview">
-							<img class="meta__avatar" src="img/authors/1.png" alt="author01" /> 
-							<span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>
-							<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>
-						</div>
-					</a>
-					<footer class="page-meta">
-						<span>Load more...</span>
-					</footer>
-				</section>
-				<section class="content">
-					<div class="scroll-wrap">
-						<article class="content__item">
-							<span class="category category--full">Stories for humans</span>
-							<h2 class="title title--full">On Humans &amp; other Beings</h2>
-							<div class="meta meta--full">
-								<img class="meta__avatar" src="img/authors/1.png" alt="author01" />
-								<span class="meta__author">Matthew Walters</span>
-								<span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>
-								<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>
-							</div>
-							
-							<p>Excerpts from <a href="http://www.jq22.com">Totem and Taboo</a> by Sigmund Freud.</p>
-						</article>
-					</div>
-					<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>
-				</section>
-			</div>
-		</div>
-		<script src="assets/js/classie.js"></script>
-		<script src="assets/js/count.js"></script>
-	</body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grid Item Animation Layout - Demo 1</title>
+    <meta name="description"
+          content="A responsive, magazine-like website layout with a grid item animation effect when opening the content"/>
+    <meta name="keywords" content="grid, layout, effect, animated, responsive, magazine, template, web design"/>
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/style1.css"/>
+    <script src="../static/assets/js/modernizr.custom.js"></script>
+</head>
+<body>
+<div class="container">
+    <button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
+    <div id="theSidebar" class="sidebar">
+        <button class="close-button fa fa-fw fa-close"></button>
+        <h1><span>Animated</span> Grid Layout</h1>
+        <nav class="codrops-demos">
+            <a class="current-demo" href="login.html">Demo 1</a>
+            <a href="index2.html">Demo 2</a>
+        </nav>
+    </div>
+    <div id="theGrid" class="main">
+        <section class="grid">
+            <header class="top-bar">
+                <h2 class="top-bar__headline">Latest articles</h2>
+                <div class="filter">
+                    <span>Filter by:</span>
+                    <span class="dropdown">Popular</span>
+                </div>
+            </header>
+
+            <div class="articles">
+                <!--文章div小框-->
+                <a class="grid__item" href="#">
+                    <h2 class="title title--preview">On Humans &amp; other Beings</h2>
+                    <div class="loader"></div>
+                    <span class="category">Stories for humans</span>
+                    <div class="meta meta--preview">
+                        <span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>
+                        <span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>
+                    </div>
+                </a>
+                <!--文章div小框-->
+                <a class="grid__item" href="#">
+                    <h2 class="title title--preview">On Humans &amp; other Beings</h2>
+                    <div class="loader"></div>
+                    <span class="category">Stories for humans</span>
+                    <div class="meta meta--preview">
+                        <img class="meta__avatar" src="img/authors/1.png" alt="author01"/>
+                        <span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>
+                        <span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>
+                    </div>
+                </a>
+            </div>
+
+            <footer class="page-meta">
+                <span>Load more...</span>
+            </footer>
+        </section>
+        <section class="content">
+            <!--文章正文内容-->
+            <div class="scroll-wrap">
+                <article class="content__item">
+                    <span class="category category--full">Stories for humans</span>
+                    <h2 class="title title--full">On Humans &amp; other Beings</h2>
+                    <div class="meta meta--full">
+                        <img class="meta__avatar" src="img/authors/1.png" alt="author01"/>
+                        <span class="meta__author">Matthew Walters</span>
+                        <span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>
+                        <span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>
+                    </div>
+
+                    <p>Excerpts from <a href="http://www.jq22.com">Totem and Taboo</a> by Sigmund Freud.</p>
+                </article>
+            </div>
+            <!--文章正文内容-->
+
+            <div class="scroll-wrap">
+                <article class="content__item">
+                    <span class="category category--full">Stories for humans</span>
+                    <h2 class="title title--full">On Humans &amp; other Beings</h2>
+                    <div class="meta meta--full">
+                        <img class="meta__avatar" src="img/authors/1.png" alt="author01"/>
+                        <span class="meta__author">Matthew Walters</span>
+                        <span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>
+                        <span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>
+                    </div>
+
+                    <p>Excerpts from <a href="http://www.jq22.com">Totem and Taboo</a> by Sigmund Freud.</p>
+                </article>
+            </div>
+            <!--<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>-->
+        </section>
+    </div>
+</div>
+<script src="../static/assets/js/classie.js"></script>
+<script src="../static/assets/js/count.js"></script>
+</body>
 </html>

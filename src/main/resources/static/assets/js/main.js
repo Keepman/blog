@@ -783,9 +783,9 @@ $(function () {
             success:
                 function (data) {
                     if (data == "1") {
-                        window.location.href="/index.html"
-                    }else {
-                        window.location.href="/"
+                        window.location.href = "/index.html"
+                    } else {
+                        window.location.href = "/"
                     }
                 }
         });

@@ -16,6 +16,16 @@
 
 <script>
 
+    // 页面加载时就ajax
+    $(document).ready(function () {
+
+        var data = [{ "name":"ymt", "alexa":10000, "site":"www.runoob.com" },{ "name":"zyj", "alexa":10000, "site":"www.runoob.com" }]
+        $.each(data, function (i, result) {
+            alert(result['name']);
+        })
+
+    });
+
     $(function () {
         $("#yanzm").onclick(function () {
             var img = document.getElementById("yanzm");
@@ -26,7 +36,7 @@
     function change() {
         var img = document.getElementById("yanzm");
         <!--src中如果每次访问的地址一样的话就会发生不更新-->
-        img.src = "http://localhost:8888/yanzheng?flag="+Math.random();
+        img.src = "http://localhost:8888/yanzheng?flag=" + Math.random();
     }
 
     $(function () {
@@ -60,6 +70,9 @@
             return false;
         });
     });
+
+
+
 </script>
 </body>
 </html>

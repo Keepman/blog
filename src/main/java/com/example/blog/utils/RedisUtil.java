@@ -1,5 +1,8 @@
 package com.example.blog.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.example.blog.entity.Account;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,6 +173,17 @@ public class RedisUtil {
         }
         return result;
     }
+
+    public static Account getAccount() {
+        String getOnlyNum = CookieUtils.getCookieValue("onlyNum");
+        if (!StringUtils.isBlank(getOnlyNum)) {
+            String accountMsgForJson = get(getOnlyNum);
+            Account accountMsg = JSON.parseObject(accountMsgForJson, Account.class);
+            return accountMsg;
+        }
+        return null;
+    }
+
 
     @Autowired(required = false)
     public void setRedisTemplate(RedisTemplate redisTemplate) {

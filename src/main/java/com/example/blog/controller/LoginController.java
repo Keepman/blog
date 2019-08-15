@@ -145,12 +145,12 @@ public class LoginController {
         response.addHeader("Cache-Control", "no-cache");
         response.addHeader("Expires", "0");
         response.setContentType("image/jpeg");
-        System.err.println(objects[0]);
+        log.info("验证码为"+objects[0]);
         // 获取验证码
         String yzm = (String) objects[0];
         // 获取唯一数
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-        System.err.println(uuid);
+        log.info("验证码uuid为"+uuid);
         // 将唯一数作为值，key为UUID存入cookie
         CookieUtils.setCookie("UUID", uuid);
         // 将唯一数作为key，生成的验证码的值作为value，存入redis，有效期为3分钟

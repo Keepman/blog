@@ -48,8 +48,9 @@ spring:
   #    mode: LEGACYHTML5
   #  mvc:
   #    static-path-pattern: /static/**,/templates/**
+#  classpath:/resources/,
   resources:
-    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/,classpath:/public/,classpath:/templates/
+    static-locations: classpath:/,classpath:/templates/
 
 
 mybatis:

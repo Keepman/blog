@@ -22,13 +22,17 @@ public class PageListController {
     @Autowired
     PageList pageList;
 
+    /**
+     * 分页查询文章
+     * @param pageNum 当前页码
+     * @param pageSize 想要查询的信息条数
+     * @return Page<Article> 将返回的实体类放入Page<>中返回
+     */
     @RequestMapping(value = "/selectArticle")
-    public String selectArticle(@RequestParam("pageNum") Integer pageNum,@RequestParam("pageSize") Integer pageSize) {
+    public Page<Article> selectArticle(@RequestParam("pageNum") Integer pageNum, @RequestParam("pageSize") Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         Page<Article> articles = pageList.selectArticle();
-        // 这里都是正确的，但是输出就是?
-        return JSON.toJSONString(articles);
+        return articles;
     }
-
 }
 

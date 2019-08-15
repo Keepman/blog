@@ -34,7 +34,7 @@
         editor = editormd("test-editormd", {
             width: "90%",
             height: 720,
-            theme: "dark",
+            theme: "dark",//工具栏主题
             path: "../static/lib/",
             saveHTMLToTextarea: true, // 保存 HTML 到 Textarea 方便post提交
             toolbarAutoFixed: true,//工具栏自动固定定位的开启与禁用
@@ -54,7 +54,9 @@
                 url: "http://localhost:8888/Article/PublishArticle",
                 type: "post",
                 contentType: "application/json;charset=utf-8",
-                data: JSON.stringify({"articleContent": editor.getHTML()}),
+                data: JSON.stringify({
+                    "articleContent": editor.getHTML()
+                }),
                 success: window.location.reload()
             });
             return false;
@@ -63,3 +65,4 @@
 </script>
 </body>
 </html>
+
