@@ -35,7 +35,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = {"application/json;charset=utf-8"})
     public void register(@RequestBody Account account) {
-        boolean repeat = loginService.isRepeat(account.getRoleAdmin());
+        boolean repeat = loginService.isRepeat(account.getUserAdmin());
         if (repeat) {
             // 用户不重复则创建账号
             loginService.register(account);
@@ -71,7 +71,7 @@ public class LoginController {
             if (!StringUtils.isBlank(accountMsgForJson)) {
                 // 将redis中取出的账号信息(当前为JSON)转换为Account对象
                 Account accountMsg = JSON.parseObject(accountMsgForJson, Account.class);
-                Account account = loginService.login(accountMsg.getRoleAdmin(), accountMsg.getRolePsw());
+                Account account = loginService.login(accountMsg.getUserAdmin(), accountMsg.getUserPsw());
                 // 前端ajax接收信息为1时，跳转页面至index.html，信息为0时，页面刷新不跳转
                 if (account != null) {
                     log.info("redis存储的账号或密码正确-----登陆成功");

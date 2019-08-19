@@ -783,7 +783,7 @@ $(function () {
             success:
                 function (data) {
                     if (data == "1") {
-                        window.location.href = "/index.html"
+                        window.location.href = "/indexPage"
                     } else {
                         window.location.href = "/"
                     }

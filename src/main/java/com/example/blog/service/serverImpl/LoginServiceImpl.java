@@ -25,9 +25,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void register(Account account) {
-        String psw = account.getRolePsw();
+        String psw = account.getUserPsw();
         String newpsw = MD5Util.md5Encrpt(psw);
-        account.setRolePsw(newpsw);
+        account.setUserPsw(newpsw);
         int i = loginMapper.register(account);
         if (i > 0) {
             log.info("新增成功");

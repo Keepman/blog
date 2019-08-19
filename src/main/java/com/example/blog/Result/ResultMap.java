@@ -9,6 +9,6 @@ import lombok.Data;
  */
 @Data
 public class ResultMap {
-    String message;
-    String status;
+     String message;
+     String status;
 }

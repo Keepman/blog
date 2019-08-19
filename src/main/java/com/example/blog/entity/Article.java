@@ -1,5 +1,6 @@
 package com.example.blog.entity;
 
+import com.example.blog.Result.ResultMap;
 import lombok.Data;
 
 /**
@@ -10,8 +11,10 @@ import lombok.Data;
 
 @Data
 public class Article {
+    // 文章主键ID
+    private Integer Id;
     // 文章ID
-    private Integer articleId;
+    private Long articleId;
     // 文章正文
     private String articleContent;
     // 文章标题

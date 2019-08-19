@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +11,25 @@
           content="A responsive, magazine-like website layout with a grid item animation effect when opening the content"/>
     <meta name="keywords" content="grid, layout, effect, animated, responsive, magazine, template, web design"/>
     <link rel="stylesheet" type="text/css" href="../static/assets/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/editormd.css"/>
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
     <link rel="stylesheet" type="text/css" href="../static/assets/css/style1.css"/>
+    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/lib/marked.min.js"></script>
+    <script src="../static/lib/prettify.min.js"></script>
+    <script src="../static/lib/raphael.min.js"></script>
+    <script src="../static/lib/underscore.min.js"></script>
+    <script src="../static/lib/sequence-diagram.min.js"></script>
+    <script src="../static/lib/flowchart.min.js"></script>
+    <script src="../static/lib/jquery.flowchart.min.js"></script>
+    <script src="../static/js/editormd.js"></script>
 </head>
 <body>
 <div class="container">
     <button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
     <div id="theSidebar" class="sidebar">
         <button class="close-button fa fa-fw fa-close"></button>
-        <h1><span>Animated</span> Grid Layout</h1>
+        <h1>ymt&zyj's blog</h1>
         <nav class="codrops-demos">
             <a class="current-demo" href="login.html">Demo 1</a>
             <a href="index2.html">Demo 2</a>
@@ -29,7 +41,7 @@
                 <h2 class="top-bar__headline">Latest articles</h2>
                 <div class="filter">
                     <span>Filter by:</span>
-                    <span class="dropdown">Popular</span>
+                    <!--<span class="dropdown" th:text="${account.getRoleName()}"></span>-->
                 </div>
             </header>
 
@@ -49,6 +61,21 @@
             </footer>
         </section>
         <section class="content">
+            <!--<div id="doc-content">-->
+            <!--<textarea style="display:none;">-->
+            <!--```JAVA-->
+            <!--@Controller-->
+            <!--public class BackController {-->
+            <!--@RequestMapping("/")-->
+            <!--public String login() {-->
+            <!--log.info("跳转到首页");-->
+            <!--return "login";-->
+            <!--}-->
+            <!--}-->
+            <!--```-->
+            <!--</textarea>-->
+            <!--</div>-->
+
             <!--文章正文内容-->
             <!--<div class="scroll-wrap">-->
             <!--<article class="content__item">-->
@@ -60,17 +87,14 @@
             <!--<span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>-->
             <!--<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>-->
             <!--</div>-->
-
             <!--<p>Excerpts from <a href="http://www.jq22.com">Totem and Taboo</a> by Sigmund Freud.</p>-->
             <!--</article>-->
             <!--</div>-->
             <!--文章正文内容-->
-            <button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>
+            <!--<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>-->
         </section>
     </div>
 </div>
-<!--<button id="fabu">发布文章</button>-->
-<script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
 <script>
     $(function () {
         $("#fabu").click(function () {
@@ -83,7 +107,7 @@
             async: false,
             url: "http://localhost:8888/selectArticle",
             type: "GET",
-            data: {pageNum: 1, pageSize: 3},
+            data: {pageNum: 0, pageSize: 10},
             error: function (error) {
                 console.log(error);
             },
@@ -92,11 +116,16 @@
                 // $('.content').empty();
                 var articles = $('.grid');
                 var content = $('.content');
+
+
                 $.each(data, function (i, obj) {
+
+                    $("#mdText").text(obj.articleContent);
+
                     var center = $('<a class="grid__item" href="#">' +
                         '<h2 class="title title--preview">' + obj['articleTitle'] + '</h2>' +
                         '<div class="loader">' + '</div>' +
-                        '<span class="category">' + obj['articleTabloid'] + '</span>' +
+                        // '<span class="category">' + obj['articleTabloid'] + '</span>' +
                         '<div class="meta meta--preview">' +
                         '<span class="meta__date">' + '<i class="fa fa-calendar-o">' + '</i>' + obj['articleDate'] + '</span>' +
                         '<span class="meta__reading-time">' + '<i class="fa fa-clock-o">' + '</i>' + obj['articleAuthor'] + '</span>' +
@@ -113,30 +142,100 @@
                         '<span class="meta__date"><i class="fa fa-calendar-o"></i>' + obj['articleDate'] + '</span>' +
                         '<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>' +
                         '</div>' +
-                        '<p>正文</p>' +
+                        '<div id="my-editormd-markdown-doc">'+
+                        // obj['articleContent'] +
+                        '</div>' +
+
+
+                        // '<div id="doc-content">' +
+                        // '<textarea style="display:none;">' +
+                        // obj['articleContent'] +
+                        // '</textarea>' +
+                        // '</div>' +
                         '</article>' +
                         '</div>'
                     );
                     articles.append(center);
                     content.append(tent);
-                })
+                    editormd.markdownToHTML("my-editormd-markdown-doc");
+                    return obj;
+                    // var testEditor;
+                    // $(function () {
+                    //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+                    //         htmlDecode: "style,script,iframe",
+                    //         emoji: true,
+                    //         taskList: true,
+                    //         tex: true, // 默认不解析
+                    //         flowChart: true, // 默认不解析
+                    //         sequenceDiagram: true, // 默认不解析
+                    //         codeFold: true
+                    //     });
+                    // });
+                });
             }
-        })
+        });
     });
+</script>
+<script>
+
+    // $(function () {
+    //     editormd.markdownToHTML("wordsView");
+    // })
+
+    // var testEditor;
+    // $(function () {
+    //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+    //         htmlDecode: "style,script,iframe",
+    //         emoji: true,
+    //         taskList: true,
+    //         tex: true, // 默认不解析
+    //         flowChart: true, // 默认不解析
+    //         sequenceDiagram: true, // 默认不解析
+    //         codeFold: true
+    //     });
+    // });
 </script>
 
 <!--动态加载JS-->
 <script>
     window.onload = function () {
+
         var body = $("body");
+        var head = $("head");
         var js = $(
             '<script src="../static/assets/js/modernizr.custom.js">' +
             '\<\/script>' + '<script src="../static/assets/js/classie.js">' +
-            '\<\/script>' + '<script src="../static/assets/js/count.js">' +
-            '\<\/script>'
+            '\<\/script>' + '<script src="../static/assets/js/count.js">'
+        );
+        var css = $(
         );
         body.append(js);
-    };
+        head.append(css);
+
+        // editormd.markdownToHTML("wordsView")
+    }
+
+    //     var testEditor;
+    //     $(function () {
+    //         testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+    //             htmlDecode: "style,script,iframe",
+    //             emoji: true,
+    //             taskList: true,
+    //             tex: true, // 默认不解析
+    //             flowChart: true, // 默认不解析
+    //             sequenceDiagram: true, // 默认不解析
+    //             codeFold: true
+    //         });
+    //     });
+    // };
 </script>
+<script src="../static/lib/marked.min.js"></script>
+<script src="../static/lib/prettify.min.js"></script>
+<script src="../static/lib/raphael.min.js"></script>
+<script src="../static/lib/underscore.min.js"></script>
+<script src="../static/lib/sequence-diagram.min.js"></script>
+<script src="../static/lib/flowchart.min.js"></script>
+<script src="../static/lib/jquery.flowchart.min.js"></script>
+<script src="../static/js/editormd.js"></script>
 </body>
 </html>

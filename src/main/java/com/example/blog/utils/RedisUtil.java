@@ -174,17 +174,6 @@ public class RedisUtil {
         return result;
     }
 
-    public static Account getAccount() {
-        String getOnlyNum = CookieUtils.getCookieValue("onlyNum");
-        if (!StringUtils.isBlank(getOnlyNum)) {
-            String accountMsgForJson = get(getOnlyNum);
-            Account accountMsg = JSON.parseObject(accountMsgForJson, Account.class);
-            return accountMsg;
-        }
-        return null;
-    }
-
-
     @Autowired(required = false)
     public void setRedisTemplate(RedisTemplate redisTemplate) {
         RedisSerializer stringSerializer = new StringRedisSerializer();

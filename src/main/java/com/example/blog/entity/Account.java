@@ -10,11 +10,13 @@ import lombok.Data;
 @Data
 public class Account {
     // 用户ID
-    private Integer roleId;
+    private Integer userId;
     // 用户昵称
-    private String roleName;
+    private String userName;
     // 账号
-    private String roleAdmin;
+    private String userAdmin;
     // 密码
-    private String rolePsw;
+    private String userPsw;
+    // 权限
+    private String userRole;
 }

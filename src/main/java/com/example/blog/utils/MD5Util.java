@@ -36,7 +36,9 @@ public class MD5Util {
     public static void main(String[] args) {
         String id = md5Encrpt("root");
         String id1 = md5Encrpt("admin");
+        String id2 = md5Encrpt("youke");
         System.out.println(id);
         System.out.println(id1);
+        System.out.println(id2);
     }
 }

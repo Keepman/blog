@@ -19,11 +19,12 @@
 <body>
 <button id="fabiao">发表文章</button>
 <!--需要添加editor.md编辑器的地方输入以下div-->
-<div id="test-editormd">
-    <textarea style="display:none;" class="form-control" id="content-editormd-markdown-doc"
-              name="content-editormd-markdown-doc"></textarea>
+<div id="my-editormd">
+    <!--<textarea style="display:none;" class="form-control" id="content-editormd-markdown-doc"-->
+    <!--name="content-editormd-markdown-doc"></textarea>-->
     <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code") -->
     <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
+    <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
 </div>
 
 
@@ -31,9 +32,15 @@
     var editor;
     $(function () {
         <!--此处为上文的div的id-->
-        editor = editormd("test-editormd", {
+        editor = editormd("my-editormd", {
             width: "90%",
             height: 720,
+            syncScrolling: true, //设置双向滚动
+            codeFold: true,
+            emoji: true,
+            tocm: true, // Using [TOCM]
+            htmlDecode: true, //不过滤标签
+            // imageUpload : true, //上传图片
             theme: "dark",//工具栏主题
             path: "../static/lib/",
             saveHTMLToTextarea: true, // 保存 HTML 到 Textarea 方便post提交
@@ -46,7 +53,7 @@
             }
         });
     });
-
+    var articleContent = $('#my-editormd-html-code');
     $(function () {
         $("#fabiao").click(function () {
             $.ajax({
@@ -55,9 +62,10 @@
                 type: "post",
                 contentType: "application/json;charset=utf-8",
                 data: JSON.stringify({
+                    //"articleContent": articleContent.val()
                     "articleContent": editor.getHTML()
                 }),
-                success: window.location.reload()
+                success: window.location.href = "/indexPage"
             });
             return false;
         });

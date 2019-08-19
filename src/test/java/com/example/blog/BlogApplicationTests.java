@@ -20,7 +20,7 @@ public class BlogApplicationTests {
     public void json(){
         Article article = new Article();
         article.setArticleContent("今天天气真好");
-        article.setArticleId(1);
+        article.setArticleId(1L);
         String s = JSON.toJSONString(article);
         System.out.println(s);
     }

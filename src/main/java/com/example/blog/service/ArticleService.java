@@ -7,7 +7,7 @@ import com.example.blog.entity.Article;
  * @Date 2019/8/14 9:12
  */
 public interface ArticleService {
-    void insertArticle(Article article);
+    Integer insertArticle(Article article);
 
     Integer selectCountArticle();
 }

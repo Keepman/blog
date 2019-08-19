@@ -18,8 +18,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
-    public void insertArticle(Article article) {
-        articleMapper.insertArticle(article);
+    public Integer insertArticle(Article article) {
+        Integer num = articleMapper.insertArticle(article);
+        return num;
     }
 
     @Override

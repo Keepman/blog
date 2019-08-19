@@ -3,14 +3,14 @@
 <mapper namespace="com.example.blog.dao.LoginMapper">
 
     <insert id="register" parameterType="com.example.blog.entity.Account">
-        insert into t_role(role_admin,role_psw,role_name) values (#{roleAdmin},#{rolePsw},#{roleName})
+        insert into t_user(user_admin,user_psw,user_name,user_role) values (#{userAdmin},#{userPsw},#{userName},'ROLE_USER')
     </insert>
 
     <select id="login" resultType="com.example.blog.entity.Account" parameterType="string">
-        select * from t_role  where  role_admin=#{username} and role_psw=#{password}
+        select * from t_user  where  user_admin=#{username} and user_psw=#{password}
     </select>
 
     <select id="isRepeat" resultType="com.example.blog.entity.Account">
-        select t_role.role_id from t_role  where  role_admin=#{username}
+        select t_user.user_id from t_user  where  user_admin=#{username}
     </select>
 </mapper>
