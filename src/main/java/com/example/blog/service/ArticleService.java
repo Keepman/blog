@@ -10,4 +10,6 @@ public interface ArticleService {
     Integer insertArticle(Article article);
 
     Integer selectCountArticle();
+
+    Article selectByArticleId(long articleId);
 }

@@ -18,6 +18,11 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
+    public Article selectByArticleId(long articleId) {
+        return articleMapper.selectByArticleId(articleId);
+    }
+
+    @Override
     public Integer insertArticle(Article article) {
         Integer num = articleMapper.insertArticle(article);
         return num;

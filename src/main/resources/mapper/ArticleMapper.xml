@@ -3,15 +3,19 @@
 <mapper namespace="com.example.blog.dao.ArticleMapper">
 
     <!--<insert id="insertArticle" parameterType="com.example.blog.entity.Article">-->
-        <!--insert into t_article(article_id,article_date,article_author,article_content,article_tabloid,article_title) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid},#{articleTitle})-->
+    <!--insert into t_article(article_id,article_date,article_author,article_content,article_tabloid,article_title) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid},#{articleTitle})-->
     <!--</insert>-->
 
     <insert id="insertArticle" parameterType="com.example.blog.entity.Article">
-        insert into t_article(article_id,article_date,article_author,article_content,article_tabloid) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid})
+        insert into t_article(article_id,article_date,article_author,article_content,article_tabloid,article_categories,article_star) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid},#{articleCategories},0)
     </insert>
 
     <select id="selectCountArticle" resultType="integer">
         select max(t.article_id) from t_article t where 1=1
+    </select>
+
+    <select id="selectByArticleId" resultType="com.example.blog.entity.Article" parameterType="long">
+        select * from t_article where article_id=#{articleId}
     </select>
 
 </mapper>

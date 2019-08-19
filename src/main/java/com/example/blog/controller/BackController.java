@@ -2,13 +2,17 @@ package com.example.blog.controller;
 
 import com.example.blog.annotations.RoleCheck;
 import com.example.blog.entity.Account;
+import com.example.blog.entity.Article;
+import com.example.blog.service.ArticleService;
 import com.example.blog.utils.AccountUtils;
 import com.example.blog.utils.CookieUtils;
 import com.example.blog.utils.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 public class BackController {
     private static Logger log = LoggerFactory.getLogger(BackController.class);
 
+    @Autowired
+    private ArticleService articleService;
     /**
      * 跳转登录页
      *
@@ -67,6 +73,22 @@ public class BackController {
         log.info("跳转到主页");
         return "index";
     }
+
+    /**
+     * 跳转文章显示
+     */
+    @RequestMapping("/Article/{articleId}")
+    public String show(@PathVariable("articleId") long articleId,Model model){
+        Article article = articleService.selectByArticleId(articleId);
+        model.addAttribute("article",article);
+        return null;
+    }
+
+
+
+
+
+
 
     /**
      * 注销账号

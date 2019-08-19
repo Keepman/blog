@@ -121,7 +121,7 @@
                 $.each(data, function (i, obj) {
 
                     $("#mdText").text(obj.articleContent);
-
+                    <!--这里可以迭代出每一篇文章的url-->
                     var center = $('<a class="grid__item" href="#">' +
                         '<h2 class="title title--preview">' + obj['articleTitle'] + '</h2>' +
                         '<div class="loader">' + '</div>' +
@@ -142,7 +142,7 @@
                         '<span class="meta__date"><i class="fa fa-calendar-o"></i>' + obj['articleDate'] + '</span>' +
                         '<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>' +
                         '</div>' +
-                        '<div id="my-editormd-markdown-doc">'+
+                        '<div id="my-editormd-markdown-doc">' +
                         // obj['articleContent'] +
                         '</div>' +
 

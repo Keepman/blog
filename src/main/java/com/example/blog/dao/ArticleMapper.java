@@ -13,4 +13,6 @@ public interface ArticleMapper {
     Integer insertArticle(Article article);
 
     Integer selectCountArticle();
+
+    Article selectByArticleId(long articleId);
 }
