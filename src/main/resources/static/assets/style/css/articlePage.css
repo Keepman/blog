@@ -1,0 +1,185 @@
+/* 公共样式 */
+button,
+p,
+body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+}
+/* 文章内容 */
+.sinPage {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #f1f1f1;
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 2% 10%;
+}
+.sinTitle {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 2px #f1f1f1;
+}
+.sinTitle p {
+  font-size: 1.5rem;
+  float: left;
+}
+.sinTitle button {
+  width: 10%;
+  float: right;
+  background-color: #fff;
+  color: #575757;
+  font-size: 1rem;
+  height: 2rem;
+  line-height: 2rem;
+}
+.sinTitle button:hover {
+  color: #000;
+  border-top: 1px solid #6e6e6e;
+  border-bottom: 1px solid #6e6e6e;
+  cursor: pointer;
+}
+/* 文章主体 */
+/* left */
+.pageMain {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 2vw;
+}
+.mainLeft {
+  float: left;
+  width: 63%;
+}
+.mainRight {
+  float: right;
+  width: 35%;
+}
+.mainCon {
+  margin-top: 2vw;
+}
+.keyLable {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 2vw;
+}
+.leftKey {
+  float: left;
+}
+.rightKey {
+  float: right;
+}
+
+/* 文章上一页下一页  */
+.articleChan {
+  width: 100%;
+  padding: 0.5rem 2vw;
+  box-sizing: border-box;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 0.3rem;
+}
+.pre {
+  float: left;
+  color: #2962ff;
+}
+.next {
+  float: right;
+  color: #2962ff;
+}
+.next:hover,
+.pre:hover {
+  color: rgb(41, 98, 255, 0.8);
+  cursor: pointer;
+}
+
+/* 评论 */
+.comments {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 2vw;
+  border-radius: 0.4rem;
+}
+.comTitle {
+  text-align: center;
+  color: #2c2a2a;
+  font-size: 1.2rem;
+  padding: 1vw 0;
+  border-bottom: 1px solid #dfdcdc;
+}
+.com {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 1vw;
+  width: 100%;
+}
+.comImg {
+  float: left;
+  width: 20%;
+}
+.comImg img {
+  width: 100%;
+  border-radius: 50%;
+}
+.comcon {
+  float: right;
+  width: 80%;
+  padding-left: 1vw;
+  box-sizing: border-box;
+}
+.comcon-t {
+  overflow: hidden;
+  width: 100%;
+  color: #2962ff;
+  font-size: 0.8rem;
+}
+.t-l {
+  float: left;
+}
+.t-r {
+  float: right;
+}
+.comcon-b {
+  margin-top: 0.8rem;
+}
+/* 发表评论 */
+.sendcom {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 2vw;
+  border-radius: 0.4rem;
+}
+.send-c{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1vw 3vw;
+    text-align: center;
+}
+.send-c textarea{
+    width: 100%;
+    resize:none;
+    border-radius: 0.4rem;
+    padding: 1vw;
+    box-sizing: border-box;
+    margin-top: 2vw;
+    border-color: rgb(41, 98, 255,0.5);
+}
+.send-c button{
+    width: 40%;
+    padding: 1vw 0;
+    background-color:rgb(41, 98, 255,0.8);
+    border-radius: 0.4rem;
+    margin-top: 1vw;
+    color: #fff;
+    cursor: pointer;
+}
+.send-c button:hover{
+    background-color:  #2962ff;
+    cursor: pointer;
+}
