@@ -12,4 +12,13 @@ public interface ArticleService {
     Integer selectCountArticle();
 
     Article selectByArticleId(long articleId);
+
+    // 上一篇文章
+    Long lastArticle(Long articleId);
+
+    // 下一篇文章
+    Long nextArticle();
+
+    // 更新上一篇文章的nextID
+    void updateArticleNextID(Long nextArticleId, Long articleId);
 }

@@ -2,6 +2,8 @@ package com.example.blog.Result;
 
 import lombok.Data;
 
+import java.util.Map;
+
 /**
  * @Author: zoulei
  * @Date: 2019/8/13 9:30
@@ -9,6 +11,6 @@ import lombok.Data;
  */
 @Data
 public class ResultMap {
-     String message;
+     Map<String,Object> message;
      String status;
 }

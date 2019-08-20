@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class Article {
     // 文章主键ID
-    private Integer Id;
+    private int Id;
     // 文章ID
     private Long articleId;
     // 文章正文
@@ -29,4 +29,9 @@ public class Article {
     private int articleStar;
     // 文章分类
     private String articleCategories;
+    // 上一篇文章ID
+    private Long lastArticleId;
+    // 下一篇文章ID
+    private Long nextArticleId;
+
 }

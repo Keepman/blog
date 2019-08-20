@@ -782,10 +782,10 @@ $(function () {
             },
             success:
                 function (data) {
-                    if (data == "1") {
-                        window.location.href = "/indexPage"
-                    } else {
+                    if (data.status == "200") {
                         window.location.href = "/"
+                    } else {
+                        window.location.href = "/loginPage"
                     }
                 }
         });

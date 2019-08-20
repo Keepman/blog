@@ -1,6 +1,7 @@
 package com.example.blog.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.example.blog.Result.ResultMap;
 import com.example.blog.entity.Account;
 import com.example.blog.service.LoginService;
 import com.example.blog.utils.CookieUtils;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -63,7 +65,9 @@ public class LoginController {
      * @throws IOException
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Integer login(HttpServletResponse response, HttpServletRequest request, @RequestParam Map<String, String> map) throws IOException {
+    public ResultMap login(HttpServletResponse response, HttpServletRequest request, @RequestParam Map<String, String> map) throws IOException {
+        ResultMap result = new ResultMap();
+        Map msg = new HashMap();
         // 从cookie取key为onlyNum值，如不存在，则读取输入账号密码，如果存在，取出改值将它设为redis的key，从而取出redis中存储的账号信息
         String getOnlyNum = CookieUtils.getCookieValue("onlyNum");
         if (!StringUtils.isBlank(getOnlyNum)) {
@@ -75,17 +79,22 @@ public class LoginController {
                 // 前端ajax接收信息为1时，跳转页面至index.html，信息为0时，页面刷新不跳转
                 if (account != null) {
                     log.info("redis存储的账号或密码正确-----登陆成功");
-                    return 1;
+                    result.setStatus("200");
+                    msg.put("account", account);
+                    result.setMessage(msg);
+                    return result;
                 } else {
+                    result.setStatus("500");
                     log.error("redis存储的账号或密码错误-----登陆失败");
-                    return 0;
+                    return result;
                 }
                 // cookie中key为onlyNum对应的value，该value对应redis中的key，无法取出对应的redis值时
             } else {
+                result.setStatus("500");
                 log.error("redis并无key为：" + getOnlyNum);
                 CookieUtils.removeCookie("onlyNum");
                 log.info("cookie删除key为" + getOnlyNum + "成功");
-                return 0;
+                return result;
             }
             // 如果cookie中没有key为onlyNum（说明从未登录，或者登陆过后已登出）
         } else {
@@ -111,22 +120,29 @@ public class LoginController {
                             CookieUtils.setCookie("onlyNum", onlyNum);
                             // 设置redis，将key为cookie的key，一个随机生成数，值为账号对象，有效期为1天
                             RedisUtil.set(onlyNum, JSON.toJSONString(account), 86400L);
-                            return 1;
+                            result.setStatus("200");
+                            msg.put("account", account);
+                            result.setMessage(msg);
+                            return result;
                         } else {
+                            result.setStatus("500");
                             log.error("输入的账号或者密码错误");
-                            return 0;
+                            return result;
                         }
                     } else {
+                        result.setStatus("500");
                         log.error("验证码输入错误");
-                        return 0;
+                        return result;
                     }
                 } else {
+                    result.setStatus("500");
                     log.error("redis中存储验证码的key为空，请刷新验证码");
-                    return 0;
+                    return result;
                 }
             } else {
+                result.setStatus("500");
                 log.error("cookie中UUID为空，请刷新验证码");
-                return 0;
+                return result;
             }
         }
     }
@@ -145,12 +161,12 @@ public class LoginController {
         response.addHeader("Cache-Control", "no-cache");
         response.addHeader("Expires", "0");
         response.setContentType("image/jpeg");
-        log.info("验证码为"+objects[0]);
+        log.info("验证码为" + objects[0]);
         // 获取验证码
         String yzm = (String) objects[0];
         // 获取唯一数
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-        log.info("验证码uuid为"+uuid);
+        log.info("验证码uuid为" + uuid);
         // 将唯一数作为值，key为UUID存入cookie
         CookieUtils.setCookie("UUID", uuid);
         // 将唯一数作为key，生成的验证码的值作为value，存入redis，有效期为3分钟

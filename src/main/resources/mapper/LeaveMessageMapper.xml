@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.blog.dao.LeaveMessageMapper">
+
+    <insert id="insertMessage" parameterType="com.example.blog.entity.Message">
+        insert into t_message(message_commenter_id,message_content,message_date,article_id) values (#{messageCommenterId},#{messageContent},#{messageDate},#{articleId})
+    </insert>
+
+    <select id="selectMessageByArticleId" resultType="com.example.blog.entity.Message">
+        select * from t_message t where t.article_id=#{articleId}
+    </select>
+
+    <delete id="DeleteMessageById" parameterType="int">
+        delete from t_message  where t_message.id=#{id}
+    </delete>
+
+
+</mapper>

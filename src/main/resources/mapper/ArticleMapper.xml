@@ -7,7 +7,7 @@
     <!--</insert>-->
 
     <insert id="insertArticle" parameterType="com.example.blog.entity.Article">
-        insert into t_article(article_id,article_date,article_author,article_content,article_tabloid,article_categories,article_star) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid},#{articleCategories},0)
+        insert into t_article(article_id,article_date,article_author,article_content,article_tabloid,article_categories,article_star,last_article_id) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid},#{articleCategories},0,#{lastArticleId})
     </insert>
 
     <select id="selectCountArticle" resultType="integer">
@@ -17,5 +17,15 @@
     <select id="selectByArticleId" resultType="com.example.blog.entity.Article" parameterType="long">
         select * from t_article where article_id=#{articleId}
     </select>
+    <select id="lastArticle" resultType="long">
+        <![CDATA[SELECT t.article_id from t_article t WHERE t.article_id<#{articleId} ORDER BY t.article_id DESC LIMIT 1]]>
+    </select>
+    <select id="nextArticle" resultType="long">
+        SELECT t.article_id from t_article t WHERE t.article_id>#{articleId} ORDER BY t.article_id asc LIMIT 1
+    </select>
+
+    <update id="updateArticleNextID">
+        update t_article set t_article.next_article_id=#{nextArticleId} where t_article.article_id=#{articleId}
+    </update>
 
 </mapper>

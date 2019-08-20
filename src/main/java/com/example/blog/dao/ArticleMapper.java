@@ -2,6 +2,7 @@ package com.example.blog.dao;
 
 import com.example.blog.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author mayn
@@ -15,4 +16,12 @@ public interface ArticleMapper {
     Integer selectCountArticle();
 
     Article selectByArticleId(long articleId);
+
+    // 上一篇文章
+    Long lastArticle(Long articleId);
+
+    // 下一篇文章
+    Long nextArticle();
+
+    void updateArticleNextID(@Param("nextArticleId") Long nextArticleId, @Param("articleId") Long articleId);
 }

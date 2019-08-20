@@ -12,6 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author mayn
  * @Date 2019/8/19 10:17
@@ -30,13 +33,11 @@ public class RoleCheckAop {
         Account account = AccountUtils.getAccount();
         ResultMap map = new ResultMap();
         if ("ROLE_USER".equals(account.getUserRole()) || "ROLE_ADMIN".equals(account.getUserRole())) {
-            map.setStatus("000");
-            map.setMessage("您有访问权限");
+            map.setStatus("200");
             log.info("您有访问权限");
             pjp.proceed();
         } else {
-            map.setStatus("999");
-            map.setMessage("您没有该访问权限");
+            map.setStatus("500");
             log.error("您没有该访问权限");
         }
         return map;

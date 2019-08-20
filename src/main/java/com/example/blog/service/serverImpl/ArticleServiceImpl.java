@@ -23,6 +23,21 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public Long lastArticle(Long articleId) {
+        return articleMapper.lastArticle(articleId);
+    }
+
+    @Override
+    public Long nextArticle() {
+        return articleMapper.nextArticle();
+    }
+
+    @Override
+    public void updateArticleNextID(Long nextArticleId,Long articleId) {
+        articleMapper.updateArticleNextID( nextArticleId, articleId);
+    }
+
+    @Override
     public Integer insertArticle(Article article) {
         Integer num = articleMapper.insertArticle(article);
         return num;

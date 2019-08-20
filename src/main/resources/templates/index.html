@@ -1,241 +1,327 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>博客主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Grid Item Animation Layout - Demo 1</title>
-    <meta name="description"
-          content="A responsive, magazine-like website layout with a grid item animation effect when opening the content"/>
-    <meta name="keywords" content="grid, layout, effect, animated, responsive, magazine, template, web design"/>
-    <link rel="stylesheet" type="text/css" href="../static/assets/css/normalize.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/editormd.css"/>
-    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-    <link rel="stylesheet" type="text/css" href="../static/assets/css/style1.css"/>
-    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../static/lib/marked.min.js"></script>
-    <script src="../static/lib/prettify.min.js"></script>
-    <script src="../static/lib/raphael.min.js"></script>
-    <script src="../static/lib/underscore.min.js"></script>
-    <script src="../static/lib/sequence-diagram.min.js"></script>
-    <script src="../static/lib/flowchart.min.js"></script>
-    <script src="../static/lib/jquery.flowchart.min.js"></script>
-    <script src="../static/js/editormd.js"></script>
+    <link rel="stylesheet" href="../static/assets/style/css/blog.css">
+    <link rel="stylesheet" href="../static/assets/style/layui/css/layui.css">
+    <link rel="stylesheet" href="../static/assets/style/css/swiper.min.css">
 </head>
+
 <body>
-<div class="container">
-    <button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
-    <div id="theSidebar" class="sidebar">
-        <button class="close-button fa fa-fw fa-close"></button>
-        <h1>ymt&zyj's blog</h1>
-        <nav class="codrops-demos">
-            <a class="current-demo" href="login.html">Demo 1</a>
-            <a href="index2.html">Demo 2</a>
-        </nav>
-    </div>
-    <div id="theGrid" class="main">
-        <section class="grid">
-            <header class="top-bar">
-                <h2 class="top-bar__headline">Latest articles</h2>
-                <div class="filter">
-                    <span>Filter by:</span>
-                    <!--<span class="dropdown" th:text="${account.getRoleName()}"></span>-->
+    <div class="blogBody">
+        <div class="blogTitle">
+            <p class="userName">ZYJ</p>
+            <div class="navigationBar">
+                <button>主页</button><button>类别</button><button>个人中心</button><button>发布文章</button><button>vip会员</button>
+            </div>
+            <div class="searchBlog" id="searchBlog">
+                <i class="layui-icon layui-icon-search"></i>
+            </div>
+            <p class="login"> <a href="#">登陆</a>/<a href="#">注册</a></p>
+        </div>
+        <div class="blogCon">
+            <!-- 幻灯片--模块 -->
+            <div class="shuffling">
+                <div class="slidePicture">
+                    <div class="slideView fade">
+                        <img src="../static/assets/images/1.jpg">
+                    </div>
+                    <div class="slideView fade">
+                        <img src="../static/assets/images/2.jpg">
+                    </div>
+                    <div class="slideView fade">
+                        <img src="../static/assets/images/3.jpg">
+                    </div>
+                    <div class="slideView fade">
+                        <img src="../static/assets/images/4.jpg">
+                    </div>
+
+                    <div class="silde-b">
+                        <span class="point" onclick="currentSlide(1)"></span>
+                        <span class="point" onclick="currentSlide(2)"></span>
+                        <span class="point" onclick="currentSlide(3)"></span>
+                        <span class="point" onclick="currentSlide(4)"></span>
+                    </div>
                 </div>
-            </header>
+            </div>
 
-            <!--文章div小框-->
-            <!--<a class="grid__item" href="#">-->
-            <!--<h2 class="title title&#45;&#45;preview">On Humans &amp; other Beings</h2>-->
-            <!--<div class="loader"></div>-->
-            <!--<span class="category">Stories for humans</span>-->
-            <!--<div class="meta meta&#45;&#45;preview">-->
-            <!--<span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>-->
-            <!--<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>-->
-            <!--</div>-->
-            <!--</a>-->
-            <!--文章div小框-->
-            <footer class="page-meta">
-                <span>Load more...</span>
-            </footer>
-        </section>
-        <section class="content">
-            <!--<div id="doc-content">-->
-            <!--<textarea style="display:none;">-->
-            <!--```JAVA-->
-            <!--@Controller-->
-            <!--public class BackController {-->
-            <!--@RequestMapping("/")-->
-            <!--public String login() {-->
-            <!--log.info("跳转到首页");-->
-            <!--return "login";-->
-            <!--}-->
-            <!--}-->
-            <!--```-->
-            <!--</textarea>-->
-            <!--</div>-->
+            <!-- 博客主页--推荐 -->
+            <div class="recommend">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" id="slider1">
+                            <div class="comleft">
+                                <img src="../static/assets/images/touxiang.png">
+                            </div>
+                            <div class="comright">
+                                <p class="articleright">分类</p>
+                                <p class="articlerCon">title</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" id="slider2">
+                            <div class="comleft">
+                                <img src="../static/assets/images/touxiang.png">
+                            </div>
+                            <div class="comright">
+                                <p class="articleright">分类</p>
+                                <p class="articlerCon">title</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" id="slider3">
+                            <div class="comleft">
+                                <img src="../static/assets/images/touxiang.png">
+                            </div>
+                            <div class="comright">
+                                <p class="articleright">分类</p>
+                                <p class="articlerCon">title</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" id="slider4">
+                            <div class="comleft">
+                                <img src="../static/assets/images/touxiang.png">
+                            </div>
+                            <div class="comright">
+                                <p class="articleright">分类</p>
+                                <p class="articlerCon">title</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" id="slider5">
+                            <div class="comleft">
+                                <img src="../static/assets/images/touxiang.png">
+                            </div>
+                            <div class="comright">
+                                <p class="articleright">分类</p>
+                                <p class="articlerCon">title</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" id="slider6">
+                            <div class="comleft">
+                                <img src="../static/assets/images/touxiang.png">
+                            </div>
+                            <div class="comright">
+                                <p class="articleright">分类</p>
+                                <p class="articlerCon">title</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <!--文章正文内容-->
-            <!--<div class="scroll-wrap">-->
-            <!--<article class="content__item">-->
-            <!--<span class="category category&#45;&#45;full">Stories for humans</span>-->
-            <!--<h2 class="title title&#45;&#45;full">On Humans &amp; other Beings</h2>-->
-            <!--<div class="meta meta&#45;&#45;full">-->
-            <!--<img class="meta__avatar" src="img/authors/1.png" alt="author01"/>-->
-            <!--<span class="meta__author">Matthew Walters</span>-->
-            <!--<span class="meta__date"><i class="fa fa-calendar-o"></i> 9 Apr</span>-->
-            <!--<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>-->
-            <!--</div>-->
-            <!--<p>Excerpts from <a href="http://www.jq22.com">Totem and Taboo</a> by Sigmund Freud.</p>-->
-            <!--</article>-->
-            <!--</div>-->
-            <!--文章正文内容-->
-            <!--<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>-->
-        </section>
+            <!-- 博客主页随机内容 -->
+            <div class="randomCom">
+                <div class="randomLeft">
+                    <div class="blogDetail">
+                        <div class="blogTop">
+                            <img src="../static/assets/images/view1.png">
+                        </div>
+                        <div class="blogBottom">
+                            <div class="BB-T">
+                                <p class="articleright">分类</p>
+                                <i class="layui-icon layui-icon-camera-fill"></i>
+                            </div>
+                            <div class="BB-M">
+                                <p class="artName">文章名字</p>
+                                <p class="digest">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
+                                    容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容</p>
+                            </div>
+                            <div class="BB-B">
+                                <div class="witeEnd">
+                                    <p class="digest">作者</p>
+                                    <i class="layui-icon layui-icon-tabs">2019-12-04</i>
+                                </div>
+                                <div class="icon">
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                    <i class="layui-icon layui-icon-star">123</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blogDetail">
+                        <div class="blogTop">
+                            <img src="../static/assets/images/view2.png">
+                        </div>
+                        <div class="blogBottom">
+                            <div class="BB-T">
+                                <p class="articleright">分类</p>
+                                <i class="layui-icon layui-icon-camera-fill"></i>
+                            </div>
+                            <div class="BB-M">
+                                <p class="artName">文章名字</p>
+                                <p class="digest">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
+                                    容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容</p>
+                            </div>
+                            <div class="BB-B">
+                                <div class="witeEnd">
+                                    <p class="digest">作者</p>
+                                    <i class="layui-icon layui-icon-tabs">2019-12-04</i>
+                                </div>
+                                <div class="icon">
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                    <i class="layui-icon layui-icon-star">123</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blogDetail">
+                        <div class="blogTop">
+                            <img src="../static/assets/images/view3.png">
+                        </div>
+                        <div class="blogBottom">
+                            <div class="BB-T">
+                                <p class="articleright">分类</p>
+                                <i class="layui-icon layui-icon-camera-fill"></i>
+                            </div>
+                            <div class="BB-M">
+                                <p class="artName">文章名字</p>
+                                <p class="digest">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
+                                    容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容</p>
+                            </div>
+                            <div class="BB-B">
+                                <div class="witeEnd">
+                                    <p class="digest">作者</p>
+                                    <i class="layui-icon layui-icon-tabs">2019-12-04</i>
+                                </div>
+                                <div class="icon">
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                    <i class="layui-icon layui-icon-star">123</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blogDetail">
+                        <div class="blogTop">
+                            <img src="../static/assets/images/view4.png">
+                        </div>
+                        <div class="blogBottom">
+                            <div class="BB-T">
+                                <p class="articleright">分类</p>
+                                <i class="layui-icon layui-icon-camera-fill"></i>
+                            </div>
+                            <div class="BB-M">
+                                <p class="artName">文章名字</p>
+                                <p class="digest">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
+                                    容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容</p>
+                            </div>
+                            <div class="BB-B">
+                                <div class="witeEnd">
+                                    <p class="digest">作者</p>
+                                    <i class="layui-icon layui-icon-tabs">2019-12-04</i>
+                                </div>
+                                <div class="icon">
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                    <i class="layui-icon layui-icon-star">123</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 分页器 -->
+                    <!-- <div id="pager" class="pager">
+                        <ul>
+                            <li class="list_btn">上一页</li>
+                            <li class="page_num"></li>
+                            <li class="page_num"></li>
+                            <li class="page_num clearfix"></li>
+                            <li class="page_num"></li>
+                            <li class="page_num"></li>
+                            <li class="list_btn">下一页</li>
+                        </ul>
+                    </div> -->
+                    <div id="demo4"></div>
+                </div>
+                <div class="randomRight">
+                    <!-- 猜你喜欢 -->
+                    <div class="blogcircle">
+                        <div class="rimTitle">
+                            <p>猜你喜欢</p>
+                        </div>
+                        <div class="likesingle">
+                            <div class="rimImg">
+                                <img src="../static/assets/images/timg.jpg">
+                            </div>
+                            <div class="rimCom">
+                                <p class="rimComClass">分类</p>
+                                <p class="rimComMain">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="likesingle">
+                            <div class="rimImg">
+                                <img src="../static/assets/images/timg1.jpg">
+                            </div>
+                            <div class="rimCom">
+                                <p class="rimComClass">分类</p>
+                                <p class="rimComMain">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="likesingle">
+                            <div class="rimImg">
+                                <img src="../static/assets/images/timg2.jpg">
+                            </div>
+                            <div class="rimCom">
+                                <p class="rimComClass">分类</p>
+                                <p class="rimComMain">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
+                                <div class="articlerFoot">
+                                    <p>BY-whowrite</p>
+                                    <i class="layui-icon layui-icon-dialogue">123</i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<script>
-    $(function () {
-        $("#fabu").click(function () {
-            window.location.href = "editor.html"
-        });
-    });
-    // 页面加载时就ajax
-    $(document).ready(function () {
-        $.ajax({
-            async: false,
-            url: "http://localhost:8888/selectArticle",
-            type: "GET",
-            data: {pageNum: 0, pageSize: 10},
-            error: function (error) {
-                console.log(error);
-            },
-            success: function (data) {
-                // $('.articles').empty();
-                // $('.content').empty();
-                var articles = $('.grid');
-                var content = $('.content');
-
-
-                $.each(data, function (i, obj) {
-
-                    $("#mdText").text(obj.articleContent);
-                    <!--这里可以迭代出每一篇文章的url-->
-                    var center = $('<a class="grid__item" href="#">' +
-                        '<h2 class="title title--preview">' + obj['articleTitle'] + '</h2>' +
-                        '<div class="loader">' + '</div>' +
-                        // '<span class="category">' + obj['articleTabloid'] + '</span>' +
-                        '<div class="meta meta--preview">' +
-                        '<span class="meta__date">' + '<i class="fa fa-calendar-o">' + '</i>' + obj['articleDate'] + '</span>' +
-                        '<span class="meta__reading-time">' + '<i class="fa fa-clock-o">' + '</i>' + obj['articleAuthor'] + '</span>' +
-                        '</div>' +
-                        '</a>'
-                    );
-
-                    var tent = $('<div class="scroll-wrap">' +
-                        '<article class="content__item">' +
-                        '<span class="category category--full">Stories for humans</span>' +
-                        '<h2 class="title title--full">' + obj['articleTitle'] + '</h2>' +
-                        '<div class="meta meta--full">' +
-                        '<span class="meta__author">' + obj['articleAuthor'] + '</span>' +
-                        '<span class="meta__date"><i class="fa fa-calendar-o"></i>' + obj['articleDate'] + '</span>' +
-                        '<span class="meta__reading-time"><i class="fa fa-clock-o"></i> 3 min read</span>' +
-                        '</div>' +
-                        '<div id="my-editormd-markdown-doc">' +
-                        // obj['articleContent'] +
-                        '</div>' +
-
-
-                        // '<div id="doc-content">' +
-                        // '<textarea style="display:none;">' +
-                        // obj['articleContent'] +
-                        // '</textarea>' +
-                        // '</div>' +
-                        '</article>' +
-                        '</div>'
-                    );
-                    articles.append(center);
-                    content.append(tent);
-                    editormd.markdownToHTML("my-editormd-markdown-doc");
-                    return obj;
-                    // var testEditor;
-                    // $(function () {
-                    //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
-                    //         htmlDecode: "style,script,iframe",
-                    //         emoji: true,
-                    //         taskList: true,
-                    //         tex: true, // 默认不解析
-                    //         flowChart: true, // 默认不解析
-                    //         sequenceDiagram: true, // 默认不解析
-                    //         codeFold: true
-                    //     });
-                    // });
-                });
-            }
-        });
-    });
-</script>
-<script>
-
-    // $(function () {
-    //     editormd.markdownToHTML("wordsView");
-    // })
-
-    // var testEditor;
-    // $(function () {
-    //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
-    //         htmlDecode: "style,script,iframe",
-    //         emoji: true,
-    //         taskList: true,
-    //         tex: true, // 默认不解析
-    //         flowChart: true, // 默认不解析
-    //         sequenceDiagram: true, // 默认不解析
-    //         codeFold: true
-    //     });
-    // });
-</script>
-
-<!--动态加载JS-->
-<script>
-    window.onload = function () {
-
-        var body = $("body");
-        var head = $("head");
-        var js = $(
-            '<script src="../static/assets/js/modernizr.custom.js">' +
-            '\<\/script>' + '<script src="../static/assets/js/classie.js">' +
-            '\<\/script>' + '<script src="../static/assets/js/count.js">'
-        );
-        var css = $(
-        );
-        body.append(js);
-        head.append(css);
-
-        // editormd.markdownToHTML("wordsView")
-    }
-
-    //     var testEditor;
-    //     $(function () {
-    //         testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
-    //             htmlDecode: "style,script,iframe",
-    //             emoji: true,
-    //             taskList: true,
-    //             tex: true, // 默认不解析
-    //             flowChart: true, // 默认不解析
-    //             sequenceDiagram: true, // 默认不解析
-    //             codeFold: true
-    //         });
-    //     });
-    // };
-</script>
-<script src="../static/lib/marked.min.js"></script>
-<script src="../static/lib/prettify.min.js"></script>
-<script src="../static/lib/raphael.min.js"></script>
-<script src="../static/lib/underscore.min.js"></script>
-<script src="../static/lib/sequence-diagram.min.js"></script>
-<script src="../static/lib/flowchart.min.js"></script>
-<script src="../static/lib/jquery.flowchart.min.js"></script>
-<script src="../static/js/editormd.js"></script>
+    <div class="diaSearch">
+        <div class="littieDia" id="diaS">
+            <div class="diaCon">
+                <div style="overflow: hidden">
+                    <span class="close">&times;</span>
+                </div>
+                <div class="searchCom">
+                    <input type="text">
+                    <button>Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/assets/js/jquery-3.4.1.js"></script>
+    <script src="../static/assets/style/layui/layui.js"></script>
+    <script src="../static/assets/js/swiper.min.js"></script>
+    <script src="../static/assets/js/blogMain.js"></script>
 </body>
 </html>

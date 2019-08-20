@@ -1,6 +1,5 @@
 package com.example.blog.controller;
 
-import com.example.blog.annotations.RoleCheck;
 import com.example.blog.entity.Account;
 import com.example.blog.entity.Article;
 import com.example.blog.service.ArticleService;
@@ -14,9 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author: zoulei
@@ -35,9 +31,11 @@ public class BackController {
      * @return
      */
     @RequestMapping("/")
-    public String login() {
+    public String index(Model model) {
+        Account account = AccountUtils.getAccount();
+        model.addAttribute("account", account);
         log.info("跳转到首页");
-        return "login";
+        return "index";
     }
 
     /**
@@ -66,12 +64,10 @@ public class BackController {
      *
      * @return
      */
-    @RequestMapping("/indexPage")
-    public String indexPage(Model model) {
-        Account account = AccountUtils.getAccount();
-        model.addAttribute("account", account);
-        log.info("跳转到主页");
-        return "index";
+    @RequestMapping("/loginPage")
+    public String loginPage(Model model) {
+        log.info("跳转到登录页");
+        return "login";
     }
 
     /**

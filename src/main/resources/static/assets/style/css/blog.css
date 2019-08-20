@@ -1,0 +1,393 @@
+/* 公共样式 */
+button,
+p,
+body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+}
+/* 博客首页----主页 */
+/* 播客主页头部导航栏 + 搜索 */
+.blogBody {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  background-color: #f1f1f1;
+  overflow: scroll;
+}
+.blogTitle {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 0.4rem 10%;
+  overflow: hidden;
+}
+.userName {
+  color: #4f4f4f;
+  font-size: 2rem;
+  float: left;
+  height: 3rem;
+  line-height: 3rem;
+}
+.navigationBar {
+  width: 50%;
+  float: left;
+  height: 3rem;
+  line-height: 3rem;
+  margin-left: 15%;
+}
+.navigationBar button {
+  width: 20%;
+  float: left;
+  background-color: #fff;
+  color: #575757;
+  font-size: 1rem;
+  height: 3rem;
+  line-height: 3rem;
+
+}
+.navigationBar button:hover {
+  color: #000;
+  border-top: 1px solid #6e6e6e;
+  border-bottom: 1px solid #6e6e6e;
+  cursor:pointer;
+}
+.login{
+  float: right;
+  height: 3rem;
+  line-height: 3rem;
+  margin-right: 2rem;
+}
+.searchBlog {
+  float: right;
+  height: 3rem;
+  width: 3rem;
+  text-align: center;
+  line-height: 3rem;
+  box-shadow: 0 0 10px #e8e8e8;
+  border-radius: 50%;
+}
+.layui-icon-search:before {
+  color: #3b3b3b;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* 博客主页--内容 */
+.blogCon {
+  width: 100%;
+  padding: 0 10%;
+  padding-top: 1rem;
+  /* background-color: #fff; */
+  box-sizing: border-box;
+}
+/* 博客主页--幻灯片轮播 */
+.slidePicture {
+  width: 100%;
+  position: relative;
+}
+.slideView {
+  display: none;
+}
+.slideView img {
+  width: 100%;
+  height: 20rem;
+}
+.silde-b {
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+}
+.point {
+  width: 1vw;
+  height: 1vw;
+  margin: 0 0.5vw;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active,
+.point:hover {
+  background-color: #717171;
+}
+
+/* 淡出动画 */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 博客主页--博客推荐 */
+.recommend {
+  width: 100%;
+  margin: 3rem 0;
+}
+#slider1,
+#slider2,
+#slider3,
+#slider4,
+#slider5,
+#slider6 {
+  background-color: #fff;
+  border-radius: 0.3rem;
+}
+.recom {
+  width: 30%;
+}
+.comleft {
+  float: left;
+  width: 40%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.comleft img {
+  width: 100%;
+}
+.comright {
+  padding: 0.5rem;
+  width: 60%;
+  float: right;
+  box-sizing: border-box;
+}
+.articleright {
+  color: #2962ff;
+  font-size: 1.2rem;
+}
+.articlerCon {
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; */
+  overflow: hidden;
+  height: 5rem;
+}
+.articlerFoot {
+  margin-top: 0.5vw;
+  overflow: hidden;
+}
+.articlerFoot p {
+  margin-top: 0.4vw;
+  float: left;
+  color: #2962ff;
+  font-size: 0.8rem;
+}
+.articlerFoot i {
+  float: right;
+}
+/* 博客随机内容-left */
+.randomCom {
+  width: 100%;
+  overflow: hidden;
+}
+.randomLeft {
+  width: 63%;
+  float: left;
+}
+.randomRight {
+  width: 35%;
+  float: right;
+  background-color: #fff;
+  border-radius: 0.4rem;
+}
+.blogDetail {
+  margin-bottom: 2vw;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  position: relative;
+}
+.blogTop {
+  width: 100%;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+.blogTop img {
+  width: 100%;
+  height: 22vw;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+.blogBottom {
+  width: 100%;
+  padding: 2vw;
+  padding-top: 0;
+  box-sizing: border-box;
+}
+.BB-T,
+.BB-M,
+.BB-B {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 1.5vw;
+}
+/* .BB-T p{
+    float: left;
+} */
+.layui-icon-camera-fill:before {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  font-size: 1.4rem;
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background-color: #2962ff;
+}
+.artName {
+  font-size: 1.2rem;
+}
+.artName:hover {
+  color: #2962ff;
+}
+.digest,
+.BB-B i {
+  font-size: 0.8rem;
+}
+.BB-B p {
+  float: left;
+  color: #2962ff;
+}
+.witeEnd {
+  float: left;
+}
+.icon i {
+  float: right;
+  font-size: 0.8rem;
+}
+
+/* 博客随机内容-right */
+.rimTitle {
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.rimImg {
+  width: 100%;
+  padding: 1vw;
+  box-sizing: border-box;
+}
+.rimImg img {
+  width: 100%;
+  border-radius: 0.4rem;
+}
+.rimCom {
+  padding: 1vw;
+}
+/* 分页器 */
+.pager {
+  width: 100%;
+}
+.pager ul{
+  margin-left: 12%;
+  overflow: hidden;
+}
+.pager ul > li {
+  text-align: center;
+  float: left;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  background-color: #fff;
+  margin-right: 0.2rem;
+  border: 2px solid #e8e8e8;
+  border-radius: 50%;
+}
+.pager ul > li:hover {
+  background-color: #e8e8e8;
+  color: #4f4f4f;
+  cursor:pointer;
+}
+.pager ul .clearfix{
+    color: #fff;
+    background-color: #2962ff;
+}
+#demo4{
+  margin-left: 12%;
+}
+
+
+/* 打开小弹窗 */
+.littieDia{
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgb(0,0,0,0.4); 
+}
+/* 弹窗内容 */
+.diaCon {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    width: 50%; 
+}
+.searchCom{
+    margin: 1.5rem 0;
+}
+.diaCon button{
+  background-color: #fff;
+  padding: 0.5rem;
+  border: 1px solid #2962ff;
+  color: #2962ff;
+  font-size: 1.2rem;
+  border-radius: 0.4rem;
+}
+.diaCon button:hover,.diaCon button:active{
+  background-color: #2962ff;
+  color: #fff;
+}
+.diaCon input{
+    width: 50%;
+    height: 3vw;
+    border-radius: 0.4rem;
+    border: 1px solid #aaa;
+    padding:  0.2rem 1rem;
+}
+.diaCon input:hover{
+  box-shadow: 0 0 5px #aaa;
+}
+.diaCon input:focus{
+  box-shadow: 0 0 5px #aaa;
+}
+
+/* 关闭按钮 */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    /* text-decoration: none; */
+    cursor: pointer;
+}
