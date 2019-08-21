@@ -7,7 +7,7 @@
     </insert>
 
     <select id="selectMessageByArticleId" resultType="com.example.blog.entity.Message">
-        select * from t_message t where t.article_id=#{articleId}
+        select m.*,u.user_name from t_message m,t_user u where m.article_id=#{articleId} and u.user_id=m.message_commenter_id
     </select>
 
     <delete id="DeleteMessageById" parameterType="int">

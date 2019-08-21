@@ -21,4 +21,6 @@ public class Message {
     private String messageContent;
     // 留言文章ID
     private Long articleId;
+    // 留言者姓名
+    private String userName;
 }
