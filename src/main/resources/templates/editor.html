@@ -62,10 +62,10 @@
                 type: "post",
                 contentType: "application/json;charset=utf-8",
                 data: JSON.stringify({
-                    //"articleContent": articleContent.val()
-                    "articleContent": editor.getHTML()
+                    "articleContent": articleContent.val(),
+                    "articleTabloid": editor.getHTML()
                 }),
-                success: window.location.href = "/indexPage"
+                success: window.location.href = "/"
             });
             return false;
         });

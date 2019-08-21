@@ -16,4 +16,6 @@ public interface LeaveMessageMapper {
     void DeleteMessageById(int id);
 
     List<Message> selectMessageByArticleId(long articleId);
+
+    Integer selectCountMessageByArticleId(long articleId);
 }

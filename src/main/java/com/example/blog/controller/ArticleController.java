@@ -51,7 +51,7 @@ public class ArticleController {
         article.setArticleId(System.currentTimeMillis());
         article.setArticleAuthor(account.getUserName());
         // 根据<！--more--> 标签生成内容摘要
-        String articleTabloid = BuildArticleTabloidUtil.buildArticleTabloid(article.getArticleContent());
+        String articleTabloid = BuildArticleTabloidUtil.buildArticleTabloid(article.getArticleTabloid());
         article.setArticleTabloid(articleTabloid);
         Long lastArticle = articleService.lastArticle(article.getArticleId());
         // 每次发布文章 添加上本篇文章上一篇文章的ID和 添加上一篇文章 下一篇的ID
@@ -61,15 +61,10 @@ public class ArticleController {
             article.setLastArticleId(lastArticle);
         }
         articleService.updateArticleNextID(article.getArticleId(), lastArticle);
-
         Integer integer = articleService.insertArticle(article);
         if (integer != 0) {
-            msg.put("msg","新增文章成功");
-            map.setMessage(msg);
             map.setStatus("200");
         } else {
-            msg.put("msg","新增文章失败");
-            map.setMessage(msg);
             map.setStatus("500");
         }
         return map;

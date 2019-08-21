@@ -32,4 +32,9 @@ public class LeaveMessageServiceImpl implements LeaveMessageService {
     public List<Message> selectMessageByArticleId(long articleId) {
         return leaveMessageMapper.selectMessageByArticleId(articleId);
     }
+
+    @Override
+    public Integer selectCountMessageByArticleId(long articleId) {
+        return leaveMessageMapper.selectCountMessageByArticleId(articleId);
+    }
 }

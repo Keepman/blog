@@ -14,5 +14,8 @@
         delete from t_message  where t_message.id=#{id}
     </delete>
 
+    <select id="selectCountMessageByArticleId" resultType="integer">
+         select count(1) from t_message t where t.article_id=#{articleId}
+    </select>
 
 </mapper>

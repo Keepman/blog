@@ -12,4 +12,5 @@ public interface LeaveMessageService {
      void insertMessage(Message message);
      void DeleteMessageById(int id);
      List<Message> selectMessageByArticleId(long articleId);
+     Integer selectCountMessageByArticleId(long articleId);
 }

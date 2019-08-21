@@ -117,7 +117,7 @@ public class LoginController {
                             RedisUtil.remove(uuid);
                             String onlyNum = UUID.randomUUID().toString().replaceAll("-", "");
                             // 设置cookie，key为onlyNum，值为一个随机生成数
-                            CookieUtils.setCookie("onlyNum", onlyNum);
+                            CookieUtils.setCookie("onlyNum", onlyNum,86400);
                             // 设置redis，将key为cookie的key，一个随机生成数，值为账号对象，有效期为1天
                             RedisUtil.set(onlyNum, JSON.toJSONString(account), 86400L);
                             result.setStatus("200");
@@ -168,7 +168,7 @@ public class LoginController {
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         log.info("验证码uuid为" + uuid);
         // 将唯一数作为值，key为UUID存入cookie
-        CookieUtils.setCookie("UUID", uuid);
+        CookieUtils.setCookie("UUID", uuid,180);
         // 将唯一数作为key，生成的验证码的值作为value，存入redis，有效期为3分钟
         RedisUtil.set(uuid, yzm, 180L);
         try {

@@ -2,7 +2,9 @@ package com.example.blog.controller;
 
 import com.example.blog.entity.Account;
 import com.example.blog.entity.Article;
+import com.example.blog.entity.Message;
 import com.example.blog.service.ArticleService;
+import com.example.blog.service.LeaveMessageService;
 import com.example.blog.utils.AccountUtils;
 import com.example.blog.utils.CookieUtils;
 import com.example.blog.utils.RedisUtil;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * @Author: zoulei
@@ -25,6 +29,9 @@ public class BackController {
 
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private LeaveMessageService leaveMessageService;
+
     /**
      * 跳转登录页
      *
@@ -74,16 +81,15 @@ public class BackController {
      * 跳转文章显示
      */
     @RequestMapping("/Article/{articleId}")
-    public String show(@PathVariable("articleId") long articleId,Model model){
+    public String show(@PathVariable("articleId") long articleId, Model model) {
         Article article = articleService.selectByArticleId(articleId);
-        model.addAttribute("article",article);
-        return null;
+        List<Message> msgList = leaveMessageService.selectMessageByArticleId(articleId);
+        Integer msgCount = leaveMessageService.selectCountMessageByArticleId(articleId);
+        model.addAttribute("article", article);
+        model.addAttribute("msgList", msgList);
+        model.addAttribute("msgCount", msgCount);
+        return "articlePage";
     }
-
-
-
-
-
 
 
     /**
