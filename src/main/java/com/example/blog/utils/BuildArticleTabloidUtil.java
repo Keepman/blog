@@ -1,8 +1,5 @@
 package com.example.blog.utils;
 
-import org.apache.commons.lang3.StringUtils;
-
-
 public class BuildArticleTabloidUtil {
 
     public static String buildArticleTabloid(String htmlArticleComment) {

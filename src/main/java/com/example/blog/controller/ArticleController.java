@@ -69,4 +69,9 @@ public class ArticleController {
         }
         return map;
     }
+
+    @RequestMapping("/selectCountArticle")
+    public Integer selectCountArticle(){
+        return articleService.selectCountArticle();
+    }
 }
