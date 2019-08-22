@@ -46,6 +46,10 @@ public class BackController {
         Account account = AccountUtils.getAccount();
         List<Classify> classifyList = articleService.selectAllClassify();
         List<Article> hotArticleList = articleService.selectHotArticle();
+        for (Article article : hotArticleList) {
+            Integer msgCount = leaveMessageService.selectCountMessageByArticleId(article.getArticleId());
+            article.setArticleLeaveMessage(msgCount);
+        }
         model.addAttribute("account", account);
         model.addAttribute("hotArticleList", hotArticleList);
         model.addAttribute("classifyList", classifyList);
