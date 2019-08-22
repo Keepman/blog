@@ -4,6 +4,7 @@ import com.example.blog.dao.LoginMapper;
 import com.example.blog.entity.Account;
 import com.example.blog.service.LoginService;
 import com.example.blog.utils.MD5Util;
+import com.example.blog.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class LoginServiceImpl implements LoginService {
         String psw = account.getUserPsw();
         String newpsw = MD5Util.md5Encrpt(psw);
         account.setUserPsw(newpsw);
+        account.setUserDate(TimeUtil.getFormatDateForSix());
         int i = loginMapper.register(account);
         if (i > 0) {
             log.info("新增成功");

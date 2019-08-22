@@ -19,4 +19,8 @@ public class Account {
     private String userPsw;
     // 权限
     private String userRole;
+    // 用户注册时间
+    private String userDate;
+    // 是否为VIP 1为是 0为否
+    private int userVip;
 }

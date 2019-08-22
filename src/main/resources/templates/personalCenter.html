@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -22,9 +23,8 @@
                 <div class="cen">
                     <div class="cen-t">
                         <img src="../static/assets/images/touxiang.png">
-                        <p>用户名：userName</p>
-                        <p>用户ID：123456789</p>
-                        <p>注册时间：2019-07-08&nbsp;17:00</p>
+                        <p>用户名：<span th:text="${account.getUserName()}"></span></p>
+                        <p>注册时间：<span th:text="${account.getUserDate().substring(0,10)}"></span></p>
                         <p>是否为会员</p>
                     </div>
                     <div class="cen-b">
