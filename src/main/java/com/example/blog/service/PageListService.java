@@ -8,6 +8,6 @@ import com.github.pagehelper.Page;
  * @Date: 2019/8/8 8:23
  * @Version 1.0
  */
-public interface PageList {
+public interface PageListService {
     Page<Article> selectArticle();
 }

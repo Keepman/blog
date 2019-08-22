@@ -2,7 +2,7 @@ package com.example.blog.service.serverImpl;
 
 import com.example.blog.dao.PageListMapper;
 import com.example.blog.entity.Article;
-import com.example.blog.service.PageList;
+import com.example.blog.service.PageListService;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class PageListImpl implements PageList {
+public class PageListImpl implements PageListService {
 
     @Autowired
     private PageListMapper pageListMapper;

@@ -35,7 +35,7 @@ $(document).ready(function () {
                     '<i class="layui-icon layui-icon-tabs">' + obj['articleDate'] + '</i>' +
                     '</div>' +
                     '<div class="icon">' +
-                    '<i class="layui-icon layui-icon-dialogue">' + obj['articleStar'] + '</i>' +
+                    '<i class="layui-icon layui-icon-dialogue">' + obj['articleLeaveMessage'] + '</i>' +
                     '<i class="layui-icon layui-icon-star">' + obj['articleStar'] + '</i>' +
                     '</div>' + '</div>' + '</div>' + '</div>'
                     )

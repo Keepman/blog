@@ -25,8 +25,10 @@ public class Article {
     private String articleDate;
     // 文章摘要
     private String articleTabloid;
-    // 文章点赞
+    // 文章点赞数
     private int articleStar;
+    // 文章留言数
+    private int articleLeaveMessage;
     // 文章分类
     private String articleCategories;
     // 上一篇文章ID
