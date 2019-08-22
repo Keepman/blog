@@ -20,13 +20,37 @@ public interface ArticleMapper {
 
     Article selectByArticleId(long articleId);
 
-    // 上一篇文章
+    /**
+     * 上一篇文章
+     *
+     * @return
+     */
     Long lastArticle(Long articleId);
 
-    // 下一篇文章
+    /**
+     * 下一篇文章
+     *
+     * @return
+     */
     Long nextArticle();
 
+    /**
+     * 更新上一篇文章的NextID
+     *
+     * @return
+     */
     void updateArticleNextID(@Param("nextArticleId") Long nextArticleId, @Param("articleId") Long articleId);
 
+    /**
+     * 查询出所有分类
+     *
+     * @return
+     */
     List<Classify> selectAllClassify();
+
+    /**
+     * 模糊查询全网文章
+     * @param text 用户输入的需要模糊查询的内容
+     */
+    List<Article> selectLikeArticle(@Param("text") String text);
 }

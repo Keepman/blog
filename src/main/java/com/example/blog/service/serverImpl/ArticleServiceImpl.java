@@ -41,6 +41,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> selectLikeArticle(String text) {
+        return articleMapper.selectLikeArticle(text);
+    }
+
+    @Override
     public List<Classify> selectAllClassify() {
         return articleMapper.selectAllClassify();
     }

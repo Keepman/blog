@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -73,16 +74,26 @@ public class ArticleController {
     }
 
     @RequestMapping("/selectCountArticle")
-    public Integer selectCountArticle(){
+    public Integer selectCountArticle() {
         return articleService.selectCountArticle();
     }
 
     /**
      * 获取所有分类
+     *
      * @return
      */
     @RequestMapping("/selectAllClassify")
-    public List<Classify> selectAllClassify(){
+    public List<Classify> selectAllClassify() {
         return articleService.selectAllClassify();
+    }
+
+    /**
+     * 模糊查询全网文章
+     * @param text 模糊查询字段
+     */
+    @RequestMapping("/selectLikeArticle")
+    public List<Article> selectLikeArticle(@RequestParam("text") String text) {
+        return articleService.selectLikeArticle(text);
     }
 }
