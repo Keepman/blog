@@ -3,7 +3,7 @@ package com.example.blog.entity;
 import lombok.Data;
 
 /**
- * @Author mayn
+ * @Author ymt
  * @Date 2019/8/22 10:15
  */
 @Data

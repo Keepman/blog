@@ -6,7 +6,7 @@ import com.example.blog.entity.Classify;
 import java.util.List;
 
 /**
- * @Author mayn
+ * @Author ymt
  * @Date 2019/8/14 9:12
  */
 public interface ArticleService {
@@ -27,6 +27,7 @@ public interface ArticleService {
 
     // 文章所有分类查询
     List<Classify> selectAllClassify();
+
     // 模糊查询全网文章
     List<Article> selectLikeArticle(String text);
 

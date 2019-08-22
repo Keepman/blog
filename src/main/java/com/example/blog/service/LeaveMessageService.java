@@ -5,7 +5,7 @@ import com.example.blog.entity.Message;
 import java.util.List;
 
 /**
- * @Author mayn
+ * @Author ymt
  * @Date 2019/8/20 9:03
  */
 public interface LeaveMessageService {

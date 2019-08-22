@@ -13,7 +13,7 @@ import java.io.IOException;
 import static com.example.blog.utils.RedisUtil.get;
 
 /**
- * @Author mayn
+ * @Author ymt
  * @Date 2019/8/19 10:30
  */
 public class AccountUtils {
