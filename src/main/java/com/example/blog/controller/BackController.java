@@ -6,6 +6,7 @@ import com.example.blog.entity.Classify;
 import com.example.blog.entity.Message;
 import com.example.blog.service.ArticleService;
 import com.example.blog.service.LeaveMessageService;
+import com.example.blog.service.PersonalCenterService;
 import com.example.blog.utils.AccountUtils;
 import com.example.blog.utils.CookieUtils;
 import com.example.blog.utils.RedisUtil;
@@ -32,6 +33,8 @@ public class BackController {
     private ArticleService articleService;
     @Autowired
     private LeaveMessageService leaveMessageService;
+    @Autowired
+    private PersonalCenterService personalCenterService;
 
     /**
      * 跳转主页
@@ -100,7 +103,13 @@ public class BackController {
     @RequestMapping("/personalCenter")
     public String personalCenter(Model model) {
         Account account = AccountUtils.getAccount();
+        Integer ArticleNum = personalCenterService.selectArticleNumByAccount(account.getUserName());
+        Integer ArticleStar = personalCenterService.selectArticleStarNumByAccount(account.getUserName());
+        Integer MessageNum = personalCenterService.selectMessageNumByAccount(account.getUserId());
         model.addAttribute("account", account);
+        model.addAttribute("ArticleNum", ArticleNum);
+        model.addAttribute("ArticleStar", ArticleStar);
+        model.addAttribute("MessageNum", MessageNum);
         return "personalCenter";
     }
 

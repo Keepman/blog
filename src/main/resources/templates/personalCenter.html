@@ -81,9 +81,9 @@
                 <div class="userSuccess">
                     <p class="userT">系统消息</p>
                     <div class="user-ch">
-                        <p>共发表10篇文章</p>
-                        <p>共发表10条评论</p>
-                        <p>为其他作者点赞10次</p>
+                        <p>共发表<span th:text="${ArticleNum}"></span>篇文章</p>
+                        <p>共发表<span th:text="${MessageNum}"></span>条评论</p>
+                        <p>总共收获点赞<span th:text="${ArticleStar}"></span>次</p>
                         <p>最近发布的文章</p>
                     </div>
                     <button class="more">查看更多消息></button>

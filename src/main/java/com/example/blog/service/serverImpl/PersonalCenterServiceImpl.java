@@ -19,18 +19,18 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     private PersonalCenterMapper personalCenterMapper;
 
     @Override
-    public Integer selectArticleNumByAccount() {
-        return null;
+    public Integer selectArticleNumByAccount(String articleAuthor) {
+        return personalCenterMapper.selectArticleNumByAccount(articleAuthor);
     }
 
     @Override
-    public Integer selectMessageNumByAccount() {
-        return null;
+    public Integer selectMessageNumByAccount(Integer articleAuthorId) {
+        return personalCenterMapper.selectMessageNumByAccount(articleAuthorId);
     }
 
     @Override
-    public Integer selectArticleStarNumByAccount() {
-        return null;
+    public Integer selectArticleStarNumByAccount(String articleAuthor) {
+        return personalCenterMapper.selectArticleStarNumByAccount(articleAuthor);
     }
 
     @Override

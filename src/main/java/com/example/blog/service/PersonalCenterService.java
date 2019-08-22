@@ -1,6 +1,7 @@
 package com.example.blog.service;
 
 import com.example.blog.entity.Article;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,17 +13,17 @@ public interface PersonalCenterService {
     /**
      * 查询该用户总共发表文章数量
      */
-    Integer selectArticleNumByAccount();
+    Integer selectArticleNumByAccount(String articleAuthor);
 
     /**
      * 查询该用户总共评论量
      */
-    Integer selectMessageNumByAccount();
+    Integer selectMessageNumByAccount(Integer articleAuthorId);
 
     /**
-     * 查询该用户为他人点赞次数
+     * 查询该用户收获的总点赞次数
      */
-    Integer selectArticleStarNumByAccount();
+    Integer selectArticleStarNumByAccount(String articleAuthor);
 
     /**
      * 最近发布的文章 3篇
