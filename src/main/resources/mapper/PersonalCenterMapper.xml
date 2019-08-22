@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.blog.dao.PersonalCenterMapper">
+    <select id="selectArticleNumByAccount" resultType="integer">
+
+    </select>
+
+    <select id="selectMessageNumByAccount" resultType="integer">
+
+    </select>
+
+    <select id="selectArticleStarNumByAccount" resultType="integer">
+
+    </select>
+
+    <select id="selectSoonArticle" resultType="com.example.blog.entity.Article">
+
+    </select>
+
+</mapper>

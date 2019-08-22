@@ -1,7 +1,9 @@
 package com.example.blog.service.serverImpl;
 
+import com.example.blog.dao.PersonalCenterMapper;
 import com.example.blog.entity.Article;
 import com.example.blog.service.PersonalCenterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,10 @@ import java.util.List;
  */
 @Service
 public class PersonalCenterServiceImpl implements PersonalCenterService {
+
+    @Autowired
+    private PersonalCenterMapper personalCenterMapper;
+
     @Override
     public Integer selectArticleNumByAccount() {
         return null;
