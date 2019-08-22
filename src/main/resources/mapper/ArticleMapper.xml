@@ -28,4 +28,8 @@
         update t_article set t_article.next_article_id=#{nextArticleId} where t_article.article_id=#{articleId}
     </update>
 
+    <select id="selectAllClassify" resultType="com.example.blog.entity.Classify">
+      SELECT c.classify from t_classify c where 1=1
+    </select>
+
 </mapper>

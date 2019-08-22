@@ -1,6 +1,9 @@
 package com.example.blog.service;
 
 import com.example.blog.entity.Article;
+import com.example.blog.entity.Classify;
+
+import java.util.List;
 
 /**
  * @Author mayn
@@ -21,4 +24,7 @@ public interface ArticleService {
 
     // 更新上一篇文章的nextID
     void updateArticleNextID(Long nextArticleId, Long articleId);
+
+    // 文章所有分类查询
+    List<Classify> selectAllClassify();
 }

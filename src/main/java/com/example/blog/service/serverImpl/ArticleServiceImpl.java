@@ -2,9 +2,12 @@ package com.example.blog.service.serverImpl;
 
 import com.example.blog.dao.ArticleMapper;
 import com.example.blog.entity.Article;
+import com.example.blog.entity.Classify;
 import com.example.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author mayn
@@ -33,8 +36,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void updateArticleNextID(Long nextArticleId,Long articleId) {
-        articleMapper.updateArticleNextID( nextArticleId, articleId);
+    public void updateArticleNextID(Long nextArticleId, Long articleId) {
+        articleMapper.updateArticleNextID(nextArticleId, articleId);
+    }
+
+    @Override
+    public List<Classify> selectAllClassify() {
+        return articleMapper.selectAllClassify();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.blog.controller;
 
 import com.example.blog.entity.Account;
 import com.example.blog.entity.Article;
+import com.example.blog.entity.Classify;
 import com.example.blog.entity.Message;
 import com.example.blog.service.ArticleService;
 import com.example.blog.service.LeaveMessageService;
@@ -33,14 +34,16 @@ public class BackController {
     private LeaveMessageService leaveMessageService;
 
     /**
-     * 跳转登录页
+     * 跳转主页
      *
      * @return
      */
     @RequestMapping("/")
     public String index(Model model) {
         Account account = AccountUtils.getAccount();
+        List<Classify> classifyList = articleService.selectAllClassify();
         model.addAttribute("account", account);
+        model.addAttribute("classifyList", classifyList);
         log.info("跳转到首页");
         return "index";
     }
@@ -67,7 +70,7 @@ public class BackController {
     }
 
     /**
-     * 跳转主页
+     * 跳转登录页
      *
      * @return
      */

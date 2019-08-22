@@ -1,8 +1,11 @@
 package com.example.blog.dao;
 
 import com.example.blog.entity.Article;
+import com.example.blog.entity.Classify;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @Author mayn
@@ -24,4 +27,6 @@ public interface ArticleMapper {
     Long nextArticle();
 
     void updateArticleNextID(@Param("nextArticleId") Long nextArticleId, @Param("articleId") Long articleId);
+
+    List<Classify> selectAllClassify();
 }

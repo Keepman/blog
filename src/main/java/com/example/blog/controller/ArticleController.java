@@ -4,6 +4,7 @@ import com.example.blog.Result.ResultMap;
 import com.example.blog.annotations.RoleCheck;
 import com.example.blog.entity.Account;
 import com.example.blog.entity.Article;
+import com.example.blog.entity.Classify;
 import com.example.blog.service.ArticleService;
 import com.example.blog.utils.AccountUtils;
 import com.example.blog.utils.BuildArticleTabloidUtil;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.blog.utils.TimeUtil.getFormatDateForSix;
@@ -73,5 +75,14 @@ public class ArticleController {
     @RequestMapping("/selectCountArticle")
     public Integer selectCountArticle(){
         return articleService.selectCountArticle();
+    }
+
+    /**
+     * 获取所有分类
+     * @return
+     */
+    @RequestMapping("/selectAllClassify")
+    public List<Classify> selectAllClassify(){
+        return articleService.selectAllClassify();
     }
 }

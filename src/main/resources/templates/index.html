@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>博客主页</title>
@@ -55,85 +55,84 @@
         <!-- 博客主页--推荐 -->
         <div class="recommend">
             <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" id="slider1">
+                <div class="swiper-wrapper" >
+                    <div class="swiper-slide" th:each="classify,classifystat:${classifyList}">
                         <div class="comleft">
                             <img src="../static/assets/images/touxiang.png">
                         </div>
                         <div class="comright">
-                            <p class="articleright">分类</p>
-                            <p class="articlerCon">title</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
+                            <p class="articleright" th:text="${classify.getClassify()}"></p>
+                            <!--<div class="articlerFoot">-->
+                                <!--<p>BY-whowrite</p>-->
+                                <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
+                            <!--</div>-->
                         </div>
                     </div>
-                    <div class="swiper-slide" id="slider2">
-                        <div class="comleft">
-                            <img src="../static/assets/images/touxiang.png">
-                        </div>
-                        <div class="comright">
-                            <p class="articleright">分类</p>
-                            <p class="articlerCon">title</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" id="slider3">
-                        <div class="comleft">
-                            <img src="../static/assets/images/touxiang.png">
-                        </div>
-                        <div class="comright">
-                            <p class="articleright">分类</p>
-                            <p class="articlerCon">title</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" id="slider4">
-                        <div class="comleft">
-                            <img src="../static/assets/images/touxiang.png">
-                        </div>
-                        <div class="comright">
-                            <p class="articleright">分类</p>
-                            <p class="articlerCon">title</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" id="slider5">
-                        <div class="comleft">
-                            <img src="../static/assets/images/touxiang.png">
-                        </div>
-                        <div class="comright">
-                            <p class="articleright">分类</p>
-                            <p class="articlerCon">title</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" id="slider6">
-                        <div class="comleft">
-                            <img src="../static/assets/images/touxiang.png">
-                        </div>
-                        <div class="comright">
-                            <p class="articleright">分类</p>
-                            <p class="articlerCon">title</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="swiper-slide" >-->
+                        <!--<div class="comleft">-->
+                            <!--<img src="../static/assets/images/touxiang.png">-->
+                        <!--</div>-->
+                        <!--<div class="comright">-->
+                            <!--<p class="articleright">分类</p>-->
+                            <!--<p class="articlerCon">title</p>-->
+                            <!--<div class="articlerFoot">-->
+                                <!--<p>BY-whowrite</p>-->
+                                <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="swiper-slide">-->
+                        <!--<div class="comleft">-->
+                            <!--<img src="../static/assets/images/touxiang.png">-->
+                        <!--</div>-->
+                        <!--<div class="comright">-->
+                            <!--<p class="articleright">分类</p>-->
+                            <!--<p class="articlerCon">title</p>-->
+                            <!--<div class="articlerFoot">-->
+                                <!--<p>BY-whowrite</p>-->
+                                <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="swiper-slide" >-->
+                        <!--<div class="comleft">-->
+                            <!--<img src="../static/assets/images/touxiang.png">-->
+                        <!--</div>-->
+                        <!--<div class="comright">-->
+                            <!--<p class="articleright">分类</p>-->
+                            <!--<p class="articlerCon">title</p>-->
+                            <!--<div class="articlerFoot">-->
+                                <!--<p>BY-whowrite</p>-->
+                                <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="swiper-slide" >-->
+                        <!--<div class="comleft">-->
+                            <!--<img src="../static/assets/images/touxiang.png">-->
+                        <!--</div>-->
+                        <!--<div class="comright">-->
+                            <!--<p class="articleright">分类</p>-->
+                            <!--<p class="articlerCon">title</p>-->
+                            <!--<div class="articlerFoot">-->
+                                <!--<p>BY-whowrite</p>-->
+                                <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="swiper-slide" >-->
+                        <!--<div class="comleft">-->
+                            <!--<img src="../static/assets/images/touxiang.png">-->
+                        <!--</div>-->
+                        <!--<div class="comright">-->
+                            <!--<p class="articleright">分类</p>-->
+                            <!--<p class="articlerCon">title</p>-->
+                            <!--<div class="articlerFoot">-->
+                                <!--<p>BY-whowrite</p>-->
+                                <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
