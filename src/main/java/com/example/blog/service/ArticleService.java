@@ -30,5 +30,9 @@ public interface ArticleService {
 
     // 模糊查询全网文章
     List<Article> selectLikeArticle(String text);
+    /**
+     * 查询热门文章5篇 按照文章浏览量从大到小排序
+     */
+    List<Article> selectHotArticle();
 
 }

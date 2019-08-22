@@ -53,4 +53,9 @@ public interface ArticleMapper {
      * @param text 用户输入的需要模糊查询的内容
      */
     List<Article> selectLikeArticle(@Param("text") String text);
+
+    /**
+     * 查询热门文章5篇 按照文章浏览量从大到小排序
+     */
+    List<Article> selectHotArticle();
 }

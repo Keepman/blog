@@ -47,7 +47,7 @@ public class LeaveMessageController {
      * 删除留言
      */
     @RequestMapping("/DeleteMessageById")
-    public void DeleteMessageById(int id) {
+    public void deleteMessageById(int id) {
         leaveMessageService.DeleteMessageById(id);
     }
 }

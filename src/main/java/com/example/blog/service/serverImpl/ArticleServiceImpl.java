@@ -46,6 +46,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> selectHotArticle() {
+        return articleMapper.selectHotArticle();
+    }
+
+    @Override
     public List<Classify> selectAllClassify() {
         return articleMapper.selectAllClassify();
     }

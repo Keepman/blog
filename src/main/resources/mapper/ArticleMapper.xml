@@ -3,7 +3,7 @@
 <mapper namespace="com.example.blog.dao.ArticleMapper">
 
     <insert id="insertArticle" parameterType="com.example.blog.entity.Article">
-        insert into t_article(article_id,article_date,article_author,article_content,article_tabloid,article_categories,article_star,last_article_id) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid},#{articleCategories},0,#{lastArticleId})
+        insert into t_article(article_id,article_date,article_author,article_content,article_tabloid,article_categories,article_star,last_article_id,article_pageview) values (#{articleId},#{articleDate},#{articleAuthor},#{articleContent},#{articleTabloid},#{articleCategories},0,#{lastArticleId},0)
     </insert>
 
     <select id="selectCountArticle" resultType="integer">
@@ -34,4 +34,7 @@
         SELECT * from t_article t WHERE t.article_content LIKE  CONCAT(CONCAT('%', #{text}), '%') OR t.article_title LIKE CONCAT(CONCAT('%', #{text}), '%');
     </select>
 
+    <select id="selectHotArticle" resultType="com.example.blog.entity.Article" parameterType="string">
+        SELECT * from t_article a ORDER BY a.article_pageview DESC LIMIT 5
+    </select>
 </mapper>

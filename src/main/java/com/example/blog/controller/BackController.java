@@ -45,7 +45,9 @@ public class BackController {
     public String index(Model model) {
         Account account = AccountUtils.getAccount();
         List<Classify> classifyList = articleService.selectAllClassify();
+        List<Article> hotArticleList = articleService.selectHotArticle();
         model.addAttribute("account", account);
+        model.addAttribute("hotArticleList", hotArticleList);
         model.addAttribute("classifyList", classifyList);
         log.info("跳转到首页");
         return "index";

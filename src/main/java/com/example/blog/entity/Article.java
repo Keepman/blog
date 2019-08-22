@@ -1,6 +1,5 @@
 package com.example.blog.entity;
 
-import com.example.blog.Result.ResultMap;
 import lombok.Data;
 
 /**
@@ -35,5 +34,6 @@ public class Article {
     private Long lastArticleId;
     // 下一篇文章ID
     private Long nextArticleId;
-
+    // 文章浏览量
+    private Long articlePageView;
 }

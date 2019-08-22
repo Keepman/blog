@@ -123,46 +123,19 @@
                     <div class="rimTitle">
                         <p>热门文章</p>
                     </div>
-                    <div class="likesingle">
+                    <div class="likesingle" th:each="hotArticle,hotArticlestat:${hotArticleList}">
                         <div class="rimImg">
                             <img src="../static/assets/images/timg.jpg">
                         </div>
                         <div class="rimCom">
-                            <p class="rimComClass">分类</p>
-                            <p class="rimComMain">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
+                            <p class="rimComClass" th:text="${hotArticle.getArticleCategories()}">分类</p>
+                            <p class="rimComMain" th:text="${hotArticle.getArticleTitle()}">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
                             <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
+                                <p th:text="${hotArticle.getArticleAuthor()}">BY-whowrite</p>
+                                <i class="layui-icon layui-icon-dialogue" th:text="${hotArticle.getArticleLeaveMessage()}">123</i>
                             </div>
                         </div>
                     </div>
-                    <div class="likesingle">
-                        <div class="rimImg">
-                            <img src="../static/assets/images/timg1.jpg">
-                        </div>
-                        <div class="rimCom">
-                            <p class="rimComClass">分类</p>
-                            <p class="rimComMain">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="likesingle">
-                        <div class="rimImg">
-                            <img src="../static/assets/images/timg2.jpg">
-                        </div>
-                        <div class="rimCom">
-                            <p class="rimComClass">分类</p>
-                            <p class="rimComMain">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
-                            <div class="articlerFoot">
-                                <p>BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
