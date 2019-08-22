@@ -1,0 +1,65 @@
+/* 公共样式 */
+button,
+p,
+body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.classKinds{
+    width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #f1f1f1;
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 2% 10%;
+}
+.classTitle{
+    width: 100%;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 2px #f1f1f1;
+}
+.classTitle .back{
+    margin-left: 1vw;
+    color: #2962ff;
+}
+
+.cla{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 2vw;
+    padding: 1vw 2vw;
+    box-sizing: border-box;
+    border-radius: 0.4rem;
+}
+.claTitle{
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #dad7d7;
+    padding: 1vw 0;
+}
+.clacon{
+    overflow: hidden;
+    width: 100%;
+}
+.claimg{
+    width: 20%;
+    text-align: center;
+    margin-top: 2vw;
+}
+.claimg img{
+    width: 60%;
+}

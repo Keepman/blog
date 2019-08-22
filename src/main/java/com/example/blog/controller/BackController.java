@@ -94,6 +94,16 @@ public class BackController {
         return "articlePage";
     }
 
+    /**
+     * 跳转个人中心
+     */
+    @RequestMapping("/personalCenter")
+    public String personalCenter(Model model) {
+        Account account = AccountUtils.getAccount();
+        model.addAttribute("account", account);
+        return "personalCenter";
+    }
+
 
     /**
      * 注销账号

@@ -57,23 +57,130 @@ window.onclick = function (event) {
     }
 }
 
-// 分页器
-layui.use(['laypage', 'layer'], function () {
-    var laypage = layui.laypage
-        , layer = layui.layer;
-
-    //不显示首页尾页
-    laypage.render({
-        elem: 'demo4'
-        , count: 100
-        , first: false
-        , last: false,
-        theme: '#FF5722'
-    });
-});
-
 //跳转到文章内容
 var artName = document.getElementsByClassName("artName")[0];
 artName.onclick = function () {
     window.location.href = 'articlePage.html';
 }
+
+
+
+// 分页器
+var total = 0;//总页数
+var currentPage = 1;
+var isInit = false;
+// 初始化方法
+function init(page, num) {
+    if (!isInit) {
+        isInit = true;
+        total = page;
+        currentPage = num;
+
+        changePage(currentPage);
+    }
+}
+
+function setCurrentPage(page) {
+    // if(page>total||page<1){
+    //     return;
+    // }
+    currentPage = parseInt(page);
+    console.log(currentPage);
+}
+
+// 切换页面
+function changePage(page) {
+    let pageArr = [], light;
+    if (page > total || page < 1) {
+        return false;
+    }
+    page = parseInt(page);
+    // if( page < 8){
+        pageArr = [page-2,page-1,page,page+1,page+2];
+        light = page-1;
+    // }
+    // else if(page > total - 5) {
+    //     pageArr = [1, '...', total - 6, total - 5, total - 4, total - 3, total - 2, total - 1, total];
+
+    //     light = 8 - (total - page);
+    // } else if (page < 6) {
+    //     pageArr = [1, 2, 3, 4, 5, 6, 7, '...', total];
+
+    //     light = page - 1;
+    // } else {
+    //     pageArr = [1, '...', page - 2, page - 1, page, page + 1, page + 2, '...', total];
+
+    //     light = 4;
+    // }
+
+    console.log(pageArr);
+    renderPage(pageArr, light);
+    return true;
+}
+function renderPage(pageArr, light) {
+    for (let i = 0; i < pageArr.length; i++) {
+        $(".list-page").eq(i).text(pageArr[i]);
+        if (pageArr[i] === '...') {
+            $(".list-page").eq(i).css('border', 'none');
+            $(".list-page").eq(i).css('backgroundColor', '#f1f1f1');
+        } else if (i === 1 || i === pageArr.length - 2) {
+            $(".list-page").eq(i).css('border', '1px solid #ccc');
+        }
+    }
+
+    $(".list-page").eq(light).css('color', '#fff').css('backgroundColor', '#2962ff');
+}
+
+// $('#list').on('click','li',function () {
+//     switch($(this).text()){
+//         case '...':{
+//             break;
+//         }
+//         case '<':{
+//             setCurrentPage(currentPage-1);
+//             break;
+//         }
+//         case '>':{
+//             setCurrentPage(currentPage+1);
+//             break;
+//         }
+//         default:{
+//             setCurrentPage($(this).text());
+//             break;
+//         }
+//     }
+// })
+
+$('#list').on('click', 'li', function () {
+    // console.log($(this)[0].firstElementChild.className);
+    console.log($(this));
+    if ($(this)[0].firstElementChild != null) {
+        switch ($(this)[0].firstElementChild.className) {
+            case 'layui-icon layui-icon-left': {
+                setCurrentPage(currentPage - 1);
+                break;
+            }
+            case 'layui-icon layui-icon-right': {
+                setCurrentPage(currentPage + 1);
+                break;
+            }
+        }
+    } else {
+        switch ($(this).text()) {
+            case '...': {
+                break;
+            }
+            default: {
+                setCurrentPage($(this).text());
+                break;
+            }
+        }
+
+    }
+});
+
+function getData(){
+    
+}
+
+init(8, 3);

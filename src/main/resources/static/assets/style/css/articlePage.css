@@ -183,3 +183,17 @@ body {
     background-color:  #2962ff;
     cursor: pointer;
 }
+
+.thisLable{
+  background-color: #fff;
+  text-align: center;
+  padding: 1vw;
+  border-radius: 0.4rem;
+  margin-bottom: 1vw;
+  color: #2c2a2a;
+  font-size: 2rem;
+}
+.mainRight .blogcircle{
+  background-color: #fff;
+  border-radius: 0.4rem;
+}
