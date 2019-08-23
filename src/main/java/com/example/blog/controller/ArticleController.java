@@ -50,7 +50,6 @@ public class ArticleController {
         Map msg = new HashMap();
         Account account = AccountUtils.getAccount();
         article.setArticleDate(getFormatDateForSix());
-        // articleService.selectCountArticle();
         article.setArticleId(System.currentTimeMillis());
         article.setArticleAuthor(account.getUserName());
         // 根据<！--more--> 标签生成内容摘要
