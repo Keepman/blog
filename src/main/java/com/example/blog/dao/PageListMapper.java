@@ -14,5 +14,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface PageListMapper {
     Page<Article> selectArticle();
-    Page<Article> selectArticleByAuthor(@Param("articleAuthor") String articleAuthor);
+    Page<Article> selectArticleByAuthor(@Param("userId") Integer userId);
 }

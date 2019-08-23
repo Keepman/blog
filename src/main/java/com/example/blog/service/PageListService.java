@@ -11,6 +11,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface PageListService {
     Page<Article> selectArticle();
-    Page<Article> selectArticleByAuthor(String articleAuthor);
+    Page<Article> selectArticleByAuthor(Integer userId);
 
 }

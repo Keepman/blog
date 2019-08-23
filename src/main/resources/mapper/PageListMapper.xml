@@ -8,7 +8,7 @@
     </select>
 
     <select id="selectArticleByAuthor" resultType="com.example.blog.entity.Article">
-        SELECT * from t_article a WHERE a.article_author=#{articleAuthor}
+        SELECT * from t_article a WHERE a.article_author=(select u.user_name from t_user u WHERE u.user_id=#{userId})
     </select>
 
 

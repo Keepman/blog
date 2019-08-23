@@ -35,6 +35,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         interceptor.excludePathPatterns("/isRepeat");
         // 登录页面
         interceptor.excludePathPatterns("/loginPage");
+        // 登录逻辑
+        interceptor.excludePathPatterns("/login");
         // 注册页面
         interceptor.excludePathPatterns("/register");
         // 主页面分页查询文章

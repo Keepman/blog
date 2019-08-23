@@ -125,7 +125,7 @@ public class BackController {
         } else {
             PageHelper.startPage(pageNum, 3);
         }
-        Page<Article> articlePage = pageListService.selectArticleByAuthor(account.getUserName());
+        Page<Article> articlePage = pageListService.selectArticleByAuthor(account.getUserId());
         for (Article article : articlePage) {
             Integer msgCount = leaveMessageService.selectCountMessageByArticleId(article.getArticleId());
             article.setArticleLeaveMessage(msgCount);
