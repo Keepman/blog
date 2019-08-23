@@ -7,6 +7,10 @@
         select * from t_article
     </select>
 
+    <select id="selectArticleByAuthor" resultType="com.example.blog.entity.Article">
+        SELECT * from t_article a WHERE a.article_author=#{articleAuthor}
+    </select>
+
 
 
 </mapper>

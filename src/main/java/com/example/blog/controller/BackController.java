@@ -6,17 +6,22 @@ import com.example.blog.entity.Classify;
 import com.example.blog.entity.Message;
 import com.example.blog.service.ArticleService;
 import com.example.blog.service.LeaveMessageService;
+import com.example.blog.service.PageListService;
 import com.example.blog.service.PersonalCenterService;
 import com.example.blog.utils.AccountUtils;
 import com.example.blog.utils.CookieUtils;
 import com.example.blog.utils.RedisUtil;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -35,6 +40,8 @@ public class BackController {
     private LeaveMessageService leaveMessageService;
     @Autowired
     private PersonalCenterService personalCenterService;
+    @Autowired
+    private PageListService pageListService;
 
     /**
      * 跳转主页
@@ -107,15 +114,26 @@ public class BackController {
      * 跳转个人中心
      */
     @RequestMapping("/personalCenter")
-    public String personalCenter(Model model) {
+    public String personalCenter(Model model, @RequestParam(value = "pageNum", required = false) Integer pageNum) {
         Account account = AccountUtils.getAccount();
         Integer ArticleNum = personalCenterService.selectArticleNumByAccount(account.getUserName());
         Integer ArticleStar = personalCenterService.selectArticleStarNumByAccount(account.getUserName());
         Integer MessageNum = personalCenterService.selectMessageNumByAccount(account.getUserId());
+        if (pageNum == null) {
+            PageHelper.startPage(1, 3);
+        } else {
+            PageHelper.startPage(pageNum, 3);
+        }
+        Page<Article> articlePage = pageListService.selectArticleByAuthor(account.getUserName());
+        for (Article article : articlePage) {
+            Integer msgCount = leaveMessageService.selectCountMessageByArticleId(article.getArticleId());
+            article.setArticleLeaveMessage(msgCount);
+        }
         model.addAttribute("account", account);
         model.addAttribute("ArticleNum", ArticleNum);
         model.addAttribute("ArticleStar", ArticleStar);
         model.addAttribute("MessageNum", MessageNum);
+        model.addAttribute("articlePage", articlePage);
         return "personalCenter";
     }
 

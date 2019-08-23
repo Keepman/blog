@@ -49,28 +49,28 @@
                     <p>已发布的文章</p>
                 </div>
                 <!-- 文章 -->
-                <div class="blogDetail">
+                <div class="blogDetail" th:each="article,articlePagestat:${articlePage}">
                     <div class="blogTop">
                         <img src="../static/assets/images/view1.png">
                     </div>
                     <div class="blogBottom">
                         <div class="BB-T">
-                            <p class="articleright">分类</p>
+                            <p class="articleright" th:text="${article.getArticleCategories()}">分类</p>
                             <i class="layui-icon layui-icon-camera-fill"></i>
                         </div>
                         <div class="BB-M">
-                            <p class="artName">文章名字</p>
-                            <p class="digest">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
+                            <p class="artName" th:text="${article.getArticleTitle()}">文章名字</p>
+                            <p class="digest" th:text="${article.getArticleTabloid()}">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
                                 容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容</p>
                         </div>
                         <div class="BB-B">
                             <div class="witeEnd">
-                                <p class="digest">作者</p>
-                                <i class="layui-icon layui-icon-tabs">2019-12-04</i>
+                                <p class="digest" th:text="${article.getArticleAuthor()}">作者</p>
+                                <i class="layui-icon layui-icon-tabs" th:text="${article.getArticleDate()}">2019-12-04</i>
                             </div>
                             <div class="icon">
-                                <i class="layui-icon layui-icon-dialogue">123</i>
-                                <i class="layui-icon layui-icon-star">123</i>
+                                <i class="layui-icon layui-icon-dialogue" th:text="${article.getArticleLeaveMessage()}">123</i>
+                                <i class="layui-icon layui-icon-star" th:text="${article.getArticleStar()}">123</i>
                             </div>
                         </div>
                     </div>

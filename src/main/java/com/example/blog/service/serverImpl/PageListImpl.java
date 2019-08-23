@@ -23,4 +23,9 @@ public class PageListImpl implements PageListService {
     public Page<Article> selectArticle() {
         return pageListMapper.selectArticle();
     }
+
+    @Override
+    public Page<Article> selectArticleByAuthor(String articleAuthor) {
+        return pageListMapper.selectArticleByAuthor(articleAuthor);
+    }
 }

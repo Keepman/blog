@@ -3,6 +3,7 @@ package com.example.blog.dao;
 import com.example.blog.entity.Article;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author: ymt
@@ -13,5 +14,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PageListMapper {
     Page<Article> selectArticle();
-
+    Page<Article> selectArticleByAuthor(@Param("articleAuthor") String articleAuthor);
 }
