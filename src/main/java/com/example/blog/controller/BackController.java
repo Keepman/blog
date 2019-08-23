@@ -150,4 +150,17 @@ public class BackController {
         // 再重定向到登陆页面
         return "login";
     }
+
+    /**
+     * 分类页面
+     */
+    @RequestMapping("/classify")
+    public String classify() {
+        String onlyNum = CookieUtils.getCookieValue("onlyNum");
+        CookieUtils.removeCookie("onlyNum");
+        RedisUtil.remove(onlyNum);
+        log.info("注销成功");
+        // 再重定向到登陆页面
+        return "classify";
+    }
 }
