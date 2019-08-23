@@ -55,7 +55,7 @@
         <!-- 博客主页--推荐 -->
         <div class="recommend">
             <div class="swiper-container">
-                <div class="swiper-wrapper" >
+                <div class="swiper-wrapper">
                     <div class="swiper-slide" th:each="classify,classifystat:${classifyList}">
                         <div class="comleft">
                             <img src="../static/assets/images/touxiang.png">
@@ -63,8 +63,8 @@
                         <div class="comright">
                             <p class="articleright" th:text="${classify.getClassify()}"></p>
                             <!--<div class="articlerFoot">-->
-                                <!--<p>BY-whowrite</p>-->
-                                <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
+                            <!--<p>BY-whowrite</p>-->
+                            <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
                             <!--</div>-->
                         </div>
                     </div>
@@ -103,19 +103,33 @@
                     <!--</div>-->
                     <!--</div>-->
                 </div>
-                <!-- 分页器 -->
-                <div id="pager" class="pager">
-                    <ul>
-                        <li class="list_btn">上一页</li>
-                        <li class="page_num"></li>
-                        <li class="page_num"></li>
-                        <li class="page_num clearfix"></li>
-                        <li class="page_num"></li>
-                        <li class="page_num"></li>
-                        <li class="list_btn">下一页</li>
+                <!-- 分页器 俞-->
+                <div id="list" class="pager">
+                    <ul class="fenye">
+                        <li class="roll">
+                            <i class="layui-icon layui-icon-left"></i>
+                        </li>
                     </ul>
                 </div>
-                <div id="demo4"></div>
+                <!-- 分页器 -->
+
+                <!-- 分页器 周-->
+                <!--<div id="list" class="pager">-->
+                    <!--<ul>-->
+                        <!--<li class="roll">-->
+                            <!--<i class="layui-icon layui-icon-left"></i>-->
+                        <!--</li>-->
+                        <!--<div class="list">-->
+                            <!--<li class="list-page">1</li>-->
+                            <!--<li class="list-page">1</li>-->
+                            <!--<li class="list-page">1</li>-->
+                            <!--<li class="list-page">1</li>-->
+                        <!--</div>-->
+                        <!--<li class="roll">-->
+                            <!--<i class="layui-icon layui-icon-right"></i>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
             </div>
             <div class="randomRight">
                 <!-- 猜你喜欢 -->
@@ -129,10 +143,12 @@
                         </div>
                         <div class="rimCom">
                             <p class="rimComClass" th:text="${hotArticle.getArticleCategories()}">分类</p>
-                            <p class="rimComMain" th:text="${hotArticle.getArticleTitle()}">题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
+                            <p class="rimComMain" th:text="${hotArticle.getArticleTitle()}">
+                                题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
                             <div class="articlerFoot">
                                 <p th:text="${hotArticle.getArticleAuthor()}">BY-whowrite</p>
-                                <i class="layui-icon layui-icon-dialogue" th:text="${hotArticle.getArticleLeaveMessage()}">123</i>
+                                <i class="layui-icon layui-icon-dialogue"
+                                   th:text="${hotArticle.getArticleLeaveMessage()}">123</i>
                             </div>
                         </div>
                     </div>
