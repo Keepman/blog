@@ -2,6 +2,7 @@ package com.example.blog.service;
 
 import com.example.blog.entity.Article;
 import com.example.blog.entity.Classify;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -34,5 +35,7 @@ public interface ArticleService {
      * 查询热门文章5篇 按照文章浏览量从大到小排序
      */
     List<Article> selectHotArticle();
+
+    List<Article> selectAllArticleByClassify(String articleCategories);
 
 }

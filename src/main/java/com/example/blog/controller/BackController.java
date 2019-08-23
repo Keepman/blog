@@ -107,6 +107,7 @@ public class BackController {
         model.addAttribute("article", article);
         model.addAttribute("msgList", msgList);
         model.addAttribute("msgCount", msgCount);
+        log.info("跳转文章显示");
         return "articlePage";
     }
 
@@ -134,6 +135,7 @@ public class BackController {
         model.addAttribute("ArticleStar", articleStar);
         model.addAttribute("MessageNum", messageNum);
         model.addAttribute("articlePage", articlePage);
+        log.info("跳转个人中心");
         return "personalCenter";
     }
 
@@ -155,11 +157,14 @@ public class BackController {
      * 分类页面
      */
     @RequestMapping("/classify")
-    public String classify() {
-        String onlyNum = CookieUtils.getCookieValue("onlyNum");
-        CookieUtils.removeCookie("onlyNum");
-        RedisUtil.remove(onlyNum);
-        log.info("注销成功");
+    public String classify(Model model) {
+        List<Classify> classifyList = articleService.selectAllClassify();
+        for (Classify classify : classifyList) {
+            List<Article> articleList = articleService.selectAllArticleByClassify(classify.getClassify());
+            classify.setArticleList(articleList);
+        }
+        model.addAttribute("classifyList", classifyList);
+        log.info("跳转分类页面");
         // 再重定向到登陆页面
         return "classify";
     }

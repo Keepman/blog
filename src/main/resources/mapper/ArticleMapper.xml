@@ -30,6 +30,10 @@
       SELECT c.classify from t_classify c where 1=1
     </select>
 
+    <select id="selectAllArticleByClassify" resultType="com.example.blog.entity.Article">
+        SELECT * from t_article a WHERE a.article_categories=#{articleCategories}
+    </select>
+
     <select id="selectLikeArticle" resultType="com.example.blog.entity.Article" parameterType="string">
         SELECT * from t_article t WHERE t.article_content LIKE  CONCAT(CONCAT('%', #{text}), '%') OR t.article_title LIKE CONCAT(CONCAT('%', #{text}), '%');
     </select>

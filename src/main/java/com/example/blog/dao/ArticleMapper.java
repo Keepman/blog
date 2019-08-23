@@ -49,6 +49,13 @@ public interface ArticleMapper {
     List<Classify> selectAllClassify();
 
     /**
+     * 根据分类查询出所有文章
+     * @param articleCategories 文章分类
+     * @return
+     */
+    List<Article> selectAllArticleByClassify(@Param("articleCategories") String articleCategories);
+
+    /**
      * 模糊查询全网文章
      * @param text 用户输入的需要模糊查询的内容
      */
