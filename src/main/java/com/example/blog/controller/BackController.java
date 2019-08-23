@@ -117,8 +117,8 @@ public class BackController {
     @RequestMapping("/personalCenter")
     public String personalCenter(Model model, @RequestParam(value = "pageNum", required = false) Integer pageNum) {
         Account account = AccountUtils.getAccount();
-        Integer articleNum = personalCenterService.selectArticleNumByAccount(account.getUserName());
-        Integer articleStar = personalCenterService.selectArticleStarNumByAccount(account.getUserName());
+        Integer articleNum = personalCenterService.selectArticleNumByAccount(account.getUserId());
+        Integer articleStar = personalCenterService.selectArticleStarNumByAccount(account.getUserId());
         Integer messageNum = personalCenterService.selectMessageNumByAccount(account.getUserId());
         if (pageNum == null) {
             PageHelper.startPage(1, 3);

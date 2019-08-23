@@ -19,8 +19,8 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     private PersonalCenterMapper personalCenterMapper;
 
     @Override
-    public Integer selectArticleNumByAccount(String articleAuthor) {
-        return personalCenterMapper.selectArticleNumByAccount(articleAuthor);
+    public Integer selectArticleNumByAccount(Integer userId) {
+        return personalCenterMapper.selectArticleNumByAccount(userId);
     }
 
     @Override
@@ -29,8 +29,8 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     }
 
     @Override
-    public Integer selectArticleStarNumByAccount(String articleAuthor) {
-        return personalCenterMapper.selectArticleStarNumByAccount(articleAuthor);
+    public Integer selectArticleStarNumByAccount(Integer userId) {
+        return personalCenterMapper.selectArticleStarNumByAccount(userId);
     }
 
     @Override

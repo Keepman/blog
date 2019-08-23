@@ -13,7 +13,7 @@ public interface PersonalCenterService {
     /**
      * 查询该用户总共发表文章数量
      */
-    Integer selectArticleNumByAccount(String articleAuthor);
+    Integer selectArticleNumByAccount(Integer userId);
 
     /**
      * 查询该用户总共评论量
@@ -23,7 +23,7 @@ public interface PersonalCenterService {
     /**
      * 查询该用户收获的总点赞次数
      */
-    Integer selectArticleStarNumByAccount(String articleAuthor);
+    Integer selectArticleStarNumByAccount(Integer userId);
 
     /**
      * 最近发布的文章 3篇

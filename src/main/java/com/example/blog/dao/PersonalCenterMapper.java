@@ -14,8 +14,9 @@ import java.util.List;
 public interface PersonalCenterMapper {
     /**
      * 查询该用户总共发表文章数量
+     * @param userId 用户ID
      */
-    Integer selectArticleNumByAccount(@Param("articleAuthor") String articleAuthor);
+    Integer selectArticleNumByAccount(@Param("userId") Integer userId);
 
     /**
      * 查询该用户总共评论量
@@ -25,7 +26,7 @@ public interface PersonalCenterMapper {
     /**
      * 查询该用户收获的总点赞次数
      */
-    Integer selectArticleStarNumByAccount(@Param("articleAuthor") String articleAuthor);
+    Integer selectArticleStarNumByAccount(@Param("userId") Integer userId);
 
     /**
      * 最近发布的文章 3篇
