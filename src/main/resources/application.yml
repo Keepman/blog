@@ -4,9 +4,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     #    password: 135799
-    password: root
+    password: 998348**
     # mysql6中serverTimezone需要自己手动设定，这里设定的是CTT中国台湾，可以避免时差
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT
+    url: jdbc:mysql://120.78.155.0:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT
     #Druid连接池配置相关
     druid:
       # 初始大小，最大，最小
