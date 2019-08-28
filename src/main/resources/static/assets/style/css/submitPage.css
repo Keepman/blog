@@ -16,6 +16,7 @@
     width: 80%;
     position: fixed;
     height: 100%;
+    right: 0;
 }
 .fl-right #my-editormd{
     margin: 0;
@@ -59,17 +60,19 @@ p{
 }
 .submitUser .articleType{
     width: 100%;
-    padding: 0.5vw;
+    padding: 0 10px;
+    height: 42px;
     box-sizing: border-box;
-    border-radius: 0.5rem;
-    border: 1px solid #CCCCCC;
-    margin: 1vw 0;
+    border-radius: 0.2rem;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 1vw;
+    font-size: 14px;
 }
-.submitUser .articleType:hover{
-    width: 100%;
-    border-radius: 0.5rem;
-    border: 1px solid rgba(41,98,255,0.5);
-    transition: border 0.5s;
+input::-webkit-input-placeholder{
+    color:#CCCCCC;
+}
+.submitUser .articleType:focus{
+    border: 1px solid #cccccc;
 }
 .B_TOP{
     padding: 0 20px;
@@ -78,21 +81,26 @@ p{
 .backF{
     width: 100%;
     padding: 1vw 0;
-    color: #ec7259;
-    border: 1px solid #ec7259;
+    color: #ec5a28;
+    border: 1px solid #ec5a28;
     border-radius: 4rem;
     background-color: #f5f5f5;
     margin: 2vw 0;
 }
 .b_footer{
+    border-top: 1px solid rgba(59,59,59,0.2);
     width: 100%;
     position: absolute;
     bottom: 0;
 }
 
+.shezhi{
+    border-right: 1px solid rgba(59,59,59,0.2);
+}
 .fabiao{
-    width: 49%;
-    padding: 3vw 0;
+    float: left;
+    width: 50%;
+    padding: 2vw 0;
     color: #3b3b3b;
     background-color: #f5f5f5;
 }

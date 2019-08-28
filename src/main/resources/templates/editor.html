@@ -9,14 +9,14 @@
     <link href="https://lib.baomitu.com/font-awesome/5.8.0/css/fontawesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/assets/style/css/submitPage.css"/>
     <link rel="stylesheet" href="../static/assets/style/layui/css/layui.css">
+    <link rel="stylesheet" href="http://www.jq22.com/jquery/jquery-ui-1.11.0.css">
+    <link rel="stylesheet" href="../static/assets/style/css/jquery.tagsinput-revisited.css">
     <style>
         /*隐藏markdown全窗口预览不会关闭的bug，会导致其他fa选择器同时隐藏*/
         .fa {
             display: none;
         }
     </style>
-    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../static/js/editormd.js"></script>
 
 </head>
 <body>
@@ -38,10 +38,12 @@
         </div>
         <div class="B_TOP">
             <div class="submitUser">
-                <p class="articleTi">文章标题:</p>
-                <input class="articleType" type="text">
-                <p class="articleTi">文章标签:</p>
-                <input class="articleType" type="text">
+                <form id="form">
+                    <label class="articleTi">文章标题:</label>
+                    <input class="articleType" type="text" placeholder="Article name">
+                    <label class="articleTi">文章标签:</label>
+                    <input class="articleType" id="form-tags-1" name="tags-1" type="text">
+                </form>
             </div>
         </div>
         <div class="b_footer">
@@ -68,6 +70,9 @@
 </div>
 
 <script src="../static/assets/js/jquery-3.4.1.js"></script>
+<script src="http://www.jq22.com/jquery/jquery-ui-1.11.0.js"></script>
+<script src="../static/assets/js/jquery.tagsinput-revisited.js"></script>
+<script src="../static/js/editormd.js"></script>
 <script src="../static/assets/style/layui/layui.js"></script>
 <script type="text/javascript">
     var editor;
@@ -111,6 +116,10 @@
             return false;
         });
     });
+
+    $(function() {
+        $('#form-tags-1').tagsInput();
+    })
 </script>
 </body>
 </html>
