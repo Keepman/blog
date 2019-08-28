@@ -26,30 +26,33 @@
             <button class="backF">回首页</button>
         </div>
         <div class="B_TOP">
-        <div class="submitUser">
-            <div class="submit-top">
-                <img src="../static/assets/images/touxiang.png">
+            <div class="submitUser">
+                <div class="submit-top">
+                    <img src="../static/assets/images/touxiang.png">
+                </div>
+                <div class="submit-bottom">
+                    <p>昵称：ZYJ</p>
+                    <p>账号：123456789</p>
+                </div>
             </div>
-            <div class="submit-bottom">
-                <p>昵称：ZYJ</p>
-                <p>账号：123456789</p>
-            </div>
-        </div>
         </div>
         <div class="B_TOP">
-        <div class="submitUser">
-            <p class="articleTi">文章标题:</p>
-            <input class="articleType" type="text">
-            <p class="articleTi">文章标签:</p>
-            <input class="articleType" type="text">
-        </div>
+            <div class="submitUser">
+                <p class="articleTi">文章标题:</p>
+                <input class="articleType" type="text">
+                <p class="articleTi">文章标签:</p>
+                <input class="articleType" type="text">
+            </div>
         </div>
         <div class="b_footer">
             <button class="fabiao shezhi">
                 <i class="layui-icon layui-icon-set"></i>
-                设置</button><button id="fabiao" class="fabiao">
+                设置
+            </button>
+            <button id="fabiao" class="fabiao">
                 <i class="layui-icon layui-icon-release"></i>
-                发表文章</button>
+                发表文章
+            </button>
         </div>
     </div>
     <div class="fl-right">
@@ -71,8 +74,8 @@
     $(function () {
         <!--此处为上文的div的id-->
         editor = editormd("my-editormd", {
-            width: "90%",
-            height: 720,
+            // width: "90%",
+            // height: 720,
             syncScrolling: true, //设置双向滚动
             codeFold: true,
             emoji: true,
