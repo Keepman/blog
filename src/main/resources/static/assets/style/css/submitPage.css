@@ -68,6 +68,7 @@ p{
     margin-bottom: 1vw;
     font-size: 14px;
 }
+/*设置input默认值的颜色*/
 input::-webkit-input-placeholder{
     color:#CCCCCC;
 }
