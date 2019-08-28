@@ -101,14 +101,22 @@ public class BackController {
      */
     @RequestMapping("/Article/{articleId}")
     public String show(@PathVariable("articleId") long articleId, Model model) {
-        Article article = articleService.selectByArticleId(articleId);
-        List<Message> msgList = leaveMessageService.selectMessageByArticleId(articleId);
-        Integer msgCount = leaveMessageService.selectCountMessageByArticleId(articleId);
-        model.addAttribute("article", article);
-        model.addAttribute("msgList", msgList);
-        model.addAttribute("msgCount", msgCount);
-        log.info("跳转文章显示");
-        return "articlePage";
+        try {
+            Account account = AccountUtils.getAccount();
+            model.addAttribute("account", account);
+        } catch (Exception e) {
+            model.addAttribute("account", new Account());
+            log.info("账户未登录");
+        } finally {
+            Article article = articleService.selectByArticleId(articleId);
+            List<Message> msgList = leaveMessageService.selectMessageByArticleId(articleId);
+            Integer msgCount = leaveMessageService.selectCountMessageByArticleId(articleId);
+            model.addAttribute("article", article);
+            model.addAttribute("msgList", msgList);
+            model.addAttribute("msgCount", msgCount);
+            log.info("跳转文章显示");
+            return "articlePage";
+        }
     }
 
     /**

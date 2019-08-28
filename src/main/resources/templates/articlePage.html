@@ -12,9 +12,14 @@
 <body>
 <div class="sinPage">
     <span th:text="${article.getArticleId()}" style="display: none" class="articleID"></span>
+    <span th:if="${account!=null}" style="display: none" class="hasUserName">
+        <span th:text="${account.getUserName()}" style="display: none" class="userName"></span>
+    </span>
     <div class="sinTitle">
         <p>文章分类</p>
-        <a href="/"><button>返回主页</button></a>
+        <a href="/">
+            <button>返回主页</button>
+        </a>
     </div>
 
     <!-- 文章主体 left+right -->
@@ -148,13 +153,18 @@
     });
 
     $(".subLeaveMsg").click(function () {
-        $.ajax({
-            url: "http://localhost:8888/insertMessage" ,
-            data: {messageContent: $(".leaveMsg").val(), articleId: $(".articleID").text()},
-            success: function () {
-                window.location.reload();
-            }
-        })
+        if ($("span").is(".userName")) {
+            $.ajax({
+                url: "http://localhost:8888/insertMessage",
+                data: {messageContent: $(".leaveMsg").val(), articleId: $(".articleID").text()},
+                success: function () {
+                    window.location.reload();
+                }
+            })
+        } else {
+            window.location.href = "/loginPage";
+        }
+
     })
 </script>
 </body>
