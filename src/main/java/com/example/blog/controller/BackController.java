@@ -105,7 +105,6 @@ public class BackController {
             Account account = AccountUtils.getAccount();
             model.addAttribute("account", account);
         } catch (Exception e) {
-            model.addAttribute("account", new Account());
             log.info("账户未登录");
         } finally {
             Article article = articleService.selectByArticleId(articleId);
