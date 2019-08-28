@@ -11,6 +11,7 @@
 
 <body>
 <div class="sinPage">
+    <span th:text="${article.getArticleId()}" style="display: none" class="articleID"></span>
     <div class="sinTitle">
         <p>文章分类</p>
         <a href="/"><button>返回主页</button></a>
@@ -112,8 +113,8 @@
         <div class="sendcom">
             <p class="comTitle">Leave Your Comment</p>
             <div class="send-c">
-                <textarea rows="9"></textarea>
-                <button>SUBMIT NOW</button>
+                <textarea rows="9" class="leaveMsg"></textarea>
+                <button class="subLeaveMsg">SUBMIT NOW</button>
             </div>
         </div>
     </div>
@@ -145,6 +146,16 @@
             codeFold: true
         });
     });
+
+    $(".subLeaveMsg").click(function () {
+        $.ajax({
+            url: "http://localhost:8888/insertMessage" ,
+            data: {messageContent: $(".leaveMsg").val(), articleId: $(".articleID").text()},
+            success: function () {
+                window.location.reload();
+            }
+        })
+    })
 </script>
 </body>
 
