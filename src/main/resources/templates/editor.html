@@ -7,34 +7,80 @@
     <link href="https://lib.baomitu.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/editormd.min.css"/>
     <link href="https://lib.baomitu.com/font-awesome/5.8.0/css/fontawesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/assets/style/css/submitPage.css"/>
+    <link rel="stylesheet" href="../static/assets/style/layui/css/layui.css">
+    <link rel="stylesheet" href="http://www.jq22.com/jquery/jquery-ui-1.11.0.css">
+    <link rel="stylesheet" href="../static/assets/style/css/jquery.tagsinput-revisited.css">
     <style>
         /*隐藏markdown全窗口预览不会关闭的bug，会导致其他fa选择器同时隐藏*/
         .fa {
             display: none;
         }
     </style>
-    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../static/js/editormd.js"></script>
+
 </head>
 <body>
-<button id="fabiao">发表文章</button>
-<!--需要添加editor.md编辑器的地方输入以下div-->
-<div id="my-editormd">
-    <!--<textarea style="display:none;" class="form-control" id="content-editormd-markdown-doc"-->
-    <!--name="content-editormd-markdown-doc"></textarea>-->
-    <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code") -->
-    <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
-    <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
+<div class="submitPage">
+    <div class="fl-left">
+        <div class="B_TOP">
+            <button class="backF">回首页</button>
+        </div>
+        <div class="B_TOP">
+            <div class="submitUser">
+                <div class="submit-top">
+                    <img src="../static/assets/images/touxiang.png">
+                </div>
+                <div class="submit-bottom">
+                    <p>昵称：ZYJ</p>
+                    <p>账号：123456789</p>
+                </div>
+            </div>
+        </div>
+        <div class="B_TOP">
+            <div class="submitUser">
+                <form id="form">
+                    <label class="articleTi">文章标题:</label>
+                    <input class="articleType" type="text" placeholder="Article name">
+                    <label class="articleTi">文章标签:</label>
+                    <input class="articleType" id="form-tags-1" name="tags-1" type="text">
+                </form>
+            </div>
+        </div>
+        <div class="b_footer">
+            <button class="fabiao shezhi">
+                <i class="layui-icon layui-icon-set"></i>
+                设置
+            </button>
+            <button id="fabiao" class="fabiao">
+                <i class="layui-icon layui-icon-release"></i>
+                发表文章
+            </button>
+        </div>
+    </div>
+    <div class="fl-right">
+        <!--需要添加editor.md编辑器的地方输入以下div-->
+        <div id="my-editormd">
+            <!--<textarea style="display:none;" class="form-control" id="content-editormd-markdown-doc"-->
+            <!--name="content-editormd-markdown-doc"></textarea>-->
+            <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code") -->
+            <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
+            <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
+        </div>
+    </div>
 </div>
 
-
+<script src="../static/assets/js/jquery-3.4.1.js"></script>
+<script src="http://www.jq22.com/jquery/jquery-ui-1.11.0.js"></script>
+<script src="../static/assets/js/jquery.tagsinput-revisited.js"></script>
+<script src="../static/js/editormd.js"></script>
+<script src="../static/assets/style/layui/layui.js"></script>
 <script type="text/javascript">
     var editor;
     $(function () {
         <!--此处为上文的div的id-->
         editor = editormd("my-editormd", {
-            width: "90%",
-            height: 720,
+            // width: "90%",
+            // height: 720,
             syncScrolling: true, //设置双向滚动
             codeFold: true,
             emoji: true,
@@ -70,6 +116,10 @@
             return false;
         });
     });
+
+    $(function() {
+        $('#form-tags-1').tagsInput();
+    })
 </script>
 </body>
 </html>
