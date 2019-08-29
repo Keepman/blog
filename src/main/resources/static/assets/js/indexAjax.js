@@ -46,6 +46,7 @@ $(document).ready(function () {
         }
     });
 });
+
 // 点击跳转到对应页面
 function articleClick(articleId) {
     $.ajax({
@@ -54,5 +55,14 @@ function articleClick(articleId) {
         success: function () {
             window.location.href = "/Article/" + articleId;
         }
+    })
+}
+
+// 首页搜索框
+function articleSearch(SearchMsg) {
+    $.ajax({
+        // async: false,
+        url: "http://localhost:8888/Article/selectLikeArticle",
+        data: {text: SearchMsg},
     })
 }

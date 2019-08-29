@@ -89,10 +89,13 @@ public class ArticleController {
 
     /**
      * 模糊查询全网文章
+     *
      * @param text 模糊查询字段
      */
     @RequestMapping("/selectLikeArticle")
     public List<Article> selectLikeArticle(@RequestParam("text") String text) {
-        return articleService.selectLikeArticle(text);
+        List<Article> articleList = articleService.selectLikeArticle(text);
+        System.out.println("查询到的文章数" + articleList.size());
+        return articleList;
     }
 }

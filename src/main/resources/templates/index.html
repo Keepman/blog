@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../static/assets/style/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/editormd.css"/>
 </head>
-
+<script src="../static/assets/js/jquery-3.4.1.js"></script>
+<script src="../static/assets/js/indexAjax.js"></script>
 <body>
 <div class="blogBody">
     <div class="blogTitle">
@@ -151,8 +152,7 @@
                             </div>
                             <div class="rimCom">
                                 <p class="rimComClass" th:text="${hotArticle.getArticleCategories()}">分类</p>
-                                <p class="rimComMain" th:text="${hotArticle.getArticleTitle()}">
-                                    题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目题目</p>
+                                <p class="rimComMain" th:text="${hotArticle.getArticleTitle()}">题目</p>
                                 <div class="articlerFoot">
                                     <p th:text="${hotArticle.getArticleAuthor()}">BY-whowrite</p>
                                     <i class="layui-icon layui-icon-dialogue"
@@ -173,16 +173,14 @@
                 <span class="close">&times;</span>
             </div>
             <div class="searchCom">
-                <input type="text">
-                <button>Search</button>
+                <input type="text" class="SearchMsg">
+                <button onclick="articleSearch($('.SearchMsg').val())">Search</button>
             </div>
         </div>
     </div>
 </div>
-<script src="../static/assets/js/jquery-3.4.1.js"></script>
 <script src="../static/assets/style/layui/layui.js"></script>
 <script src="../static/assets/js/swiper.min.js"></script>
 <script src="../static/assets/js/blogMain.js"></script>
-<script src="../static/assets/js/indexAjax.js"></script>
 </body>
 </html>
