@@ -80,8 +80,10 @@ public class BackController {
      * 跳转发表文章页
      */
     @RequestMapping("/editorPage")
-    public String editorPage() {
+    public String editorPage(Model model) {
         log.info("跳转到发表文章页");
+        Account account = AccountUtils.getAccount();
+        model.addAttribute("account", account);
         return "editor";
     }
 

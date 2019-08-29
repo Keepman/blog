@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>markdown编辑</title>
@@ -23,7 +22,7 @@
 <div class="submitPage">
     <div class="fl-left">
         <div class="B_TOP">
-            <button class="backF">回首页</button>
+            <a href="/"><button class="backF">回首页</button></a>
         </div>
         <div class="B_TOP">
             <div class="submitUser">
@@ -31,7 +30,7 @@
                     <img src="../static/assets/images/touxiang.png">
                 </div>
                 <div class="submit-bottom">
-                    <p>昵称：ZYJ</p>
+                    <p>昵称：<span th:text="${account.getUserName()}"></span></p>
                     <p>账号：123456789</p>
                 </div>
             </div>
