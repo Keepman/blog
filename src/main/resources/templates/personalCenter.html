@@ -10,46 +10,47 @@
 </head>
 
 <body>
-    <div class="popleCenter">
-        <div class="centerTitle">
-            <p class="fl">个人中心</p>
-            <p class="fr back" onclick="window.location.href='/'">返回主页</p>
-        </div>
+<div class="popleCenter">
+    <div class="centerTitle">
+        <p class="fl">个人中心</p>
+        <p class="fr back" onclick="window.location.href='/'">返回主页</p>
+    </div>
 
-        <!-- 个人中心主要内容 -->
-        <div class="centerCon">
-            <div class="cenDetail fl">
-                <div class="cen">
-                    <div class="cen-t">
-                        <img src="../static/assets/images/touxiang.png">
-                        <p>用户名：<span th:text="${account.getUserName()}"></span></p>
-                        <p>注册时间：<span th:text="${account.getUserDate().substring(0,10)}"></span></p>
-                        <p>是否为会员</p>
-                    </div>
-                    <div class="cen-b">
-                        <p class="fl">动态<br>(0)</p>
-                        <p class="fl">关注<br>(0)</p>
-                        <p class="fl">粉丝<br>(0)</p>
-                    </div>
-                    <div class="cen-o">
-                        <p>收藏(0)</p>
-                        <p>浏览历史</p>
-                        <p>会员中心</p>
-                        <p>个人信息</p>
-                        <p>用户成就</p>
-                        <p>账户管理</p>
-                        <a href="/logout"><p class="lightred" >退出当前账户</p></a>
-                    </div>
+    <!-- 个人中心主要内容 -->
+    <div class="centerCon">
+        <div class="cenDetail fl">
+            <div class="cen">
+                <div class="cen-t">
+                    <img src="../static/assets/images/touxiang.png">
+                    <p>用户名：<span th:text="${account.getUserName()}"></span></p>
+                    <p>注册时间：<span th:text="${account.getUserDate().substring(0,10)}"></span></p>
+                    <p>是否为会员</p>
                 </div>
-
+                <div class="cen-b">
+                    <p class="fl">动态<br>(0)</p>
+                    <p class="fl">关注<br>(0)</p>
+                    <p class="fl">粉丝<br>(0)</p>
+                </div>
+                <div class="cen-o">
+                    <p>收藏(0)</p>
+                    <p>浏览历史</p>
+                    <p>会员中心</p>
+                    <p>个人信息</p>
+                    <p>用户成就</p>
+                    <p>账户管理</p>
+                    <a href="/logout"><p class="lightred">退出当前账户</p></a>
+                </div>
             </div>
 
-            <div class="haveDetail fl">
-                <div class="haveTitle">
-                    <p>已发布的文章</p>
-                </div>
-                <!-- 文章 -->
-                <div class="blogDetail" th:each="article,articlePagestat:${articlePage}">
+        </div>
+
+        <div class="haveDetail fl">
+            <div class="haveTitle">
+                <p>已发布的文章</p>
+            </div>
+            <!-- 文章 -->
+            <div class="blogDetail" th:each="article,articlePagestat:${articlePage}">
+                <a th:href="@{'/Article/'+${article.getArticleId()}}">
                     <div class="blogTop">
                         <img src="../static/assets/images/view1.png">
                     </div>
@@ -60,13 +61,15 @@
                         </div>
                         <div class="BB-M">
                             <p class="artName" th:text="${article.getArticleTitle()}">文章名字</p>
-                            <p class="digest" th:text="${article.getArticleTabloid()}">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
+                            <p class="digest" th:text="${article.getArticleTabloid()}">
+                                文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内
                                 容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容</p>
                         </div>
                         <div class="BB-B">
                             <div class="witeEnd">
                                 <p class="digest" th:text="${article.getArticleAuthor()}">作者</p>
-                                <i class="layui-icon layui-icon-tabs" th:text="${article.getArticleDate()}">2019-12-04</i>
+                                <i class="layui-icon layui-icon-tabs"
+                                   th:text="${article.getArticleDate()}">2019-12-04</i>
                             </div>
                             <div class="icon">
                                 <i class="layui-icon layui-icon-dialogue" th:text="${article.getArticleLeaveMessage()}">123</i>
@@ -74,25 +77,26 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-            <div class="sendDetail fl">
-                <div class="userSuccess">
-                    <p class="userT">系统消息</p>
-                    <div class="user-ch">
-                        <p>共发表<span th:text="${ArticleNum}"></span>篇文章</p>
-                        <p>共发表<span th:text="${MessageNum}"></span>条评论</p>
-                        <p>总共收获点赞<span th:text="${ArticleStar}"></span>次</p>
-                        <p>最近发布的文章</p>
-                    </div>
-                    <button class="more">查看更多消息></button>
-
+        </div>
+        <div class="sendDetail fl">
+            <div class="userSuccess">
+                <p class="userT">系统消息</p>
+                <div class="user-ch">
+                    <p>共发表<span th:text="${ArticleNum}"></span>篇文章</p>
+                    <p>共发表<span th:text="${MessageNum}"></span>条评论</p>
+                    <p>总共收获点赞<span th:text="${ArticleStar}"></span>次</p>
+                    <p>最近发布的文章</p>
                 </div>
+                <button class="more">查看更多消息></button>
+
             </div>
         </div>
     </div>
-    <script src="../static/assets/js/jquery-3.4.1.js"></script>
-    <script src="../static/assets/style/layui/layui.js"></script>
+</div>
+<script src="../static/assets/js/jquery-3.4.1.js"></script>
+<script src="../static/assets/style/layui/layui.js"></script>
 </body>
 
 </html>
