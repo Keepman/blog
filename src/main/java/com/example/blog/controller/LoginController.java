@@ -59,7 +59,7 @@ public class LoginController {
     }
 
     /**
-     * 发送邮件
+     * 发送邮件  返回验证码
      *
      * @param request 包含邮箱地址 参数为 email
      */
