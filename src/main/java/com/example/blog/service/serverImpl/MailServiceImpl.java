@@ -1,6 +1,7 @@
 package com.example.blog.service.serverImpl;
 
 import com.example.blog.service.MailService;
+import com.example.blog.utils.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
@@ -22,13 +23,15 @@ public class MailServiceImpl implements MailService {
     private String from;
 
     @Override
-    public void sendSimpleMail(String to, String subject, String content) throws MailException {
+    public String sendSimpleMail(String to, String subject, String content) throws MailException {
         SimpleMailMessage message = new SimpleMailMessage();
+        String randomChar = RandomUtil.getRandomChar(6);
         message.setFrom(from); // 邮件发送者
         message.setTo(to); // 邮件接受者
         message.setSubject(subject); // 主题
-        message.setText(content); // 内容
+        message.setText("验证码为:" + randomChar); // 内容
         mailSender.send(message);
+        return randomChar;
     }
 
 }
