@@ -1,8 +1,8 @@
 spring:
   mail:
-    username: 690486631@qq.com
+    username: 1017020609@qq.com
     host: smtp.qq.com
-    password: weewbezvmzedbcib
+    password: etsgidlgupnfbfcf
   # mysql
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
