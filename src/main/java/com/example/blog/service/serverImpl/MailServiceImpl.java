@@ -23,12 +23,12 @@ public class MailServiceImpl implements MailService {
     private String from;
 
     @Override
-    public String sendSimpleMail(String to, String subject, String content) throws MailException {
+    public String sendSimpleMail(String to) throws MailException {
         SimpleMailMessage message = new SimpleMailMessage();
         String randomChar = RandomUtil.getRandomChar(6);
         message.setFrom(from); // 邮件发送者
         message.setTo(to); // 邮件接受者
-        message.setSubject(subject); // 主题
+        message.setSubject("验证码"); // 主题
         message.setText("验证码为:" + randomChar); // 内容
         mailSender.send(message);
         return randomChar;

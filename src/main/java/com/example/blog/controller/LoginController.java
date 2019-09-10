@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.blog.Result.ResultMap;
 import com.example.blog.entity.Account;
 import com.example.blog.service.LoginService;
+import com.example.blog.service.MailService;
 import com.example.blog.utils.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -27,18 +28,46 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private MailService mailService;
+
+    private String yZm = null;
+
     /**
      * 注册
      *
+     * @param yzmFromRole 用户传进来的验证码
      * @param account
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = {"application/json;charset=utf-8"})
-    public void register(@RequestBody Account account) {
+    public void register(@RequestBody Account account, String yzmFromRole) {
         boolean repeat = loginService.isRepeat(account.getUserAdmin());
-        if (repeat) {
-            // 用户不重复则创建账号
-            loginService.register(account);
+        if (!StringUtils.isBlank(yzmFromRole)) {
+            if (!StringUtils.isBlank(yZm)) {
+                boolean yzmBool = yzmFromRole.equals(yZm);
+                if (repeat && yzmBool) {
+                    // 用户不重复则创建账号
+                    loginService.register(account);
+                }
+            } else {
+                log.error("请先获取验证码");
+            }
+
+        } else {
+            log.error("请输入验证码");
         }
+    }
+
+    /**
+     * 发送邮件
+     *
+     * @param request 包含邮箱地址 参数为 email
+     */
+    @RequestMapping("/sendEmail")
+    public void sendEmail(HttpServletRequest request) {
+        Map<String, String> parameterMap = HttpUtils.getParameterMap(request);
+        String emailPath = parameterMap.get("email");
+        yZm = mailService.sendSimpleMail(emailPath);
     }
 
     /**
@@ -114,7 +143,7 @@ public class LoginController {
                             RedisUtil.remove(uuid);
                             String onlyNum = UUID.randomUUID().toString().replaceAll("-", "");
                             // 设置cookie，key为onlyNum，值为一个随机生成数
-                            CookieUtils.setCookie("onlyNum", onlyNum,86400);
+                            CookieUtils.setCookie("onlyNum", onlyNum, 86400);
                             // 设置redis，将key为cookie的key，一个随机生成数，值为账号对象，有效期为1天
                             RedisUtil.set(onlyNum, JSON.toJSONString(account), 86400L);
                             result.setStatus("200");
@@ -165,7 +194,7 @@ public class LoginController {
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         log.info("验证码uuid为" + uuid);
         // 将唯一数作为值，key为UUID存入cookie
-        CookieUtils.setCookie("UUID", uuid,180);
+        CookieUtils.setCookie("UUID", uuid, 180);
         // 将唯一数作为key，生成的验证码的值作为value，存入redis，有效期为3分钟
         RedisUtil.set(uuid, yzm, 180L);
         try {

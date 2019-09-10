@@ -31,7 +31,7 @@ public class BlogApplicationTests {
 
     @Test
     public void testEmail(){
-        mailService.sendSimpleMail("1017020609@qq.com","主题日","正文内容");
+        mailService.sendSimpleMail("1017020609@qq.com");
     }
 
 }
