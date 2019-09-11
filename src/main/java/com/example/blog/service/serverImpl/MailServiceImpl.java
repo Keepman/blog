@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author mayn
+ * @Author ymt
  * @Date 2019/9/10 15:58
  */
 @Service

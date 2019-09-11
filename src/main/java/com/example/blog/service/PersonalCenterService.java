@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @Author mayn
+ * @Author ymt
  * @Date 2019/8/22 15:20
  */
 public interface PersonalCenterService {

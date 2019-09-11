@@ -1,7 +1,7 @@
 package com.example.blog.service;
 
 /**
- * @Author mayn
+ * @Author ymt
  * @Date 2019/9/10 15:57
  */
 public interface MailService {
