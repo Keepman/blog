@@ -43,6 +43,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         interceptor.excludePathPatterns("/selectArticle");
         // 查询文章总数
         interceptor.excludePathPatterns("/Article/selectCountArticle");
+        // github登录
+        interceptor.excludePathPatterns("/githubLogin");
         // 分类页面
         interceptor.excludePathPatterns("/classify");
         // 文章显示页面
