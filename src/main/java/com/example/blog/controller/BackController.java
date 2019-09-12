@@ -99,6 +99,17 @@ public class BackController {
     }
 
     /**
+     * 跳转第三方登录成功页
+     *
+     * @return
+     */
+    @RequestMapping("/loginSuccess")
+    public String loginSuccess() {
+        log.info("第三方登录成功");
+        return "success";
+    }
+
+    /**
      * 跳转文章显示
      */
     @RequestMapping("/Article/{articleId}")

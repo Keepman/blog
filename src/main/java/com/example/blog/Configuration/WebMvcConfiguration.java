@@ -51,6 +51,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         interceptor.excludePathPatterns("/githubLogin");
         // 分类页面
         interceptor.excludePathPatterns("/classify");
+        // 第三方登录成功
+        interceptor.excludePathPatterns("/loginSuccess");
         // 文章显示页面
         interceptor.excludePathPatterns("/Article/{articleId}");
         // 静态资源
