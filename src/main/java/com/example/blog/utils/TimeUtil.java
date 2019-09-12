@@ -6,10 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author: zhangocean
@@ -124,21 +121,26 @@ public class TimeUtil {
         return String.valueOf(s);
     }
 
-    public static void UTCToCST(String UTCStr, String format) throws ParseException {
+    public static String UTCToUTC(String UTCStr) {
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
         Date date = null;
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
-        date = sdf.parse(UTCStr);
-        System.out.println("UTC时间: " + date);
+        try {
+            date = sdf1.parse(UTCStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 8);
-        //calendar.getTime() 返回的是Date类型，也可以使用calendar.getTimeInMillis()获取时间戳
-        System.out.println("北京时间: " + calendar.getTime());
+        Date date11 = calendar.getTime();
+        String format = sdf2.format(date11);
+        return format;
     }
 
 
     public static void main(String[] args) throws ParseException {
-        UTCToCST("2018-02-05T13:06:22Z", "yyyy-MM-dd HH:mm:ss");
+        UTCToUTC("2018-02-05T13:06:22Z");
         System.out.println(getFormatDateForFiveNum());
         System.out.println(System.currentTimeMillis());
         System.out.println(getFormatDateForSix());

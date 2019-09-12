@@ -3,10 +3,7 @@ package com.example.blog.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.blog.entity.Account;
-import com.example.blog.utils.CookieUtils;
-import com.example.blog.utils.HttpUtils;
-import com.example.blog.utils.RedisUtil;
-import com.example.blog.utils.SubStringUtils;
+import com.example.blog.utils.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,16 +67,17 @@ public class ThirdPartyLoginsController {
         String userName = (String) tokenResponseJson.get("login");
         // 获得创建时间
         String userDate = (String) tokenResponseJson.get("created_at");
-        if (id != null && !StringUtils.isBlank(userName)) {
+        String userDateUtc = TimeUtil.UTCToUTC(userDate);
+        if (id != null && !StringUtils.isBlank(userName) && !StringUtils.isBlank(userDateUtc)) {
             account.setUserId(id);
             account.setUserName(userName);
-            //account.setUserDate();
+            account.setUserDate(userDateUtc);
             String onlyNum = UUID.randomUUID().toString().replaceAll("-", "");
             // 设置cookie，key为onlyNum，值为一个随机生成数
             CookieUtils.setCookie("onlyNum", onlyNum, 86400);
             RedisUtil.set(onlyNum, JSON.toJSONString(account), 86400L);
             return 200;
-        }else {
+        } else {
             log.error("github中无此账号");
             return 999;
         }
