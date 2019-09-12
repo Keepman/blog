@@ -792,3 +792,10 @@ $(function () {
         return false;
     });
 });
+
+// github登录
+$(function () {
+    $("#github").click(function () {
+        window.location.href="https://github.com/login/oauth/authorize?client_id=2221efedd9edfe0aac24&redirect_uri=http://localhost:8888/success.html&state=11";
+    })
+});
