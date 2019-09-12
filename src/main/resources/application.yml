@@ -68,4 +68,8 @@ logging:
 server:
   port: 8888
 
+github:
+  clientId: 2221efedd9edfe0aac24
+  clientSecret: 0ce77dbb800118392462cd4ab8ce11208f13894c
+
 

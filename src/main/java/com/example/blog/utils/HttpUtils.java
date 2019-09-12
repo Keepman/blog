@@ -2,18 +2,25 @@ package com.example.blog.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.*;
 
 /**
@@ -90,5 +97,29 @@ public class HttpUtils {
         //释放链接
         response.close();
         return body;
+    }
+
+    /**
+     * 发送get请求
+     * @param url
+     * @param charset
+     * @return
+     */
+    public static String get(String url, String charset) {
+        try {
+            HttpClient client = HttpClientBuilder.create().build();
+            HttpGet get = new HttpGet();
+            get.setURI(new URI(url));
+            HttpResponse res = client.execute(get);
+            BufferedReader buffReader = new BufferedReader(
+                    new InputStreamReader(res.getEntity().getContent(), charset));
+            StringBuffer strBuff = new StringBuffer();
+            String temp = null;
+            while ((temp = buffReader.readLine()) != null)
+                strBuff.append(temp);
+            return strBuff.toString();
+        } catch (Exception e) {
+            throw new RuntimeException("发送get请求异常", e);
+        }
     }
 }
