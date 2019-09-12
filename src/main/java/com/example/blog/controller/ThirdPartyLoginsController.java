@@ -3,10 +3,12 @@ package com.example.blog.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.blog.entity.Account;
+import com.example.blog.service.LoginService;
 import com.example.blog.utils.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +33,9 @@ public class ThirdPartyLoginsController {
     private String clientId;
     @Value("${github.clientSecret}")
     private String clientSecret;
+
+    @Autowired
+    private LoginService loginService;
 
 
     /**
@@ -72,10 +77,13 @@ public class ThirdPartyLoginsController {
             account.setUserId(id);
             account.setUserName(userName);
             account.setUserDate(userDateUtc);
+            account.setUserRole("ROLE_USER");
             String onlyNum = UUID.randomUUID().toString().replaceAll("-", "");
             // 设置cookie，key为onlyNum，值为一个随机生成数
             CookieUtils.setCookie("onlyNum", onlyNum, 86400);
             RedisUtil.set(onlyNum, JSON.toJSONString(account), 86400L);
+            // 数据库新增账号
+            loginService.register(account);
             return 200;
         } else {
             log.error("github中无此账号");
