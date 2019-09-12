@@ -203,6 +203,77 @@ body {
 .mainRight{
   width: 35%;
   float: right;
+}
+.mainTi-top{
+  padding: 8px 20px;
+  box-sizing: border-box;
   background-color: #fff;
+  border-radius: 0.4rem 0.4rem 0 0;
+  color: #666;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+}
+.mainTi-top span:nth-child(2){
+  float: right;
+}
+.layui-icon-refresh:before{
+  float: right;
+}
+.ar-con{
+  padding: 10px 20px;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 0 0 0.4rem 0.4rem;
+  overflow: hidden;
+}
+.conImg,.conP,.conBth{
+  float: left;
+}
+.conImg{
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.conImg img{
+  width: 60px;
+  height: 60px;
+  border-radius:  50%;
+}
+.conP{
+  width: 60%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.conP p{
+  color: #3B3B3B;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  /*padding-left: 20px;*/
+}
+.conBth{
+  width: 20%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.conBth button{
+  height: 60px;
+  width: 100%;
+  background-color: #fff;
+  color: #84B834;
+  font-size: 16px;
+}
+.bthcla{
+   margin: 20px 0;
+ }
+.bthcla button{
+  padding: 10px 0;
+  margin-left: 15%;
   border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #666;
+  width: 70%;
 }
