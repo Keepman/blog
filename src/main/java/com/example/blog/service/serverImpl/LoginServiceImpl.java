@@ -26,10 +26,14 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void register(Account account) {
-        String psw = account.getUserPsw();
-        String newpsw = MD5Util.md5Encrpt(psw);
-        account.setUserPsw(newpsw);
-        account.setUserDate(TimeUtil.getFormatDateForSix());
+        try {
+            String psw = account.getUserPsw();
+            String newpsw = MD5Util.md5Encrpt(psw);
+            account.setUserPsw(newpsw);
+            account.setUserDate(TimeUtil.getFormatDateForSix());
+        }catch (Exception e){
+
+        }
         int i = loginMapper.register(account);
         if (i > 0) {
             log.info("新增成功");

@@ -1,12 +1,12 @@
 package com.example.blog.utils;
 
 import java.sql.SQLOutput;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author: zhangocean
@@ -121,7 +121,26 @@ public class TimeUtil {
         return String.valueOf(s);
     }
 
-    public static void main(String[] args) {
+    public static String UTCToUTC(String UTCStr) {
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        Date date = null;
+        try {
+            date = sdf1.parse(UTCStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 8);
+        Date date11 = calendar.getTime();
+        String format = sdf2.format(date11);
+        return format;
+    }
+
+
+    public static void main(String[] args) throws ParseException {
+        UTCToUTC("2018-02-05T13:06:22Z");
         System.out.println(getFormatDateForFiveNum());
         System.out.println(System.currentTimeMillis());
         System.out.println(getFormatDateForSix());
