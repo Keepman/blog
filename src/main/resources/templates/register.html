@@ -2,10 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>注册</title>
+    <link rel="stylesheet" href="../static/assets/style/css/blog.css">
+    <link rel="stylesheet" href="../static/assets/style/layui/css/layui.css">
 </head>
 <body>
-<li><a href="https://github.com/login/oauth/authorize?client_id=2221efedd9edfe0aac24&redirect_uri=http://localhost:8888/success.html&state=11"><input type="submit"/></a></li>
+<div class="register">
+    <div class="blackBord">
+        <div class="interface">
+            <div class="regiTi">
+                <p>注册 <span class="close">&times;</span> </p>
+            </div>
+            <div class="regiCon">
+                <div class="inputRegi">
+                    <i class="layui-icon layui-icon-username"></i>
+                    <input type="text" placeholder="自定义用户名">
+                </div>
+                <div class="inputRegi">
+                    <i class="layui-icon layui-icon-read"></i>
+                    <input type="text" placeholder="请输入正确的邮箱">
+                </div>
+                <div class="inputRegi">
+                    <i class="layui-icon layui-icon-cellphone"></i>
+                    <input type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="inputRegi noBorder">
+                    <div class="haveBor">
+                        <i class="layui-icon layui-icon-vercode"></i>
+                        <input type="text" placeholder="填写验证码">
+                    </div>
+                    <button onclick="">获取验证码</button>
+                </div>
+                <div class="regiFoot">
+                    <button onclick="nextPass()">下一步</button>
+                    <p>点击这里，直接登录</p>
+                </div>
+            </div>
 
+            <!--设置密码-->
+            <div class="regiSen">
+                <div class="inputRegi">
+                    <i class="layui-icon layui-icon-password"></i>
+                    <input type="text" placeholder="填写6-20位数字或字母">
+                </div>
+                <div class="inputRegi">
+                    <i class="layui-icon layui-icon-refresh"></i>
+                    <input type="text" placeholder="再次填写密码">
+                </div>
+                <div class="regiFoot">
+                    <button onclick="lastPass()">下一步</button>
+                    <p>点击这里，直接登录</p>
+                </div>
+            </div>
+
+            <!--登录成功-->
+            <div class="regiThi">
+                <div class="successGou">
+                    <i class="layui-icon layui-icon-ok"></i>
+                </div>
+                <p>登录成功，欢迎成为我们的一员~~</p>
+                <div class="regiFoot">
+                    <button>去发布文章</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function nextPass() {
+        let regiCon = document.getElementsByClassName("regiCon");
+        let regiSen = document.getElementsByClassName("regiSen");
+        regiCon[0].style.display = 'none';
+        regiSen[0].style.display = 'block';
+    }
+    function lastPass() {
+        let regiSen = document.getElementsByClassName("regiSen");
+        let regiThi = document.getElementsByClassName("regiThi");
+        regiSen[0].style.display = 'none';
+        regiThi[0].style.display = 'block';
+    }
+
+//    验证码倒计时
+
+</script>
 </body>
 </html>

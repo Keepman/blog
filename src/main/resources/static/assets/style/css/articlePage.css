@@ -197,3 +197,12 @@ body {
   background-color: #fff;
   border-radius: 0.4rem;
 }
+
+/* 文章主体 */
+/* right */
+.mainRight{
+  width: 35%;
+  float: right;
+  background-color: #fff;
+  border-radius: 0.4rem;
+}

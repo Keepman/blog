@@ -6,6 +6,80 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="../../static/assets/style/css/popleCenter.css">
     <link rel="stylesheet" href="../../static/assets/style/layui/css/layui.css">
+    <style>
+        /* 个人中心
+  ----关注
+  页面（包括已关注作者和取消关注） */
+        .youFocus {
+            width: 100%;
+            overflow: hidden;
+        }
+        .focusAuthor {
+            width: 98%;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 0.4rem;
+            box-shadow: 0 0 10px #ccc;
+            margin-bottom: 1vw;
+            margin-left: 1%;
+            margin-top: 1%;
+        }
+        .auImg {
+            width: 20%;
+            padding: 1vw;
+            box-sizing: border-box;
+        }
+        .auImg img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #f1f1f1;
+        }
+        .authorIntr {
+            width: 50%;
+            padding: 1.7vw 0;
+            box-sizing: border-box;
+            /* margin-top: 5%; */
+        }
+        .authorIntr .auTi{
+            width: 100%;
+            /* position: relative; */
+        }
+        .authorIntr .auTi span{
+            margin: 0.2vw;
+        }
+        .authorIntr .auTi img{
+            width: 10%;
+        }
+        .authorIntr p {
+            width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            word-break: break-all;
+            /* overflow: hidden; */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            /* margin-top: 5%; */
+        }
+        .isFocus {
+            width: 30%;
+        }
+        .isFocus button {
+            width: 60%;
+            margin-left: 20%;
+            margin-top: 20%;
+            padding: 0.8vw 0;
+            background-color: #fff;
+            border: 1px solid #ff4c00;
+            border-radius: 5rem;
+            color: #ff4c00;
+        }
+        .haveTitle .noFocus{
+            float: right;
+            color: #ff4c00;
+        }
+    </style>
 </head>
 
 <body>
@@ -89,68 +163,7 @@
                             <button><i class="layui-icon layui-icon-ok"></i>已关注</button>
                         </div>
                     </div>
-                    <div class="focusAuthor ">
-                        <div class="auImg fl">
-                            <img src="../../static/assets/images/qiaoba.jpg">
-                        </div>
-                        <div class="authorIntr fl">
-                            <p class="auTi"><img src="../../static/assets/images/vip.png"> <span>ZhYJ</span> </p>
-                            <p>简介：文学狂热爱好1231231231231123132123njsdivbofvkirp12315641231234561865186啦啦啦啦啦啦啦啦啦</p>
-                        </div>
-                        <div class="isFocus fl">
-                            <button><i class="layui-icon layui-icon-ok"></i>已关注</button>
-                        </div>
-                    </div>
-                    <div class="focusAuthor ">
-                        <div class="auImg fl">
-                            <img src="../../static/assets/images/qiaoba.jpg">
-                        </div>
-                        <div class="authorIntr fl">
-                            <p class="auTi"><img src="../../static/assets/images/vip.png"> <span>ZhYJ</span> </p>
-                            <p>简介：文学狂热爱好1231231231231123132123njsdivbofvkirp12315641231234561865186啦啦啦啦啦啦啦啦啦</p>
-                        </div>
-                        <div class="isFocus fl">
-                            <button><i class="layui-icon layui-icon-ok"></i>已关注</button>
-                        </div>
-                    </div>
-                    <div class="focusAuthor ">
-                        <div class="auImg fl">
-                            <img src="../../static/assets/images/qiaoba.jpg">
-                        </div>
-                        <div class="authorIntr fl">
-                            <p class="auTi"><img src="../../static/assets/images/vip.png"> <span>ZhYJ</span> </p>
-                            <p>简介：文学狂热爱好1231231231231123132123njsdivbofvkirp12315641231234561865186啦啦啦啦啦啦啦啦啦</p>
-                        </div>
-                        <div class="isFocus fl">
-                            <button><i class="layui-icon layui-icon-ok"></i>已关注</button>
-                        </div>
-                    </div>
-                    <div class="focusAuthor ">
-                        <div class="auImg fl">
-                            <img src="../../static/assets/images/qiaoba.jpg">
-                        </div>
-                        <div class="authorIntr fl">
-                            <p class="auTi"><img src="../../static/assets/images/vip.png"> <span>ZhYJ</span> </p>
-                            <p>简介：文学狂热爱好1231231231231123132123njsdivbofvkirp12315641231234561865186啦啦啦啦啦啦啦啦啦</p>
-                        </div>
-                        <div class="isFocus fl">
-                            <button><i class="layui-icon layui-icon-ok"></i>已关注</button>
-                        </div>
-                    </div>
-                    <div class="focusAuthor ">
-                        <div class="auImg fl">
-                            <img src="../../static/assets/images/qiaoba.jpg">
-                        </div>
-                        <div class="authorIntr fl">
-                            <p class="auTi"><img src="../../static/assets/images/vip.png"> <span>ZhYJ</span> </p>
-                            <p>简介：文学狂热爱好1231231231231123132123njsdivbofvkirp12315641231234561865186啦啦啦啦啦啦啦啦啦</p>
-                        </div>
-                        <div class="isFocus fl">
-                            <button><i class="layui-icon layui-icon-ok"></i>已关注</button>
-                        </div>
-                    </div>
                 </div>
-
             </div>
 
             <div class="sendDetail fl">
