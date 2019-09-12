@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+成功跳转
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script>
+    // 获取github的GET重定向的code参数
+    window.onload = function () {
+        let url = window.location.href;
+        let code = GetQueryString("code");
+        if (code != null && code.toString().length > 1) {
+            console.log(GetQueryString("code"));
+            $.ajax({
+                // async: false,
+                url: "http://localhost:8888/thirdPartyLogin/githubGetAccessToken",
+                type: "post",
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                data: {
+                    "code": code,
+                },
+                success:
+                    function (data) {
+                        // window.location.href = "https://api.github.com/user?access_token=" + data;
+                        $.ajax({
+                            url: "http://localhost:8888/thirdPartyLogin/githubGetUser",
+                            type: "post",
+                            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                            data: {
+                                "token": data,
+                            },
+                            success:
+                                function (data) {
+                                    if (data == 200) {
+                                        window.location.href = "/"
+                                    } else {
+                                        window.location.href = "/loginPage"
+                                    }
+                                }
+                        })
+                    }
+            });
+
+        } else {
+            console.log("code不存在")
+        }
+
+    };
+
+    function GetQueryString(name) {
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+        let r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        } else {
+            return null;
+        }
+    }
+</script>
+</body>
+</html>

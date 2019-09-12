@@ -37,12 +37,18 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         interceptor.excludePathPatterns("/loginPage");
         // 登录逻辑
         interceptor.excludePathPatterns("/login");
-        // 注册页面
+        // 注册
         interceptor.excludePathPatterns("/register");
+        // 注册页面
+        interceptor.excludePathPatterns("/registerPage");
+        // 第三方登录
+        interceptor.excludePathPatterns("/thirdPartyLogin/**");
         // 主页面分页查询文章
         interceptor.excludePathPatterns("/selectArticle");
         // 查询文章总数
         interceptor.excludePathPatterns("/Article/selectCountArticle");
+        // github登录
+        interceptor.excludePathPatterns("/githubLogin");
         // 分类页面
         interceptor.excludePathPatterns("/classify");
         // 文章显示页面
