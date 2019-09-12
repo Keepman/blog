@@ -68,9 +68,12 @@ public class ThirdPartyLoginsController {
         Account account = new Account();
         Integer id = (Integer) tokenResponseJson.get("id");
         String userName = (String) tokenResponseJson.get("login");
+        // 获得创建时间
+        String userDate = (String) tokenResponseJson.get("created_at");
         if (id != null && !StringUtils.isBlank(userName)) {
             account.setUserId(id);
             account.setUserName(userName);
+            //account.setUserDate();
             String onlyNum = UUID.randomUUID().toString().replaceAll("-", "");
             // 设置cookie，key为onlyNum，值为一个随机生成数
             CookieUtils.setCookie("onlyNum", onlyNum, 86400);

@@ -1,9 +1,12 @@
 package com.example.blog.utils;
 
 import java.sql.SQLOutput;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -121,7 +124,21 @@ public class TimeUtil {
         return String.valueOf(s);
     }
 
-    public static void main(String[] args) {
+    public static void UTCToCST(String UTCStr, String format) throws ParseException {
+        Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        date = sdf.parse(UTCStr);
+        System.out.println("UTC时间: " + date);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 8);
+        //calendar.getTime() 返回的是Date类型，也可以使用calendar.getTimeInMillis()获取时间戳
+        System.out.println("北京时间: " + calendar.getTime());
+    }
+
+
+    public static void main(String[] args) throws ParseException {
+        UTCToCST("2018-02-05T13:06:22Z", "yyyy-MM-dd HH:mm:ss");
         System.out.println(getFormatDateForFiveNum());
         System.out.println(System.currentTimeMillis());
         System.out.println(getFormatDateForSix());
