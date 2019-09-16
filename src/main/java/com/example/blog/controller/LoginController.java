@@ -40,7 +40,7 @@ public class LoginController {
      * @param
      * @param account
      */
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register")
     public void register(@RequestBody Account account) {
         boolean repeat = loginService.isRepeat(account.getUserAdmin());
         // 用户不重复则创建账号
