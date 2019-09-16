@@ -11,27 +11,28 @@
     <div class="blackBord">
         <div class="interface">
             <div class="regiTi">
-                <p>注册 <span class="close">&times;</span></p>
+                <p>注册 <span class="close">&times;</span> </p>
             </div>
             <div class="regiCon">
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-username"></i>
-                    <input id="userName" type="text" placeholder="自定义用户名">
+                    <input type="text" placeholder="自定义用户名" id="userName">
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-read"></i>
-                    <input id="yzEmail" type="text" placeholder="请输入正确的邮箱">
+                    <input type="text" placeholder="请输入正确的邮箱" id="yx">
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-cellphone"></i>
-                    <input id="yzPhone" type="text" placeholder="请输入手机号码">
+                    <input type="text" placeholder="请输入手机号码" id="phoneNum">
                 </div>
                 <div class="inputRegi noBorder">
                     <div class="haveBor">
                         <i class="layui-icon layui-icon-vercode"></i>
-                        <input id="yzm" type="text" placeholder="填写验证码">
+                        <input type="text" placeholder="填写验证码" id="yzm">
                     </div>
-                    <button onclick="sendEmail()">获取验证码</button>
+<!--                    <button onclick="settime(this)">获取验证码</button>-->
+                    <input type="button" id="btn" value="获取验证码" onclick="settime(this)" />
                 </div>
                 <div class="regiFoot">
                     <button onclick="nextPass()">下一步</button>
@@ -43,11 +44,11 @@
             <div class="regiSen">
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-password"></i>
-                    <input id="userPsw" type="text" placeholder="填写6-20位数字或字母">
+                    <input type="text" placeholder="填写6-20位数字或字母" id="passNum">
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-refresh"></i>
-                    <input type="text" placeholder="再次填写密码">
+                    <input type="text" placeholder="再次填写密码" id="samePass">
                 </div>
                 <div class="regiFoot">
                     <button onclick="lastPass()">下一步</button>
@@ -60,7 +61,7 @@
                 <div class="successGou">
                     <i class="layui-icon layui-icon-ok"></i>
                 </div>
-                <p>注册成功，欢迎成为我们的一员~~</p>
+                <p>登录成功，欢迎成为我们的一员~~</p>
                 <div class="regiFoot">
                     <button>去发布文章</button>
                 </div>
@@ -68,55 +69,70 @@
         </div>
     </div>
 </div>
-<script src="../static/assets/js/jquery-3.4.1.js"></script>
 <script>
-    let email = null;
+    // 监听input框的值
+    var userName = document.getElementById('userName');
+    var yx = document.getElementById('yx');
+    var phoneNum = document.getElementById('phoneNum');
+    var yzm = document.getElementById('yzm');
+    var passNum = document.getElementById('passNum');
+    var samePass = document.getElementById('samePass');
 
+    let regiCon = document.getElementsByClassName("regiCon");
+    let regiSen = document.getElementsByClassName("regiSen");
+    let regiThi = document.getElementsByClassName("regiThi");
+
+    var reg = /^[1-9]\d*$|^0$/;
+    var mima = /^[0-9a-zA-Z]+$/;
+    var kongge =/\s/;
+    var youxiang=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
     function nextPass() {
-        if (email != $("#yzm").val()) {
-            alert("验证码错误,请重新输入")
-        } else {
-            let regiCon = document.getElementsByClassName("regiCon");
-            let regiSen = document.getElementsByClassName("regiSen");
+        if (userName.value == '' || yx.value == '' || phoneNum.value == ''|| yzm.value == '') {
+            alert("输入框不可为空！");
+        } else if(youxiang.test(yx.value) == false){
+            alert("请输入正确的邮箱格式！！");
+        } else if (reg.test(phoneNum.value) == false || phoneNum.value.length != 11) {
+            alert("输入手机号不正确！");
+        } else if (yzm.value.length == 4) {
+            alert("验证码错误！！");
+        }else{
             regiCon[0].style.display = 'none';
             regiSen[0].style.display = 'block';
         }
     }
-
     function lastPass() {
-        $.ajax({
-            type: "post",
-            url: "http://localhost:8888/register/",
-            data: {
-                userEmail: $("#yzEmail").val(),
-                userPhone: $("#yzPhone").val(),
-                userName: $("#userName").val(),
-                userAdmin: $("#userName").val(),
-                userPsw: $("#userPsw").val(),
-            },
-            success: function (data) {
-
-            }
-        });
-        let regiSen = document.getElementsByClassName("regiSen");
-        let regiThi = document.getElementsByClassName("regiThi");
-        regiSen[0].style.display = 'none';
-        regiThi[0].style.display = 'block';
-
+        if (passNum.value == '' || samePass.value == '') {
+            alert("输入框不可为空！");
+        } else if (passNum.value.length < 6 || passNum.value.length > 20
+            || kongge.test(passNum.value) == true || mima.test(passNum.value) == false) {
+            alert("请输入6-20由数字和字母包含的密码！！！");
+        }
+        else if (passNum.value != samePass.value) {
+            alert("密码不一致请核查");
+        } else {
+            regiSen[0].style.display = 'none';
+            regiThi[0].style.display = 'block';
+        }
     }
 
-    //    验证码倒计时
+    // 验证码倒计时
+    var countdown = 60;
 
-    function sendEmail() {
-        alert("验证码已发至您所填写的邮箱内，请查收");
-        $.ajax({
-            url: "http://localhost:8888/sendEmail/",
-            data: {email: $("#yzEmail").val()},
-            success: function (data) {
-                email = data;
-            }
-        })
+    function settime(val) {
+        if (countdown == 0) {
+            val.removeAttribute("disabled");
+            val.value = "获取验证码";
+            countdown = 60;
+        } else {
+            val.setAttribute("disabled", true);
+            val.value = countdown + "s" + "重新发送";
+            countdown--;
+            setTimeout(function () {
+                settime(val)
+            }, 1000)
+        }
     }
+
 </script>
 </body>
 </html>
