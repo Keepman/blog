@@ -14,4 +14,6 @@ public interface LoginService {
     Account login(String username, String password);
 
     boolean isRepeat(String username);
+
+    // boolean ThirdPartyisRepeat(String username);
 }

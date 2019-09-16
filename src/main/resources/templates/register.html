@@ -16,7 +16,7 @@
             <div class="regiCon">
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-username"></i>
-                    <input type="text" placeholder="自定义用户名">
+                    <input id="userName" type="text" placeholder="自定义用户名">
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-read"></i>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-cellphone"></i>
-                    <input type="text" placeholder="请输入手机号码">
+                    <input id="yzPhone" type="text" placeholder="请输入手机号码">
                 </div>
                 <div class="inputRegi noBorder">
                     <div class="haveBor">
@@ -43,7 +43,7 @@
             <div class="regiSen">
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-password"></i>
-                    <input type="text" placeholder="填写6-20位数字或字母">
+                    <input id="userPsw" type="text" placeholder="填写6-20位数字或字母">
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-refresh"></i>
@@ -60,7 +60,7 @@
                 <div class="successGou">
                     <i class="layui-icon layui-icon-ok"></i>
                 </div>
-                <p>登录成功，欢迎成为我们的一员~~</p>
+                <p>注册成功，欢迎成为我们的一员~~</p>
                 <div class="regiFoot">
                     <button>去发布文章</button>
                 </div>
@@ -84,10 +84,25 @@
     }
 
     function lastPass() {
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8888/register/",
+            data: {
+                userEmail: $("#yzEmail").val(),
+                userPhone: $("#yzPhone").val(),
+                userName: $("#userName").val(),
+                userAdmin: $("#userName").val(),
+                userPsw: $("#userPsw").val(),
+            },
+            success: function (data) {
+
+            }
+        });
         let regiSen = document.getElementsByClassName("regiSen");
         let regiThi = document.getElementsByClassName("regiThi");
         regiSen[0].style.display = 'none';
         regiThi[0].style.display = 'block';
+
     }
 
     //    验证码倒计时
@@ -101,9 +116,7 @@
                 email = data;
             }
         })
-
     }
-
 </script>
 </body>
 </html>

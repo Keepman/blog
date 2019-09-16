@@ -37,26 +37,14 @@ public class LoginController {
     /**
      * 注册
      *
-     * @param yzmFromRole 用户传进来的验证码
+     * @param
      * @param account
      */
-    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = {"application/json;charset=utf-8"})
-    public void register(@RequestBody Account account, String yzmFromRole) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public void register(@RequestBody Account account) {
         boolean repeat = loginService.isRepeat(account.getUserAdmin());
-        if (!StringUtils.isBlank(yzmFromRole)) {
-            if (!StringUtils.isBlank(yZm)) {
-                boolean yzmBool = yzmFromRole.equals(yZm);
-                if (repeat && yzmBool) {
-                    // 用户不重复则创建账号
-                    loginService.register(account);
-                }
-            } else {
-                log.error("请先获取验证码");
-            }
-
-        } else {
-            log.error("请输入验证码");
-        }
+        // 用户不重复则创建账号
+        loginService.register(account);
     }
 
     /**
