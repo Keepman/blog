@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
@@ -64,10 +65,12 @@ public class LoginController {
      * @param request 包含邮箱地址 参数为 email
      */
     @RequestMapping("/sendEmail")
-    public void sendEmail(HttpServletRequest request) {
+    public String sendEmail(HttpServletRequest request) {
         Map<String, String> parameterMap = HttpUtils.getParameterMap(request);
         String emailPath = parameterMap.get("email");
         yZm = mailService.sendSimpleMail(emailPath);
+        return yZm;
+        //SessionUtil.setSessionAttribute("emailYzm", yZm);
     }
 
     /**

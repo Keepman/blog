@@ -11,7 +11,7 @@
     <div class="blackBord">
         <div class="interface">
             <div class="regiTi">
-                <p>注册 <span class="close">&times;</span> </p>
+                <p>注册 <span class="close">&times;</span></p>
             </div>
             <div class="regiCon">
                 <div class="inputRegi">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-read"></i>
-                    <input type="text" placeholder="请输入正确的邮箱">
+                    <input id="yzEmail" type="text" placeholder="请输入正确的邮箱">
                 </div>
                 <div class="inputRegi">
                     <i class="layui-icon layui-icon-cellphone"></i>
@@ -29,9 +29,9 @@
                 <div class="inputRegi noBorder">
                     <div class="haveBor">
                         <i class="layui-icon layui-icon-vercode"></i>
-                        <input type="text" placeholder="填写验证码">
+                        <input id="yzm" type="text" placeholder="填写验证码">
                     </div>
-                    <button onclick="">获取验证码</button>
+                    <button onclick="sendEmail()">获取验证码</button>
                 </div>
                 <div class="regiFoot">
                     <button onclick="nextPass()">下一步</button>
@@ -68,13 +68,21 @@
         </div>
     </div>
 </div>
+<script src="../static/assets/js/jquery-3.4.1.js"></script>
 <script>
+    let email = null;
+
     function nextPass() {
-        let regiCon = document.getElementsByClassName("regiCon");
-        let regiSen = document.getElementsByClassName("regiSen");
-        regiCon[0].style.display = 'none';
-        regiSen[0].style.display = 'block';
+        if (email != $("#yzm").val()) {
+            alert("验证码错误,请重新输入")
+        } else {
+            let regiCon = document.getElementsByClassName("regiCon");
+            let regiSen = document.getElementsByClassName("regiSen");
+            regiCon[0].style.display = 'none';
+            regiSen[0].style.display = 'block';
+        }
     }
+
     function lastPass() {
         let regiSen = document.getElementsByClassName("regiSen");
         let regiThi = document.getElementsByClassName("regiThi");
@@ -82,7 +90,18 @@
         regiThi[0].style.display = 'block';
     }
 
-//    验证码倒计时
+    //    验证码倒计时
+
+    function sendEmail() {
+        $.ajax({
+            url: "http://localhost:8888/sendEmail/",
+            data: {email: $("#yzEmail").val()},
+            success: function (data) {
+                email = data;
+            }
+        })
+
+    }
 
 </script>
 </body>

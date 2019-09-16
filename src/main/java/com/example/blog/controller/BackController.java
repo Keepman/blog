@@ -188,4 +188,13 @@ public class BackController {
         // 再重定向到登陆页面
         return "classify";
     }
+
+    /**
+     * VIP页面
+     */
+    @RequestMapping("/vipPage")
+    public String vipPage() {
+        return "vip";
+    }
+
 }
