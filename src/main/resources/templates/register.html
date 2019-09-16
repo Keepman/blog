@@ -93,6 +93,7 @@
     //    验证码倒计时
 
     function sendEmail() {
+        alert("验证码已发至您所填写的邮箱内，请查收");
         $.ajax({
             url: "http://localhost:8888/sendEmail/",
             data: {email: $("#yzEmail").val()},
