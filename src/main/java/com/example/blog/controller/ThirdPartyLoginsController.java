@@ -74,7 +74,7 @@ public class ThirdPartyLoginsController {
         String userDate = (String) tokenResponseJson.get("created_at");
         String userDateUtc = TimeUtil.UTCToUTC(userDate);
         if (id != null && !StringUtils.isBlank(userName) && !StringUtils.isBlank(userDateUtc)) {
-            account.setUserId(id);
+            account.setThirdId(id);
             account.setUserName(userName);
             account.setUserDate(userDateUtc);
             account.setUserRole("ROLE_USER");
@@ -82,6 +82,8 @@ public class ThirdPartyLoginsController {
             // 设置cookie，key为onlyNum，值为一个随机生成数
             CookieUtils.setCookie("onlyNum", onlyNum, 86400);
             RedisUtil.set(onlyNum, JSON.toJSONString(account), 86400L);
+            // 判断数据库是否有该账号，如果没有则添加
+
             // 数据库新增账号
             loginService.register(account);
             return 200;

@@ -17,10 +17,16 @@ public class Account {
     private String userAdmin;
     // 密码
     private String userPsw;
+    // 邮箱
+    private String userEmail;
+    // 手机
+    private String userPhone;
     // 权限
     private String userRole;
     // 用户注册时间
     private String userDate;
     // 是否为VIP 1为是 0为否
     private int userVip;
+    // 第三方用户登录ID
+    private int thirdId;
 }

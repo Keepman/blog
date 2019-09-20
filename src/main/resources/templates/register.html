@@ -11,7 +11,7 @@
     <div class="blackBord">
         <div class="interface">
             <div class="regiTi">
-                <p>注册 <span class="close">&times;</span> </p>
+                <p>注册 <span class="close">&times;</span></p>
             </div>
             <div class="regiCon">
                 <div class="inputRegi">
@@ -31,8 +31,7 @@
                         <i class="layui-icon layui-icon-vercode"></i>
                         <input type="text" placeholder="填写验证码" id="yzm">
                     </div>
-<!--                    <button onclick="settime(this)">获取验证码</button>-->
-                    <input type="button" id="btn" value="获取验证码" onclick="settime(this)" />
+                    <input type="button" id="btn" value="获取验证码"/>
                 </div>
                 <div class="regiFoot">
                     <button onclick="nextPass()">下一步</button>
@@ -69,6 +68,7 @@
         </div>
     </div>
 </div>
+<script src="../static/assets/js/jquery-3.4.1.js"></script>
 <script>
     // 监听input框的值
     var userName = document.getElementById('userName');
@@ -84,22 +84,22 @@
 
     var reg = /^[1-9]\d*$|^0$/;
     var mima = /^[0-9a-zA-Z]+$/;
-    var kongge =/\s/;
-    var youxiang=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+    var kongge = /\s/;
+    var youxiang = /^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|net|org)$/;
+
     function nextPass() {
-        if (userName.value == '' || yx.value == '' || phoneNum.value == ''|| yzm.value == '') {
+        if (userName.value == '' || yx.value == '' || phoneNum.value == '' || yzm.value == '') {
             alert("输入框不可为空！");
-        } else if(youxiang.test(yx.value) == false){
-            alert("请输入正确的邮箱格式！！");
         } else if (reg.test(phoneNum.value) == false || phoneNum.value.length != 11) {
             alert("输入手机号不正确！");
-        } else if (yzm.value.length == 4) {
+        } else if (email != $("#yzm").val()) {
             alert("验证码错误！！");
-        }else{
+        } else {
             regiCon[0].style.display = 'none';
             regiSen[0].style.display = 'block';
         }
     }
+
     function lastPass() {
         if (passNum.value == '' || samePass.value == '') {
             alert("输入框不可为空！");
@@ -110,6 +110,14 @@
         else if (passNum.value != samePass.value) {
             alert("密码不一致请核查");
         } else {
+            let param = {"userEmail": $('#yx').val(),"userPhone": $('#phoneNum').val(),"userPsw": $('#passNum').val(),"userAdmin": $('#userName').val(),"userName": $('#userName').val()};
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8888/register",
+                contentType: "application/json",
+                data: JSON.stringify(param)
+            })
+            ;
             regiSen[0].style.display = 'none';
             regiThi[0].style.display = 'block';
         }
@@ -132,6 +140,26 @@
             }, 1000)
         }
     }
+
+    let email = null;
+    $("#btn").click(function () {
+        if (yx.value == '') {
+            alert("邮箱为空");
+        } else if (youxiang.test(yx.value) == false) {
+            alert("请输入正确的邮箱格式！！");
+        } else {
+            alert("验证码已发至您所填写的邮箱内，请查收");
+            settime(this);
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8888/sendEmail",
+                data: {email: $("#yx").val()},
+                success: function (data) {
+                    email = data;
+                }
+            })
+        }
+    })
 
 </script>
 </body>
