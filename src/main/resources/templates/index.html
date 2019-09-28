@@ -9,32 +9,35 @@
     <link rel="stylesheet" href="../static/assets/style/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/editormd.css"/>
 </head>
-<script src="../static/assets/js/jquery-3.4.1.js"></script>
-<script src="../static/assets/js/indexAjax.js"></script>
+
 <body>
 <div class="blogBody">
     <div class="blogTitle">
-        <p class="userName">ZYJ</p>
-        <div class="navigationBar">
-            <a href="/classify">
-                <button>类别</button>
-            </a>
-            <a href="/personalCenter">
-                <button>个人中心</button>
-            </a>
-            <a href="/editorPage">
-                <button>发布文章</button>
-            </a>
-            <a href="/vipPage">
-                <button>vip会员</button>
-            </a>
+        <div class="conter">
+            <p class="userName">ZYJ</p>
+            <div class="navigationBar">
+                <a href="/classify">
+                    <button>类别</button>
+                </a>
+                <a href="/personalCenter">
+                    <button>个人中心</button>
+                </a>
+                <a href="/editorPage">
+                    <button>发布文章</button>
+                </a>
+                <a href="/vipPage">
+                    <button>vip会员</button>
+                </a>
+            </div>
+            <div class="searchBlog" id="searchBlog">
+                <i class="layui-icon layui-icon-search"></i>
+            </div>
+            <p class="login"><a href="/loginPage">登陆</a>/<a href="/registerPage">注册</a></p>
         </div>
-        <div class="searchBlog" id="searchBlog">
-            <i class="layui-icon layui-icon-search"></i>
-        </div>
-        <p class="login"><a href="/loginPage">登陆</a>/<a href="/registerPage">注册</a></p>
+
     </div>
     <div class="blogCon">
+        <div class="conter">
         <!-- 幻灯片--模块 -->
         <div class="shuffling">
             <div class="slidePicture">
@@ -84,32 +87,7 @@
         <div class="randomCom">
             <div class="randomLeft">
                 <div class="article">
-                    <!--<div class="blogDetail">-->
-                    <!--<div class="blogTop">-->
-                    <!--<img src="../static/assets/images/view4.png">-->
-                    <!--</div>-->
-                    <!--<div class="blogBottom">-->
-                    <!--<div class="BB-T">-->
-                    <!--<p class="articleright">分类</p>-->
-                    <!--<i class="layui-icon layui-icon-camera-fill"></i>-->
-                    <!--</div>-->
-                    <!--<div class="BB-M">-->
-                    <!--<p class="artName">文章名字</p>-->
-                    <!--<p class="digest">文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内-->
-                    <!--容文章主要内容文章主要内容文章主要内容文章主要内容文章主要内容</p>-->
-                    <!--</div>-->
-                    <!--<div class="BB-B">-->
-                    <!--<div class="witeEnd">-->
-                    <!--<p class="digest">作者</p>-->
-                    <!--<i class="layui-icon layui-icon-tabs">2019-12-04</i>-->
-                    <!--</div>-->
-                    <!--<div class="icon">-->
-                    <!--<i class="layui-icon layui-icon-dialogue">123</i>-->
-                    <!--<i class="layui-icon layui-icon-star">123</i>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
+
                 </div>
                 <!-- 分页器 俞-->
                 <div id="list" class="pager">
@@ -122,22 +100,7 @@
                 <!-- 分页器 -->
 
                 <!-- 分页器 周-->
-                <!--<div id="list" class="pager">-->
-                <!--<ul>-->
-                <!--<li class="roll">-->
-                <!--<i class="layui-icon layui-icon-left"></i>-->
-                <!--</li>-->
-                <!--<div class="list">-->
-                <!--<li class="list-page">1</li>-->
-                <!--<li class="list-page">1</li>-->
-                <!--<li class="list-page">1</li>-->
-                <!--<li class="list-page">1</li>-->
-                <!--</div>-->
-                <!--<li class="roll">-->
-                <!--<i class="layui-icon layui-icon-right"></i>-->
-                <!--</li>-->
-                <!--</ul>-->
-                <!--</div>-->
+
             </div>
             <div class="randomRight">
                 <!-- 猜你喜欢 -->
@@ -164,6 +127,14 @@
                 </div>
             </div>
         </div>
+        </div>
+    </div>
+    <div class="blogFoot">
+        <div class="conter">
+            <p>赞助商|赞助商|赞助商|赞助商|赞助商|赞助商|赞助商</p>
+            <p>平台签约方式|平台发布系列文章</p>
+            <p>联系平台：12345678945</p>
+        </div>
     </div>
 </div>
 <div class="diaSearch">
@@ -179,6 +150,8 @@
         </div>
     </div>
 </div>
+<script src="../static/assets/js/jquery-3.4.1.js"></script>
+<script src="../static/assets/js/indexAjax.js"></script>
 <script src="../static/assets/style/layui/layui.js"></script>
 <script src="../static/assets/js/swiper.min.js"></script>
 <script src="../static/assets/js/blogMain.js"></script>

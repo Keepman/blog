@@ -15,7 +15,7 @@ body {
   background-color: #f1f1f1;
   overflow: scroll;
   box-sizing: border-box;
-  padding: 2% 10%;
+  padding: 30px 0;
 }
 .sinTitle {
   width: 100%;
@@ -51,7 +51,7 @@ body {
 .pageMain {
   width: 100%;
   overflow: hidden;
-  margin-top: 2vw;
+  margin-top: 25px;
 }
 .mainLeft {
   float: left;
@@ -67,10 +67,18 @@ body {
 .keyLable {
   width: 100%;
   overflow: hidden;
-  margin-top: 2vw;
+  margin-top: 20px;
 }
 .leftKey {
   float: left;
+}
+.leftKey button,.rightKey button{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #ccc;
 }
 .rightKey {
   float: right;
@@ -79,7 +87,7 @@ body {
 /* 文章上一页下一页  */
 .articleChan {
   width: 100%;
-  padding: 0.5rem 2vw;
+  padding: 8px 20px;
   box-sizing: border-box;
   background-color: #fff;
   overflow: hidden;
@@ -103,41 +111,44 @@ body {
 .comments {
   width: 100%;
   background-color: #fff;
-  margin-top: 2vw;
+  margin-top: 25px;
   border-radius: 0.4rem;
 }
 .comTitle {
   text-align: center;
   color: #2c2a2a;
   font-size: 1.2rem;
-  padding: 1vw 0;
+  padding: 12px 0;
   border-bottom: 1px solid #dfdcdc;
 }
 .com {
   overflow: hidden;
   box-sizing: border-box;
-  padding: 1vw;
+  padding: 12px;
   width: 100%;
+  /*height: 170px;*/
 }
 .comImg {
   float: left;
-  width: 20%;
+  /*width: 20%;*/
 }
 .comImg img {
-  width: 100%;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 .comcon {
-  float: right;
-  width: 80%;
-  padding-left: 1vw;
+  float: left;
+  width: 89%;
+  padding: 0 18px;
   box-sizing: border-box;
+  /*height: 146px;*/
 }
 .comcon-t {
   overflow: hidden;
   width: 100%;
   color: #2962ff;
-  font-size: 0.8rem;
+  font-size: 16px;
 }
 .t-l {
   float: left;
@@ -145,37 +156,44 @@ body {
 .t-r {
   float: right;
 }
-.comcon-b {
-  margin-top: 0.8rem;
+.comcon-m{
+  height: 40px;
+  padding: 12px;
+  box-sizing: border-box;
+  font-size: 16px;
+  overflow: hidden;
 }
+/*.comcon-b {*/
+/*  margin-top: 0.8rem;*/
+/*}*/
 /* 发表评论 */
 .sendcom {
   width: 100%;
   background-color: #fff;
-  margin-top: 2vw;
+  margin-top: 25px;
   border-radius: 0.4rem;
 }
 .send-c{
     width: 100%;
     box-sizing: border-box;
-    padding: 1vw 3vw;
+    padding: 12px 32px;
     text-align: center;
 }
 .send-c textarea{
     width: 100%;
     resize:none;
     border-radius: 0.4rem;
-    padding: 1vw;
+    padding: 12px;
     box-sizing: border-box;
-    margin-top: 2vw;
+    margin-top: 20px;
     border-color: rgb(41, 98, 255,0.5);
 }
 .send-c button{
     width: 40%;
-    padding: 1vw 0;
+    padding: 12px 0;
     background-color:rgb(41, 98, 255,0.8);
     border-radius: 0.4rem;
-    margin-top: 1vw;
+    margin-top: 12px;
     color: #fff;
     cursor: pointer;
 }
@@ -183,15 +201,69 @@ body {
     background-color:  #2962ff;
     cursor: pointer;
 }
-
+.responce .resp{
+  width: 100%;
+  resize:none;
+  border-radius: 0.4rem;
+  padding: 12px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border: 1px solid #666;
+}
+.responce{
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.responce div{
+  overflow: hidden;
+}
+.responce div>button{
+  float: right;
+  padding: 8px 15px;
+  background-color: #f3a393;
+  border: 2px solid #f3a393;
+  color: #fff;
+  border-radius: 18px;
+  margin-left: 10px;
+}
+.responce div>button:first-child{
+  background-color: #fff;
+  border: 2px solid #f3a393;
+  color: #f3a393;
+}
+.submitResp{
+  box-sizing: border-box;
+  padding: 15px 0;
+  overflow: hidden;
+}
+.submitResp img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.otherResp{
+  box-sizing: border-box;
+  padding-left: 15px;
+  width: 87%;
+}
+.otherResp .sub-m{
+  height: 40px;
+  box-sizing: border-box;
+  padding: 12px;
+}
+.otherResp .sub-t{
+  overflow: hidden;
+  font-size: 16px;
+  color: #00a8c6;
+}
 .thisLable{
   background-color: #fff;
   text-align: center;
-  padding: 1vw;
+  padding: 12px;
   border-radius: 0.4rem;
-  margin-bottom: 1vw;
+  margin-bottom: 12px;
   color: #2c2a2a;
-  font-size: 2rem;
+  font-size: 16px;
 }
 .mainRight .blogcircle{
   background-color: #fff;

@@ -33,9 +33,7 @@ function showSlides(n) {
 }
 
 // 推荐轮播
-// var swiper1 = new Swiper('#swiper1');
-// var swiper2 = new Swiper('#swiper2');
-// var swiper3 = new Swiper('#swiper3');
+
 var mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 3,
     spaceBetween: 20,
@@ -61,133 +59,6 @@ window.onclick = function (event) {
         diaS.style.display = "none";
     }
 }
-
-//跳转到文章内容
-// var artName = document.getElementsByClassName("artName")[0];
-// artName.onclick = function () {
-//     window.location.href = 'articlePage.html';
-// }
-
-
-// // 分页器
-// var total = 0;//总页数
-// var currentPage = 1;
-// var isInit = false;
-// // 初始化方法
-// function init(page, num) {
-//     if (!isInit) {
-//         isInit = true;
-//         total = page;
-//         currentPage = num;
-//
-//         changePage(currentPage);
-//     }
-// }
-//
-// function setCurrentPage(page) {
-//     // if(page>total||page<1){
-//     //     return;
-//     // }
-//     currentPage = parseInt(page);
-//     console.log(currentPage);
-// }
-//
-// // 切换页面
-// function changePage(page) {
-//     let pageArr = [], light;
-//     if (page > total || page < 1) {
-//         return false;
-//     }
-//     page = parseInt(page);
-//     // if( page < 8){
-//         pageArr = [page-2,page-1,page,page+1,page+2];
-//         light = page-1;
-//     // }
-//     // else if(page > total - 5) {
-//     //     pageArr = [1, '...', total - 6, total - 5, total - 4, total - 3, total - 2, total - 1, total];
-//
-//     //     light = 8 - (total - page);
-//     // } else if (page < 6) {
-//     //     pageArr = [1, 2, 3, 4, 5, 6, 7, '...', total];
-//
-//     //     light = page - 1;
-//     // } else {
-//     //     pageArr = [1, '...', page - 2, page - 1, page, page + 1, page + 2, '...', total];
-//
-//     //     light = 4;
-//     // }
-//
-//     console.log(pageArr);
-//     renderPage(pageArr, light);
-//     return true;
-// }
-// function renderPage(pageArr, light) {
-//     for (let i = 0; i < pageArr.length; i++) {
-//         $(".list-page").eq(i).text(pageArr[i]);
-//         if (pageArr[i] === '...') {
-//             $(".list-page").eq(i).css('border', 'none');
-//             $(".list-page").eq(i).css('backgroundColor', '#f1f1f1');
-//         } else if (i === 1 || i === pageArr.length - 2) {
-//             $(".list-page").eq(i).css('border', '1px solid #ccc');
-//         }
-//     }
-//
-//     $(".list-page").eq(light).css('color', '#fff').css('backgroundColor', '#2962ff');
-// }
-//
-// // $('#list').on('click','li',function () {
-// //     switch($(this).text()){
-// //         case '...':{
-// //             break;
-// //         }
-// //         case '<':{
-// //             setCurrentPage(currentPage-1);
-// //             break;
-// //         }
-// //         case '>':{
-// //             setCurrentPage(currentPage+1);
-// //             break;
-// //         }
-// //         default:{
-// //             setCurrentPage($(this).text());
-// //             break;
-// //         }
-// //     }
-// // })
-//
-// $('#list').on('click', 'li', function () {
-//     // console.log($(this)[0].firstElementChild.className);
-//     console.log($(this));
-//     if ($(this)[0].firstElementChild != null) {
-//         switch ($(this)[0].firstElementChild.className) {
-//             case 'layui-icon layui-icon-left': {
-//                 setCurrentPage(currentPage - 1);
-//                 break;
-//             }
-//             case 'layui-icon layui-icon-right': {
-//                 setCurrentPage(currentPage + 1);
-//                 break;
-//             }
-//         }
-//     } else {
-//         switch ($(this).text()) {
-//             case '...': {
-//                 break;
-//             }
-//             default: {
-//                 setCurrentPage($(this).text());
-//                 break;
-//             }
-//         }
-//
-//     }
-// });
-//
-// function getData(){
-//
-// }
-//
-// init(8, 3);
 
 // 分页器
 var total = 0;//总页数
@@ -221,23 +92,10 @@ function changePage(page) {
         return false;
     }
     page = parseInt(page);
-    // if( page < 8){
+
     pageArr = [page - 2, page - 1, page, page + 1, page + 2];
     light = page - 1;
-    // }
-    // else if(page > total - 5) {
-    //     pageArr = [1, '...', total - 6, total - 5, total - 4, total - 3, total - 2, total - 1, total];
 
-    //     light = 8 - (total - page);
-    // } else if (page < 6) {
-    //     pageArr = [1, 2, 3, 4, 5, 6, 7, '...', total];
-
-    //     light = page - 1;
-    // } else {
-    //     pageArr = [1, '...', page - 2, page - 1, page, page + 1, page + 2, '...', total];
-
-    //     light = 4;
-    // }
 
     console.log(pageArr);
     renderPage(pageArr, light);
@@ -264,10 +122,12 @@ $('#list').on('click', 'li', function () {
         switch ($(this)[0].firstElementChild.className) {
             case 'layui-icon layui-icon-left': {
                 setCurrentPage(currentPage - 1);
+                // $(this)[currentPage - 1].addClass('clearfix');
                 break;
             }
             case 'layui-icon layui-icon-right': {
                 setCurrentPage(currentPage + 1);
+                // $(this)[currentPage + 1].addClass('clearfix');
                 break;
             }
         }
@@ -278,6 +138,7 @@ $('#list').on('click', 'li', function () {
             }
             default: {
                 setCurrentPage($(this).text());
+                // $(this).addClass('clearfix');
                 break;
             }
         }
@@ -329,43 +190,7 @@ function getData(currentPage){
         }
     })
 }
-// 小鱼写的
-// $(document).ready(function () {
-//     $.ajax({
-//         async: false,
-//         url: "http://localhost:8888/Article/selectCountArticle",
-//         type: "GET",
-//         error: function (error) {
-//             console.log(error);
-//         },
-//         success: function (data) {
-//             console.log(data);
-//             // let pageAll = 1;
-//             // if(data < 3){
-//             //     pageAll = 1;
-//             // }else if(data > 3){
-//             //     pageAll = Math.ceil(data/3);
-//             // }
-//             // init(pageAll,currentPage);
-//             let result;
-//             let num = Math.floor(data / 3);
-//             if (data % 3 == 0) {
-//                 result = num;
-//             } else {
-//                 result = num + 1;
-//             }
-//             let fenye = $('.fenye');
-//             for (let i = 1; i <= result; i++) {
-//                 let list = $('<li class="list-page">' + i + '</li>');
-//                 fenye.append(list);
-//             }
-//             let right = $('<li class="roll">' +
-//                 '<i class="layui-icon layui-icon-right"></i>' +
-//                 '</li>');
-//             fenye.append(right);
-//         }
-//     })
-// });
+
 // 小周写的
 $(document).ready(function () {
     $.ajax({

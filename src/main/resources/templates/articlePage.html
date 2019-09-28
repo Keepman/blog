@@ -11,6 +11,7 @@
 
 <body>
 <div class="sinPage">
+    <div class="conter">
     <span th:text="${article.getArticleId()}" style="display: none" class="articleID"></span>
     <span th:if="${account!=null}" style="display: none" class="hasUserName">
         <span th:text="${account.getUserName()}" style="display: none" class="userName"></span>
@@ -54,12 +55,11 @@
                     </div>
                     <div class="keyLable">
                         <div class="leftKey">
-                            <button>时尚</button>
-                            <button>生活</button>
-                            <button>旅行</button>
+                            <button>点赞</button>
+                            <button>踩踩</button>
                         </div>
                         <div class="rightKey">
-                            <button>分享</button>
+                            <button onclick="dashang()">打赏</button>
                         </div>
                     </div>
                 </div>
@@ -102,10 +102,35 @@
                                 <p class="t-r" th:text="${msg.getMessageDate()}">评论时间:2019-04-04&nbsp;17:00</p>
                             </div>
                             <div class="comcon-m" th:text="${msg.getMessageContent()}">
+                                13213132131321313213132131321313213132131321313213132131321313213132131321313213
                             </div>
                             <div class="comcon-b">
                                 <i class="layui-icon layui-icon-face-smile-fine">123</i>
-                                <i class="layui-icon layui-icon-dialogue">回复</i>
+                                <a><i class="layui-icon layui-icon-dialogue">回复</i></a>
+                                <a class="t-r">查看全文</a>
+                                <div class="submitResp">
+                                    <img class="t-l" src="../static/assets/images/touxiang.jpg">
+                                    <div class="otherResp t-l">
+                                        <div class="sub-t">
+                                            <p class="t-l">用户的名字</p>
+                                            <p class="t-r">评论时间:2019-04-04&nbsp;17:00</p>
+                                        </div>
+                                        <div class="sub-m">
+                                            @楼上：123
+                                        </div>
+                                        <div class="sub-b">
+                                            <i class="layui-icon layui-icon-face-smile-fine">123</i>
+                                            <a class="t-r">查看全文</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="responce">
+                                    <textarea rows="3" class="resp"></textarea>
+                                    <div>
+                                        <button>取消</button>
+                                        <button>发表</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,6 +147,7 @@
                 </div>
             </div>
         </div>
+
         <!--作者推荐-->
         <div class="mainRight">
             <p class="mainTi-top">
@@ -209,9 +235,14 @@
         </div>
     </div>
 
+    </div>
+</div>
+
+<!--打赏弹框-->
+<div>
 
 </div>
-</div>
+
 <script src="../static/assets/js/jquery-3.4.1.js"></script>
 <script src="../static/assets/style/layui/layui.js"></script>
 <script src="../static/lib/marked.min.js"></script>

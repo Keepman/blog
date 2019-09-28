@@ -13,6 +13,10 @@ body {
 .fr{
     float: right;
 }
+.conter{
+    width: 668px;
+    margin: 0 auto;
+}
 /* 文章内容 */
 .vip {
   width: 100%;
